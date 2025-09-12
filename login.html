@@ -1,0 +1,1050 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+        integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/login.css">
+
+
+
+    <title>Login</title>
+</head>
+
+<body>
+    <nav class="navbar  navbar-expand-lg navbar-dark bg-primary border-bottom shadow-sm ">
+        <div class="container">
+            <div class="d-none d-md-block">
+                <a href="#"> <img class="pt-2 invisible" src="" width="150px" height="95px"></a>
+            </div>
+
+            <form id="busca" class=" m-2 ">
+                <input class=" form-control me-2 " type="search" placeholder="O que você está procurando?" arial
+                    arial-label="search">
+            </form>
+
+
+            <div class="align-self end ">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse">
+
+
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="#" class="m-2 nav-link  text-white"> Entrar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="cadastro.html" class="m-2 nav-link  text-white"> Cadastrar</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <ul class="sticky-top nav nav-pills nav-fill navbar-light bg-light border">
+        <li class="nav-item d-none d-md-block">
+            <a class="nav-link " aria-current="page" href="Untitled-1.php" tabindex="-1" aria-disabled="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house"
+                    viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+                    <path fill-rule="evenodd"
+                        d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
+                </svg><strong>Home</strong></a>
+        </li>
+        <li class="nav-item d-none d-md-block">
+            
+            <a class="nav-link" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ui-radios-grid" viewBox="0 0 16 16">
+                <path d="M3.5 15a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm9-9a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm0 9a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zM16 3.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0zm-9 9a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0zm5.5 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zm-9-11a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 2a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+              </svg>
+            <strong>Categoria</strong></a>
+        </li>
+        <li class="nav-item d-none d-md-block">
+            <a class="nav-link" href="favoritos.php">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                </svg><strong>Lista de desejos</strong></a>
+        </li>
+        <li class="nav-item d-none d-md-block">
+            <a class="nav-link " href="carrinho.php" tabindex="-1" aria-disabled="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart3"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                </svg><strong>Carrinho</strong> </a>
+        </li>
+  
+        <li class="nav-item d-inline-block d-md-none">
+            <a class="nav-link disabled" aria-current="page" href="#" tabindex="-1" aria-disabled="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house"
+                    viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+                    <path fill-rule="evenodd"
+                        d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
+                </svg></a>
+        </li>
+        <li class="nav-item d-inline-block d-md-none">
+            <a class="nav-link text-dark" href="#">
+  
+                <a class="nav-link text-dark" href="#"><img id="chuteira-icon" src="img/vans-svgrepo-com.svg" class="bi " width="20" height="20" ></a>
+        </li>
+        <li class="nav-item d-inline-block d-md-none">
+            <a class="nav-link" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                </svg></a>
+        </li>
+        <li class="nav-item d-inline-block d-md-none">
+            <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart3"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                </svg> </a>
+        </li>
+    </ul>
+
+    <section class="h-100">
+        <div class="container h-100">
+            <div class="row justify-content-sm-center h-100">
+                <div class="col-xxl-4 col-xl-5 col-lg-4 col-md-7 col-sm-9">
+                    <div class="text-center my-5">
+                    </div>
+                    <div class="card shadow-lg">
+                        <div class="card-body p-5">
+                            <h1 class="fs-4 card-title fw-bold mb-4">Login</h1>
+                            <form action="login.php" method="POST" class="needs-validation" novalidate="" autocomplete="off">
+                                <div class="mb-3">email
+                                    <input id="email" type="email" class="form-control" name="email" required>
+                                </div>
+                                <div class="mb-3">senha
+                                    <input id="senha" type="password" class="form-control" name="senha" required>
+                                </div>
+                                <div class="d-flex align-items-center row">
+                                    <input type="submit" name="sendlogin" value="Entrar" class="btn btn-primary ms-auto justify-content-center"> 
+                                </div>
+                            </form>
+                        </div>
+                        <div class="card-footer py-3 border-0">
+                            <div class="text-center">
+                                Não tem uma conta? <a href="cadastro.html">cadastre-se</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+
+    <main>
+        <div class="container">
+
+            <div class="row">
+            </div>
+            <hr class="mt-3 ">
+            <div class="row ">
+
+            </div>
+        </div>
+
+
+    </main>
+
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/login.css">
+
+
+
+    <title>Login</title>
+</head>
+
+<body>
+    <nav class=" navbar  navbar-expand-lg navbar-dark bg-primary border-bottom shadow-sm ">
+    
+            <form id="busca" class=" m-2 " style="width: 68%;">
+                <input class=" form-control  me-2 invisible" type="search" placeholder="O que você está procurando?" arial
+                    arial-label="search">
+    
+            </form>
+    
+    
+            
+        </div>
+    </nav>
+
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+      <h5 id="offcanvasRightLabel">WLJ Sports</h5>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+              aria-label="Close"></button>
+  </div>
+  <div class=" offcanvas-body border">
+      <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+              fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                  d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+              <path fill-rule="evenodd"
+                  d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
+          </svg><a href="Untitled-1.html" class="text-reset text-decoration-none"> Inicio</a></p>
+
+      <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+              fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
+              <path
+                  d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+          </svg><a href="" class="text-reset text-decoration-none"> Minhas compras</a></p>
+
+      <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+              fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+              <path
+                  d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+          </svg><a href="" class="text-reset text-decoration-none"> Favoritos </a></p>
+
+      <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+              fill="currentColor" class="bi bi-gift" viewBox="0 0 16 16">
+              <path
+                  d="M3 2.5a2.5 2.5 0 0 1 5 0 2.5 2.5 0 0 1 5 0v.006c0 .07 0 .27-.038.494H15a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 1 14.5V7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h2.038A2.968 2.968 0 0 1 3 2.506V2.5zm1.068.5H7v-.5a1.5 1.5 0 1 0-3 0c0 .085.002.274.045.43a.522.522 0 0 0 .023.07zM9 3h2.932a.56.56 0 0 0 .023-.07c.043-.156.045-.345.045-.43a1.5 1.5 0 0 0-3 0V3zM1 4v2h6V4H1zm8 0v2h6V4H9zm5 3H9v8h4.5a.5.5 0 0 0 .5-.5V7zm-7 8V7H2v7.5a.5.5 0 0 0 .5.5H7z" />
+          </svg><a href="" class="text-reset text-decoration-none"> Promoções</a></p>
+
+      <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+              fill="currentColor" class="bi bi-credit-card" viewBox="0 0 16 16">
+              <path
+                  d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z" />
+              <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z" />
+          </svg><a href="cartoes.php" class="text-reset text-decoration-none"> Cartões salvos</a></p>
+
+      <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+              fill="currentColor" class="bi bi-signpost-split-fill" viewBox="0 0 16 16">
+              <path
+                  d="M7 16h2V6h5a1 1 0 0 0 .8-.4l.975-1.3a.5.5 0 0 0 0-.6L14.8 2.4A1 1 0 0 0 14 2H9v-.586a1 1 0 0 0-2 0V7H2a1 1 0 0 0-.8.4L.225 8.7a.5.5 0 0 0 0 .6l.975 1.3a1 1 0 0 0 .8.4h5v5z" />
+          </svg><a href="informacoes_endereco.php" class="text-reset text-decoration-none"> Endereços</a></p>
+
+      <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+              fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+              <path
+                  d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z" />
+          </svg><a href="informacoes_usuario.php" class="text-reset text-decoration-none"> Meus dados</a></p>
+
+      <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+              fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                  d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z" />
+              <path fill-rule="evenodd"
+                  d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
+          </svg><a href="sair.php" class="text-reset text-decoration-none">Sair</a></p>
+
+      <hr>
+      <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+              fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z" />
+              <path
+                  d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z" />
+          </svg><a href="" class="text-reset text-decoration-none"> Trocas e devoluçôes</a></p>
+
+      <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+              fill="currentColor" class="bi bi-question-circle" viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path
+                  d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
+          </svg><a href="" class="text-reset text-decoration-none"> Ajuda</a></p>
+
+      <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+              fill="currentColor" class="bi bi-braces" viewBox="0 0 16 16">
+              <path
+                  d="M2.114 8.063V7.9c1.005-.102 1.497-.615 1.497-1.6V4.503c0-1.094.39-1.538 1.354-1.538h.273V2h-.376C3.25 2 2.49 2.759 2.49 4.352v1.524c0 1.094-.376 1.456-1.49 1.456v1.299c1.114 0 1.49.362 1.49 1.456v1.524c0 1.593.759 2.352 2.372 2.352h.376v-.964h-.273c-.964 0-1.354-.444-1.354-1.538V9.663c0-.984-.492-1.497-1.497-1.6zM13.886 7.9v.163c-1.005.103-1.497.616-1.497 1.6v1.798c0 1.094-.39 1.538-1.354 1.538h-.273v.964h.376c1.613 0 2.372-.759 2.372-2.352v-1.524c0-1.094.376-1.456 1.49-1.456V7.332c-1.114 0-1.49-.362-1.49-1.456V4.352C13.51 2.759 12.75 2 11.138 2h-.376v.964h.273c.964 0 1.354.444 1.354 1.538V6.3c0 .984.492 1.497 1.497 1.6z" />
+          </svg><a href="" class="text-reset text-decoration-none"> Sobre WLJ Sports</a></p>
+
+  </div>
+</div>
+
+
+    <ul class="sticky-top nav nav-pills nav-fill navbar-light bg-light border">
+        <li class="nav-item d-none d-md-block">
+            <a class="nav-link " aria-current="page" href="#" tabindex="-1" aria-disabled="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house"
+                    viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+                    <path fill-rule="evenodd"
+                        d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
+                </svg><strong>Home</strong></a>
+        </li>
+        <li class="nav-item d-none d-md-block">
+            
+            <a class="nav-link" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ui-radios-grid" viewBox="0 0 16 16">
+                <path d="M3.5 15a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm9-9a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm0 9a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zM16 3.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0zm-9 9a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0zm5.5 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zm-9-11a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 2a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+              </svg>
+            <strong>Categoria</strong></a>
+        </li>
+        <li class="nav-item d-none d-md-block">
+            <a class="nav-link" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                </svg><strong>Lista de desejos</strong></a>
+        </li>
+        <li class="nav-item d-none d-md-block">
+            <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart3"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                </svg><strong>Carrinho</strong> </a>
+        </li>
+
+        <li class="nav-item d-inline-block d-md-none">
+            <a class="nav-link disabled" aria-current="page" href="#" tabindex="-1" aria-disabled="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house"
+                    viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+                    <path fill-rule="evenodd"
+                        d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
+                </svg></a>
+        </li>
+        <li class="nav-item d-inline-block d-md-none">            
+            <a class="nav-link" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ui-radios-grid" viewBox="0 0 16 16">
+                <path d="M3.5 15a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm9-9a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm0 9a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zM16 3.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0zm-9 9a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0zm5.5 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zm-9-11a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 2a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+              </svg></a>
+        </li>
+        <li class="nav-item d-inline-block d-md-none">
+            <a class="nav-link" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                </svg></a>
+        </li>
+        <li class="nav-item d-inline-block d-md-none">
+            <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart3"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                </svg> </a>
+        </li>
+    </ul>
+
+
+    <section class="h-100">
+        <div class="container">
+            <div class=" justify-content-sm-center">
+                <div class="">
+                    <div class="text-center my-5">
+                        <!--<img src="/img/WLJ.png" alt="logo" width="200">-->
+                    </div>
+                    <div class="card shadow-lg">
+                        <div class="card-body p-5">
+                            <h1 class="fs-4 card-title fw-bold mb-4">Cadastrar</h1>
+                            <form action="cadastro.php"  method="POST" class="row needs-validation"  >
+
+
+                                <div class=" col-md-6  mb-3">email
+                                    <input id="email" type="email" class="form-control" name="email">
+                                </div>
+
+                                <div class=" col-md-6  mb-3">senha
+                                    <input id="senha" type="password" class="form-control" name="senha"> 
+                                 </div>
+
+                                 <div class=" col-md-6  mb-3">nome
+                                     <input id="nome" type="text" class="form-control" name="nome">
+                                 </div>
+                                 <div class=" col-md-6  mb-3">sobrenome
+                                     <input id="sobrenome" type="text" class="form-control" name="sobrenome">
+                                 </div>
+                                 <div class=" col-md-6  mb-3">CPF
+                                     <input id="CPF" type="text" class="form-control" name="CPF">
+                                 </div>
+                                 <div class=" col-md-6  mb-3">nascimento
+                                     <input id="nascimento" type="date" class="form-control" name="nascimento">
+                                 </div>
+                                
+
+                                 <div class=" mb-3">
+                                    <label class="text-muted col-md-2 control-label" for="CEP">CEP</label>
+                                    <div class="col-md-2">
+                                        <input id="cep" name="cep" class="form-control" required="" value=""
+                                            type="search" maxlength="8" pattern="[0-9]+$">
+                                    </div>
+                                    <div class="col-md-2 mt-1">
+                                        <button type="button" class="btn btn-primary"
+                                            onclick="pesquisacep(cep.value)">Pesquisar</button>
+                                    </div>
+                                </div>
+
+
+
+
+
+                                <div class="py-2 col-md-5">
+                                    <label class="text-muted" for="rua">Rua</label>
+                                    <div class="input-group">
+                                        <input id="rua" name="rua" class="form-control" placeholder="" required=""
+                                            readonly="readonly" type="text">
+                                    </div>
+
+                                </div>
+                                <div class="py-2 col-4 col-md-2">
+                                    <label class="text-muted" for="numero">N°</label>
+                                    <div class="col-4 input-group">
+                                        <input id="numero" name="numero" class="form-control" placeholder="" required=""
+                                            type="text">
+                                    </div>
+
+                                </div>
+
+                                <div class="py-2 col-8 col-md-5">
+                                    <label class="text-muted" for="bairro">Bairro</label>
+                                    <div class="col-6 input-group">
+                                        <input id="bairro" name="bairro" class="form-control" placeholder="" required=""
+                                            readonly="readonly" type="text">
+                                    </div>
+
+                                </div>
+
+
+
+                                <div class="py-2 col-md-6">
+                                    <label class="text-muted" for="cidade">Cidade</label>
+                                    <div class="input-group">
+                                        <input id="cidade" name="cidade"  class="form-control" placeholder="" required=""
+                                            readonly="readonly" type="text">
+                                    </div>
+
+                                </div>
+
+                                <div class="py-2 col-md-6">
+                                    <label class="text-muted" for="estado">Estado</label>
+                                    <div class="input-group">
+                                        <input id="estado" name="estado" class="form-control" placeholder="" required=""
+                                            readonly="readonly" type="text">
+                                    </div>
+
+                                </div>
+                                <div class="d-block d-md-none mb-3">
+                                    <hr>
+                                </div>
+
+                                <h4>Endereço</h4>
+                                <div class="d-flex align-items-center row">
+                                    <div class="my-3 form-check">
+                                        <input type="checkbox" name="remember" id="remember" class="form-check-input"
+                                            placeholder="" required="">
+                                        <label for="remember" class="form-check-label">Li e concordo com os</label> <a
+                                            data-bs-toggle="modal" href="#modal_termos">Termos e condições</a>
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+
+                                    <input type="submit" name="submit" class="btn btn-primary ms-auto justify-content-center" value="Criar conta">
+                                </div>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="modal_termos" tabindex="-1" aria-labelledby="modal"
+                                    aria-hidden="true">
+                                    <div class="modal-xl modal-dialog modal-dialog-scrollable">
+                                        <div class="modal-content">                                            
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="modal_termos">
+                                                    <a class="m-1 btn btn-outline-dark  disabled" href="" >Termos e condições</a>
+                                                    <a class="m-1 btn btn-outline-primary" href="" data-bs-target="#modal_privacidade" data-bs-toggle="modal">Politica de privacidade </h1></a>
+                                                
+                                            </div>
+                                            
+                                            <div class="modal-body">
+                                                TERMOS DE SERVIÇO
+
+                                                ----
+
+                                                VISÃO GERAL
+                                                Este site é operado pela WLJ Sports. Em todo o site, os termos,                                         "nós" e "nosso" se referem à WLJ Sports. WLJ Sports oferece este site,                                            incluindo todas as informações, ferramentas e serviços disponíveis neste                                            site, para você, o usuário, mediante a sua aceitação de todos os termos,                                            condições, políticas e avisos estabelecidos aqui.                                        Ao visitar e/ou comprar alguma coisa no nosso site, você está utilizando                                            nossos “Serviços” e, consequentemente, concorda com os seguintes termos                                            e condições (“Termos de serviço”, “Termos”), incluindo os termos e                                            condições e políticas adicionais mencionados neste documento e/ou                                            disponíveis por hyperlink. Esses Termos de serviço se aplicam a todos os                                            usuários do site, incluindo, entre outros, os usuários que são                                            visualizadores, fabricantes, clientes, lojistas e/ou colaboradores de                                            conteúdo.                                            Leia estes Termos de serviço cuidadosamente antes de acessar ou utilizar                                            o nosso site. Ao acessar ou usar qualquer parte do site, você concorda                                            com os Termos de serviço. Se você não concorda com todos os termos e                                            condições deste contrato, então você não pode acessar o site ou usar                                            quaisquer serviços.                                        Quaisquer novos recursos ou ferramentas que forem adicionados à loja                                            atual também devem estar sujeitos aos Termos de serviço. Você pode                                            revisar a versão mais atual dos Termos de serviço quando quiser nesta                                            página. Reservamo-nos o direito de atualizar, alterar ou trocar qualquer                                            parte desses Termos de serviço ao publicar atualizações e/ou alterações                                            no nosso site. É sua responsabilidade verificar periodicamente as                                            alterações feitas nesta página. Seu uso contínuo ou acesso após a                                            publicação de quaisquer alterações constitui aceitação de tais                                            alterações.
+
+                                                <br><br>SEÇÃO 1 - TERMOS DA LOJA VIRTUAL                                                                    Ao concordar com estes Termos de serviço, você declara que tem idade                                            mínima de maioridade em seu estado ou município de residência, ou que é                                            maior de idade em seu estado ou município de residência, e que nos deu                                            sua permissão para permitir que qualquer um de seus dependentes menores                                            use este site.                                        Você não deve usar nossos produtos para qualquer fim ilegal ou não                                            autorizado. Você também não pode, ao usufruir deste Serviço, violar                                            quaisquer leis em sua jurisdição (incluindo, entre outras, as leis de                                            direitos autorais).                                        Você não deve transmitir nenhum vírus ou qualquer código de natureza                                            destrutiva.                                        Violar qualquer um dos Termos resultará na rescisão imediata dos seus                                            Serviços.
+                                                <br><br>
+                                                SEÇÃO 2 - CONDIÇÕES GERAIS                                        Reservamo-nos o direito de recusar o serviço a qualquer pessoa, por                                            qualquer motivo, a qualquer momento.                                        Você entende que o seu conteúdo (não incluindo informações de cartão de                                            crédito) pode ser transferido sem criptografia e pode: (a) ser                                            transmitido por várias redes; e (b) sofrer alterações para se adaptar e                                            se adequar às exigências técnicas de conexão de redes ou dispositivos.                                            As informações de cartão de crédito sempre são criptografadas durante a                                            transferência entre redes.                                        Você concorda em não reproduzir, duplicar, copiar, vender, revender ou                                            explorar qualquer parte do Serviço, uso do Serviço, acesso ao Serviço,                                            ou qualquer contato no site através do qual o Serviço seja fornecido,                                            sem nossa permissão expressa por escrito.                                        Os títulos usados neste contrato são incluídos apenas por conveniência e                                                não limitam ou afetam os Termos.
+                                                <br><br>
+                                                SEÇÃO 3 - PRECISÃO, COMPLETUDE E PERÍODO DE VALIDADE DAS INFORMAÇÕES                                        Não nos responsabilizamos se as informações disponibilizadas neste site                                            não forem precisas, completas ou atuais. O material deste site é                                            fornecido apenas para fins informativos e não deve ser usado como a                                            única base para tomar decisões sem consultar fontes de informações                                            primárias, mais precisas, mais completas ou mais atuais. Qualquer                                            utilização do material deste site é por sua conta e risco.                                        Este site pode conter certas informações históricas. As informações                                            históricas podem não ser atuais e são fornecidas apenas para sua                                            referência. Reservamo-nos o direito de modificar o conteúdo deste site a                                            qualquer momento, mas nós não temos obrigação de atualizar nenhuma                                            informação em nosso site. Você concorda que é de sua responsabilidade                                                acompanhar as alterações no nosso site.
+                                                <br><br>
+                                                SEÇÃO 4 - ALTERAÇÕES DO SERVIÇO E DOS PREÇOS                                        Os preços de nossos produtos estão sujeitos a alterações sem aviso                                            prévio.                                        Reservamo-nos o direito de, a qualquer momento, modificar ou                                            descontinuar o Serviço (ou qualquer parte ou conteúdo do mesmo) sem                                            aviso prévio em qualquer momento.                                        Não nos responsabilizamos por você ou por qualquer terceiro por qualquer                                            modificação, alteração de preço, suspensão ou descontinuação do Serviço.
+                                                <br><br>
+                                                SEÇÃO 5 - PRODUTOS OU SERVIÇOS (se aplicável)                                        Certos produtos ou serviços podem estar disponíveis exclusivamente                                            online através do site. Tais produtos ou serviços podem ter quantidades                                            limitadas e são sujeitos a apenas devolução ou troca, de acordo com                                            nossa Política de devolução.                                        Fizemos todo o esforço possível para exibir da forma mais precisa as                                            cores e imagens dos nossos produtos que aparecem na loja. Não podemos                                            garantir que a exibição de qualquer cor no monitor do seu computador                                                será precisa.                                            Reservamo-nos o direito de, mas não somos obrigados a, limitar as vendas                                            de nossos produtos ou Serviços para qualquer pessoa, região geográfica                                            ou jurisdição. Podemos exercer esse direito conforme cada caso                                            individual. Reservamo-nos o direito de limitar as quantidades de                                            quaisquer produtos ou serviços que oferecemos. Todas as descrições de                                            produtos ou preços de produtos são sujeitos a alteração a qualquer                                            momento sem aviso prévio, a nosso critério exclusivo. Reservamo-nos o                                            direito de descontinuar qualquer produto a qualquer momento. Qualquer                                            oferta de produtos ou serviços neste site é nula onde for proibido por                                            lei.                                        Não garantimos que a qualidade de quaisquer produtos, serviços,                                            informações ou outros materiais comprados ou obtidos por você vão                                            atender às suas expectativas, ou que quaisquer erros no Serviço serão                                            corrigidos.
+                                                <br><br>
+                                                SEÇÃO 6 - PRECISÃO DE COBRANÇA E INFORMAÇÕES DA CONTA                                        Nós nos reservamos o direito de recusar qualquer pedido que você fizer                                            conosco. Podemos, a nosso próprio critério, limitar ou cancelar o número                                            de produtos comprados por pessoa, por domicílio ou por pedido. Tais                                            restrições podem incluir pedidos feitos na mesma conta de cliente, no                                            mesmo cartão de crédito, e/ou pedidos que usem a mesma fatura e/ou                                            endereço de entrega. Caso façamos uma alteração ou cancelemos um pedido,                                            podemos tentar notificá-lo entrando em contato com o endereço de e-mail                                            e/ou o número de telefone/endereço de faturamento fornecido no momento                                            em que o pedido foi feito. Reservamo-nos o direito de limitar ou proibir                                            pedidos que, a nosso critério exclusivo, pareçam ter sido feitos por                                            lojistas, revendedores ou distribuidores.                                            Você concorda em fornecer suas informações de conta e compra completas                                            para todas as compras feitas em nossa loja. Você concorda em atualizar                                            prontamente sua conta e outras informações, incluindo seu e-mail,                                            números de cartão de crédito e datas de validade, para que possamos                                            completar suas transações e contatar você quando preciso.                                        Para mais informações, por favor, veja nossa Política de devolução.
+                                                <br><br>
+                                                SEÇÃO 7 - FERRAMENTAS OPCIONAIS                                        Podemos fornecer a você acesso a ferramentas de terceiros sobre as quais                                            não monitoramos nem temos controle ou entrada.                                        Você reconhece e concorda que nós fornecemos acesso a tais ferramentas                                            no estado em que se encontram e conforme a disponibilidade, sem                                            quaisquer garantias, declarações ou condições de qualquer tipo e sem                                            qualquer endosso. Não nos responsabilizamos de forma alguma pelo seu uso                                            de ferramentas opcionais de terceiros.                                        O uso de ferramentas opcionais oferecidas por meio do site é                                            inteiramente por sua conta e risco, e você deve se familiarizar e                                            aprovar os termos das ferramentas que são fornecidas por fornecedor(es)                                            terceiro(s).                                        Também podemos, futuramente, oferecer novos serviços e/ou recursos pormeio do site (incluindo o lançamento de novas ferramentas e recursos).                                            Tais recursos e/ou serviços novos também devem estar sujeitos a esses                                                Termos de serviço.
+                                                <br><br>
+                                                SEÇÃO 8 - LINKS DE TERCEIROS                                        Determinados conteúdos, produtos e serviços disponíveis através do nosso                                            Serviço podem incluir materiais de terceiros.                                        Os links de terceiros nesse site podem direcionar você a sites de                                            terceiros que não são Afiliados a nós. Não nos responsabilizamos por                                            examinar ou avaliar o conteúdo ou sua precisão. Não garantimos e nem                                            temos obrigação ou responsabilidade por quaisquer materiais ou sites de                                            terceiros, ou por quaisquer outros materiais, produtos ou serviços de                                            terceiros.                                        Não somos responsáveis por quaisquer danos ou prejuízos relacionados com                                            a compra ou uso de mercadorias, serviços, recursos, conteúdo, ou                                            quaisquer outras transações feitas em conexão com quaisquer sites de                                            terceiros. Por favor, leia com cuidado as políticas e práticas de                                            terceiros e certifique-se de que você as entende antes de efetuar                                                qualquer transação. As queixas, reclamações, preocupações ou questões                                            relativas a produtos de terceiros devem ser direcionadas à respectiva                                            empresa terceira.                                            <br><br>                                            SEÇÃO 9 - COMENTÁRIOS, FEEDBACK E OUTRAS INTERAÇÕES DO USUÁRIO                                        Se, a nosso pedido, você executar determinadas ações específicas (por                                            exemplo, inscrições em concursos) ou, sem solicitação de nossa parte,                                            enviar ideias criativas, sugestões, propostas, planos ou outros                                            materiais, seja online, por e-mail, correio ou de outra forma (em                                            conjunto designados "comentários"), você concorda que podemos, a                                            qualquer momento, sem restrições, editar, copiar, publicar, distribuir,                                            traduzir e usar, em qualquer meio, quaisquer comentários que você                                            encaminhar para nós. Não nos responsabilizamos por: (1) manter quaisquer                                            comentários em sigilo; (2) indenizar por quaisquer comentários; ou (3)                                            responder quaisquer comentários.                                            Podemos, mas não temos a obrigação, de monitorar, editar ou remover                                            conteúdo que nós determinamos a nosso próprio critério ser contra a lei,                                            ofensivo, ameaçador, calunioso, difamatório, pornográfico, obsceno ou                                            censurável, ou que viole a propriedade intelectual de terceiros ou estes                                            Termos de serviço.                                            Você concorda que seus comentários não violarão qualquer direito de                                            terceiros, incluindo direitos autorais, marcas registradas, privacidade,                                            personalidade ou outro direito pessoal ou de propriedade. Você concorda                                            que os seus comentários não conterão material difamatório, ilegal,                                            abusivo ou obsceno. Eles também não conterão nenhum vírus de computador                                            ou outro malware que possa afetar a operação do Serviço ou qualquer site                                            relacionado. Você não poderá usar endereço de e-mail falso, fingir ser                                            alguém diferente de si mesmo ou, de outra forma, enganar a nós ou                                            terceiros quanto à origem de quaisquer comentários. Você é o único                                            responsável por quaisquer comentários que faz e pela veracidade deles.                                            Nós não assumimos qualquer responsabilidade ou obrigação por quaisquer                                                comentários publicados por você ou por terceiros.
+                                                <br><br>
+                                                SEÇÃO 10 - INFORMAÇÕES PESSOAIS                                        Sua apresentação de informações pessoais por meio da loja é regida pela                                                nossa Política de privacidade. Consulte a nossa Política de privacidade.
+                                                <br><br>
+                                                SEÇÃO 11 - ERROS, IMPRECISÕES E OMISSÕES                                        Por vezes, pode haver informações em nosso site ou no Serviço que                                        contenham erros tipográficos, imprecisões ou omissões que possam estar                                            relacionadas a descrições de produtos, preços, promoções, ofertas,                                            cobranças de frete de produtos, tempos de trânsito e disponibilidade.                                            Reservamo-nos o direito de corrigir quaisquer erros, imprecisões ou                                            omissões, e de alterar ou atualizar informações ou cancelar pedidos caso                                            qualquer informação no Serviço ou em qualquer site relacionado seja                                            imprecisa, a qualquer momento e sem aviso prévio (até mesmo depois de                                            você ter enviado o seu pedido).                                        Não assumimos nenhuma obrigação de atualizar, alterar ou explicar                                            informações no Serviço ou em qualquer site relacionado, incluindo, entre                                            outras, as informações sobre preços, exceto conforme exigido por lei.                                            Nenhuma atualização específica ou data de atualização no Serviço ou em                                            qualquer site relacionado deve ser utilizada para indicar que todas as                                            informações do Serviço ou em qualquer site relacionado tenham sido                                                modificadas ou atualizadas.
+                                                <br><br>
+                                                SEÇÃO 12 - USOS PROIBIDOS                                        Além de outras proibições estabelecidas nos Termos de serviço, você está                                            proibido de usar o site ou seu conteúdo para: (a) qualquer finalidade                                            ilícita; (b) solicitar a outros que realizem ou participem de atos                                            ilegais; (c) violar quaisquer regulamentos, regras, leis ou leis locais,                                            internacionais, federais, municipais ou estaduais; (d) infringir ou                                            violar nossos direitos de propriedade intelectual ou os direitos de                                            propriedade intelectual de terceiros; (e) assediar, abusar, insultar,                                            prejudicar, difamar, caluniar, desacreditar, intimidar ou discriminar                                            com base no gênero, orientação sexual, religião, etnia, raça, idade,                                            nacionalidade ou deficiência; (f) apresentar informações falsas ou                                            enganosas;                                            (g) enviar ou transmitir vírus ou qualquer outro tipo de código                                            malicioso, que será ou poderá ser usado de qualquer forma que afete a                                            funcionalidade ou operação do Serviço ou de qualquer site relacionado,                                            outros sites ou a internet; (h) coletar ou rastrear as informações                                            pessoais de terceiros; (i) prática de spam, phishing, pharm, pretext,                                            spider, crawl ou scrape; (j) qualquer propósito obsceno ou imoral; ou                                            para (k) interferir ou contornar os recursos de segurança do Serviço ou                                            de qualquer site relacionado, outros sites ou a internet. Reservamo-nos                                            o direito de rescindir o seu uso do Serviço ou de qualquer site                                                relacionado por violar qualquer um dos usos proibidos.
+                                                <br><br>
+                                                SEÇÃO 13 - ISENÇÃO DE GARANTIAS; LIMITAÇÃO DE RESPONSABILIDADE                                        Nós não prometemos, representamos ou garantimos que seu uso de nosso                                            serviço será ininterrupto, oportuno, seguro ou livre de erros.                                            Não garantimos que os resultados que possam ser obtidos pelo uso do                                            serviço serão precisos ou confiáveis.                                        Você concorda que, de tempos em tempos, podemos remover o serviço por                                            períodos indefinidos de tempo ou cancelá-lo a qualquer momento, sem                                            enviar aviso prévio para você.                                            Você concorda que o seu uso ou incapacidade de usar o serviço é por sua                                            conta e risco. O serviço e todos os produtos e serviços entregues                                            através do serviço são (exceto conforme declarado por nós) fornecidos                                            sem garantia e conforme a disponibilidade para seu uso, sem qualquer                                            declaração, garantias ou condições de qualquer tipo, expressas ou                                            implícitas, incluindo todas as garantias implícitas ou condições de                                            comercialização, quantidade, adequação a uma finalidade específica,                                            durabilidade, título e não violação.                                            Em nenhum caso, a WLJ Sports, nossos diretores, executivos,                                            funcionários, Afiliados, agentes, contratados, estagiários,                                            fornecedores, provedores de serviços ou licenciantes serão responsáveis                                                por qualquer dano, perda, reivindicação ou qualquer dano direto,                                            indireto, incidental, punitivo, especial ou consequencial de qualquer                                            tipo, incluindo, entre outros, lucros perdidos, perda de receita, perda                                            de economias, perda de dados, custos de substituição ou quaisquer danos                                            semelhantes, seja com base em contrato, ato ilícito (incluindo                                            negligência), responsabilidade estrita ou não, decorrentes do uso de                                            qualquer um dos serviços ou quaisquer produtos adquiridos usando o                                            serviço, ou para qualquer outra reivindicação relacionada de qualquer                                            forma ao seu uso do serviço ou qualquer produto, incluindo, entre                                            outros, quaisquer erros ou omissões em qualquer conteúdo, ou qualquer                                            perda ou dano de qualquer tipo incorrido como resultado do uso do                                            serviço ou de qualquer conteúdo (ou produto) publicado, transmitido ou                                            de outra forma disponibilizado através do serviço, mesmo se avisado de                                            sua possibilidade.                                            Como alguns estados ou jurisdições não permitem a exclusão ou a                                            limitação de responsabilidade por danos indiretos ou incidentais, em                                            tais estados ou jurisdições, a nossa responsabilidade será limitada à                                            extensão máxima permitida por lei.
+                                                <br><br>
+                                                SEÇÃO 14 - INDENIZAÇÃO                                        Você concorda em indenizar, defender e isentar WLJ Sports e nossa                                            matriz, subsidiárias, afiliadas, parceiros, executivos, diretores,                                            agentes, contratados, licenciantes, prestadores de serviços,                                            subcontratados, fornecedores, estagiários e funcionários, de qualquer                                            reivindicação ou demanda, incluindo honorários advocatícios razoáveis,                                            feitos por terceiros, devido a ou decorrente de sua violação destes                                            Termos de serviço ou dos documentos que incorporam por referência, ou                                                sua violação de qualquer lei ou dos direitos de terceiros.
+                                                <br><br>
+                                                SEÇÃO 15 - INDEPENDÊNCIA                                        No caso de qualquer disposição destes Termos de serviço ser considerada                                            ilegal, nula ou inexequível, tal disposição será, no entanto, executável                                            na extensão máxima permitida pela lei aplicável, e a parte inexequível                                            será considerada como cortada destes Termos de serviço, e tal                                            determinação não afetará a validade e aplicabilidade de quaisquer outras                                                disposições remanescentes.
+                                                <br><br>
+                                                SEÇÃO 16 - RESCISÃO                                        As obrigações e as responsabilidades das partes incorridas antes da data                                            de rescisão sobreviverão à rescisão deste contrato para todos os fins.                                        Estes Termos de serviço permanecem em vigor, a menos que sejam                                            rescindidos por você ou por nós. Você pode rescindir estes Termos de                                            serviço a qualquer momento, notificando-nos que já não deseja utilizar                                            os nossos serviços, ou quando você deixar de usar o nosso site.                                            Se em nosso critério exclusivo você não cumprir com qualquer termo ou                                            disposição destes Termos de serviço, nós também podemos rescindir este                                            contrato a qualquer momento sem aviso prévio e você ficará responsável                                            por todas as quantias devidas até a data da rescisão; também podemos lhe                                            negar acesso a nossos Serviços (ou qualquer parte deles).
+                                                <br><br>
+                                                SEÇÃO 17 - ACORDO INTEGRAL                                            A falha de nossa parte em exercer ou executar qualquer direito ou                                            disposição destes Termos de Serviço não constituirá uma renúncia de tal                                            direito ou disposição.                                        Estes Termos de serviço e quaisquer políticas ou normas operacionais                                            publicadas por nós neste site ou no que diz respeito ao serviço                                            constituem a totalidade do acordo entre nós. Estes termos regem o seu                                            uso do Serviço, substituindo quaisquer acordos anteriores ou                                            contemporâneos, comunicações e propostas, sejam verbais ou escritos,                                            entre você e nós (incluindo, entre outros, quaisquer versões anteriores                                            dos Termos de serviço).                                            Quaisquer ambiguidades na interpretação destes Termos de serviço não                                            devem ser interpretadas contra a parte que os redigiu.
+
+                                                <br><br>
+                                                SEÇÃO 18 - LEGISLAÇÃO APLICÁVEL                                            Estes Termos de serviço e quaisquer contratos separados nos quais                                            fornecemos a você os Serviços serão regidos e interpretados de acordo                                            com as leis de Rua Cel. Procópio Gomes 911, Joinville, SC, 89202300,                                                Brasil.
+
+                                                <br><br>
+                                                SEÇÃO 19 - MUDANÇAS NOS TERMOS DE SERVIÇO                                        Você pode revisar a versão mais atual dos Termos de serviço a qualquer                                            momento nesta página.                                    Reservamo-nos o direito, a nosso critério, de atualizar, modificar ou                                            substituir qualquer parte destes Termos de serviço ao publicar                                            atualizações e alterações no nosso site. É sua responsabilidade                                            verificar periodicamente se há alterações em nosso site. Seu uso                                            contínuo ou acesso ao nosso site ou ao Serviço após a publicação de                                            quaisquer alterações a estes Termos de serviço constitui aceitação                                            dessas alterações.
+
+                                                <br><br>
+                                                SEÇÃO 20 - INFORMAÇÕES DE CONTATO
+
+                                                Perguntas sobre os Termos de serviço devem ser enviadas para nós em
+                                                wellerson_meredyk@estudante.sc.senai.br
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Fechar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal fade" id="modal_privacidade" tabindex="-1" aria-labelledby="modal"
+                                    aria-hidden="true">
+                                    <div class="modal-xl modal-dialog modal-dialog-scrollable">
+                                        <div class="modal-content">                                            
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="modal">
+                                                    <a class="m-1 btn btn-outline-primary" href="" data-bs-target="#modal_termos" data-bs-toggle="modal" >Termos e condições</a>
+                                                    <a class="m-1 btn disabled" href="" >Politica de privacidade </h1></a>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>                                            
+                                            <div class="modal-body">
+                                                <h2>Política Privacidade</h2><p>Endereço: <strong>Rua Cel. Procópio Gomes 911</strong></p><p>A sua privacidade é importante para nós. É política da WLJ Sports respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar no site <a href="https://wljsports.com.br" />WLJ Sports</a>, e outros sites que possuímos e operamos.</p><p>Solicitamos informações pessoais apenas quando realmente precisamos delas para lhe fornecer um serviço. Fazemo-lo por meios justos e legais, com o seu conhecimento e consentimento. Também informamos por que estamos coletando e como será usado.</p><p>Apenas retemos as informações coletadas pelo tempo necessário para fornecer o serviço solicitado. Quando armazenamos dados, protegemos dentro de meios comercialmente aceitáveis para evitar perdas e roubos, bem como acesso, divulgação, cópia, uso ou modificação não autorizados.</p><p>Não compartilhamos informações de identificação pessoal publicamente ou com terceiros, exceto quando exigido por lei.</p><p>O nosso site pode ter links para sites externos que não são operados por nós. Esteja ciente de que não temos controle sobre o conteúdo e práticas desses sites e não podemos aceitar responsabilidade por suas respectivas políticas de privacidade.</p><p>Você é livre para recusar a nossa solicitação de informações pessoais, entendendo que talvez não possamos fornecer alguns dos serviços desejados.</p><p>O uso continuado de nosso site será considerado como aceitação de nossas práticas em torno de privacidade e informações pessoais. Se você tiver alguma dúvida sobre como lidamos com dados do usuário e informações pessoais, entre em contacto connosco.</p><h2>Política de Cookies WLJ Sports</h2><h3>O que são cookies?</h3><p>Como é prática comum em quase todos os sites profissionais, este site usa cookies, que são pequenos arquivos baixados no seu computador, para melhorar sua experiência. Esta página descreve quais informações eles coletam, como as usamos e por que às vezes precisamos armazenar esses cookies. Também compartilharemos como você pode impedir que esses cookies sejam armazenados, no entanto, isso pode fazer o downgrade ou "quebrar" certos elementos da funcionalidade do site.</p><h3>Como usamos os cookies?</h3><p>Utilizamos cookies por vários motivos, detalhados abaixo. Infelizmente, na maioria dos casos, não existem opções padrão do setor para desativar os cookies sem desativar completamente a funcionalidade e os recursos que eles adicionam a este site. É recomendável que você deixe todos os cookies se não tiver certeza se precisa ou não deles, caso sejam usados para fornecer um serviço que você usa.</p><h3>Desativar cookies</h3><p>Você pode impedir a configuração de cookies ajustando as configurações do seu navegador (consulte a Ajuda do navegador para saber como fazer isso). Esteja ciente de que a desativação de cookies afetará a funcionalidade deste e de muitos outros sites que você visita. A desativação de cookies geralmente resultará na desativação de determinadas funcionalidades e recursos deste site. Portanto, é recomendável que você não desative os cookies.</p><h3>Cookies que definimos</h3><ul><li><strong>Cookies relacionados à conta:</strong> Se você criar uma conta connosco, usaremos cookies para o gerenciamento do processo de inscrição e administração geral. Esses cookies geralmente serão excluídos quando você sair do sistema, porém, em alguns casos, eles poderão permanecer posteriormente para lembrar as preferências do seu site ao sair.<br><br></li><li><strong>Cookies relacionados ao login:</strong> Utilizamos cookies quando você está logado, para que possamos lembrar dessa ação. Isso evita que você precise fazer login sempre que visitar uma nova página. Esses cookies são normalmente removidos ou limpos quando você efetua logout para garantir que você possa acessar apenas a recursos e áreas restritas ao efetuar login.<br><br></li><li><strong>Cookies relacionados a boletins por e-mail:</strong> Este site oferece serviços de assinatura de boletim informativo ou e-mail e os cookies podem ser usados para lembrar se você já está registrado e se deve mostrar determinadas notificações válidas apenas para usuários inscritos / não inscritos.<br><br></li><li><strong>Pedidos processando cookies relacionados:</strong> Este site oferece facilidades de comércio eletrônico ou pagamento e alguns cookies são essenciais para garantir que seu pedido seja lembrado entre as páginas, para que possamos processá-lo adequadamente.<br><br></li><li><strong>Cookies relacionados a pesquisas:</strong> Periodicamente, oferecemos pesquisas e questionários para fornecer informações interessantes, ferramentas úteis ou para entender nossa base de usuários com mais precisão. Essas pesquisas podem usar cookies para lembrar quem já participou numa pesquisa ou para fornecer resultados precisos após a alteração das páginas.<br><br></li><li><strong>Cookies relacionados a formulários:</strong> Quando você envia dados por meio de um formulário como os encontrados nas páginas de contacto ou nos formulários de comentários, os cookies podem ser configurados para lembrar os detalhes do usuário para correspondência futura.<br><br></li><li><strong>Cookies de preferências do site:</strong> Para proporcionar uma ótima experiência neste site, fornecemos a funcionalidade para definir suas preferências de como esse site é executado quando você o usa. Para lembrar suas preferências, precisamos definir cookies para que essas informações possam ser chamadas sempre que você interagir com uma página for afetada por suas preferências.<br></li></ul><h3>Cookies de Terceiros</h3><p>Em alguns casos especiais, também usamos cookies fornecidos por terceiros confiáveis. A seção a seguir detalha quais cookies de terceiros você pode encontrar através deste site.</p><ul><li>Este site usa o Google Analytics, que é uma das soluções de análise mais difundidas e confiáveis da Web, para nos ajudar a entender como você usa o site e como podemos melhorar sua experiência. Esses cookies podem rastrear itens como quanto tempo você gasta no site e as páginas visitadas, para que possamos continuar produzindo conteúdo atraente.</li></ul><p>Para mais informações sobre cookies do Google Analytics, consulte a página oficial do Google Analytics.</p><ul><li>As análises de terceiros são usadas para rastrear e medir o uso deste site, para que possamos continuar produzindo conteúdo atrativo. Esses cookies podem rastrear itens como o tempo que você passa no site ou as páginas visitadas, o que nos ajuda a entender como podemos melhorar o site para você.</li><li>Periodicamente, testamos novos recursos e fazemos alterações subtis na maneira como o site se apresenta. Quando ainda estamos testando novos recursos, esses cookies podem ser usados para garantir que você receba uma experiência consistente enquanto estiver no site, enquanto entendemos quais otimizações os nossos usuários mais apreciam.</li><li>À medida que vendemos produtos, é importante entendermos as estatísticas sobre quantos visitantes de nosso site realmente compram e, portanto, esse é o tipo de dados que esses cookies rastrearão. Isso é importante para você, pois significa que podemos fazer previsões de negócios com precisão que nos permitem analizar nossos custos de publicidade e produtos para garantir o melhor preço possível.</li></ul><h3>Mais informações</h3><p>Esperemos que esteja esclarecido e, como mencionado anteriormente, se houver algo que você não tem certeza se precisa ou não, geralmente é mais seguro deixar os cookies ativados, caso interaja com um dos recursos que você usa em nosso site.</p><p>Para efetivar o cancelamento desta política de privacidade, enviar um e-mail para <a href="wellerson_meredyk@estudante.sc.senai.br"<strong>wellerson_meredyk@estudante.sc.senai.br</strong></a></p><p>Esta política é efetiva a partir de <strong>Outubro</strong>/<strong>2022</strong>.</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Fechar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                        <div class="card-footer py-3 border-0">
+                            <div class="text-center">
+                                 Ja tem uma conta?<a href="login.html"> Entrar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <main>
+        <div class="container">
+
+            <div class="row">
+            </div>
+            <hr class="mt-3 ">
+            <div class="row ">
+
+            </div>
+        </div>
+
+
+    </main>
+
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/login.css">
+
+
+
+    <title>Login</title>
+</head>
+
+<body>
+    <nav class=" navbar  navbar-expand-lg navbar-dark bg-primary border-bottom shadow-sm ">
+    
+            <form id="busca" class=" m-2 " style="width: 68%;">
+                <input class=" form-control  me-2 invisible" type="search" placeholder="O que você está procurando?" arial
+                    arial-label="search">
+    
+            </form>
+    
+    
+            
+        </div>
+    </nav>
+
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+      <h5 id="offcanvasRightLabel">WLJ Sports</h5>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+              aria-label="Close"></button>
+  </div>
+  <div class=" offcanvas-body border">
+      <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+              fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                  d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+              <path fill-rule="evenodd"
+                  d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
+          </svg><a href="Untitled-1.html" class="text-reset text-decoration-none"> Inicio</a></p>
+
+      <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+              fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
+              <path
+                  d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+          </svg><a href="" class="text-reset text-decoration-none"> Minhas compras</a></p>
+
+      <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+              fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+              <path
+                  d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+          </svg><a href="" class="text-reset text-decoration-none"> Favoritos </a></p>
+
+      <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+              fill="currentColor" class="bi bi-gift" viewBox="0 0 16 16">
+              <path
+                  d="M3 2.5a2.5 2.5 0 0 1 5 0 2.5 2.5 0 0 1 5 0v.006c0 .07 0 .27-.038.494H15a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 1 14.5V7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h2.038A2.968 2.968 0 0 1 3 2.506V2.5zm1.068.5H7v-.5a1.5 1.5 0 1 0-3 0c0 .085.002.274.045.43a.522.522 0 0 0 .023.07zM9 3h2.932a.56.56 0 0 0 .023-.07c.043-.156.045-.345.045-.43a1.5 1.5 0 0 0-3 0V3zM1 4v2h6V4H1zm8 0v2h6V4H9zm5 3H9v8h4.5a.5.5 0 0 0 .5-.5V7zm-7 8V7H2v7.5a.5.5 0 0 0 .5.5H7z" />
+          </svg><a href="" class="text-reset text-decoration-none"> Promoções</a></p>
+
+      <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+              fill="currentColor" class="bi bi-credit-card" viewBox="0 0 16 16">
+              <path
+                  d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z" />
+              <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z" />
+          </svg><a href="cartoes.php" class="text-reset text-decoration-none"> Cartões salvos</a></p>
+
+      <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+              fill="currentColor" class="bi bi-signpost-split-fill" viewBox="0 0 16 16">
+              <path
+                  d="M7 16h2V6h5a1 1 0 0 0 .8-.4l.975-1.3a.5.5 0 0 0 0-.6L14.8 2.4A1 1 0 0 0 14 2H9v-.586a1 1 0 0 0-2 0V7H2a1 1 0 0 0-.8.4L.225 8.7a.5.5 0 0 0 0 .6l.975 1.3a1 1 0 0 0 .8.4h5v5z" />
+          </svg><a href="informacoes_endereco.php" class="text-reset text-decoration-none"> Endereços</a></p>
+
+      <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+              fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+              <path
+                  d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z" />
+          </svg><a href="informacoes_usuario.php" class="text-reset text-decoration-none"> Meus dados</a></p>
+
+      <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+              fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                  d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z" />
+              <path fill-rule="evenodd"
+                  d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
+          </svg><a href="sair.php" class="text-reset text-decoration-none">Sair</a></p>
+
+      <hr>
+      <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+              fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z" />
+              <path
+                  d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z" />
+          </svg><a href="" class="text-reset text-decoration-none"> Trocas e devoluçôes</a></p>
+
+      <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+              fill="currentColor" class="bi bi-question-circle" viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path
+                  d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
+          </svg><a href="" class="text-reset text-decoration-none"> Ajuda</a></p>
+
+      <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+              fill="currentColor" class="bi bi-braces" viewBox="0 0 16 16">
+              <path
+                  d="M2.114 8.063V7.9c1.005-.102 1.497-.615 1.497-1.6V4.503c0-1.094.39-1.538 1.354-1.538h.273V2h-.376C3.25 2 2.49 2.759 2.49 4.352v1.524c0 1.094-.376 1.456-1.49 1.456v1.299c1.114 0 1.49.362 1.49 1.456v1.524c0 1.593.759 2.352 2.372 2.352h.376v-.964h-.273c-.964 0-1.354-.444-1.354-1.538V9.663c0-.984-.492-1.497-1.497-1.6zM13.886 7.9v.163c-1.005.103-1.497.616-1.497 1.6v1.798c0 1.094-.39 1.538-1.354 1.538h-.273v.964h.376c1.613 0 2.372-.759 2.372-2.352v-1.524c0-1.094.376-1.456 1.49-1.456V7.332c-1.114 0-1.49-.362-1.49-1.456V4.352C13.51 2.759 12.75 2 11.138 2h-.376v.964h.273c.964 0 1.354.444 1.354 1.538V6.3c0 .984.492 1.497 1.497 1.6z" />
+          </svg><a href="" class="text-reset text-decoration-none"> Sobre WLJ Sports</a></p>
+
+  </div>
+</div>
+
+
+    <ul class="sticky-top nav nav-pills nav-fill navbar-light bg-light border">
+        <li class="nav-item d-none d-md-block">
+            <a class="nav-link " aria-current="page" href="#" tabindex="-1" aria-disabled="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house"
+                    viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+                    <path fill-rule="evenodd"
+                        d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
+                </svg><strong>Home</strong></a>
+        </li>
+        <li class="nav-item d-none d-md-block">
+            
+            <a class="nav-link" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ui-radios-grid" viewBox="0 0 16 16">
+                <path d="M3.5 15a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm9-9a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm0 9a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zM16 3.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0zm-9 9a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0zm5.5 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zm-9-11a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 2a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+              </svg>
+            <strong>Categoria</strong></a>
+        </li>
+        <li class="nav-item d-none d-md-block">
+            <a class="nav-link" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                </svg><strong>Lista de desejos</strong></a>
+        </li>
+        <li class="nav-item d-none d-md-block">
+            <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart3"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                </svg><strong>Carrinho</strong> </a>
+        </li>
+
+        <li class="nav-item d-inline-block d-md-none">
+            <a class="nav-link disabled" aria-current="page" href="#" tabindex="-1" aria-disabled="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house"
+                    viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+                    <path fill-rule="evenodd"
+                        d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
+                </svg></a>
+        </li>
+        <li class="nav-item d-inline-block d-md-none">            
+            <a class="nav-link" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ui-radios-grid" viewBox="0 0 16 16">
+                <path d="M3.5 15a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm9-9a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm0 9a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zM16 3.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0zm-9 9a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0zm5.5 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zm-9-11a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 2a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+              </svg></a>
+        </li>
+        <li class="nav-item d-inline-block d-md-none">
+            <a class="nav-link" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                </svg></a>
+        </li>
+        <li class="nav-item d-inline-block d-md-none">
+            <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart3"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                </svg> </a>
+        </li>
+    </ul>
+
+
+    <section class="h-100">
+        <div class="container">
+            <div class=" justify-content-sm-center">
+                <div class="">
+                    <div class="text-center my-5">
+                        <!--<img src="/img/WLJ.png" alt="logo" width="200">-->
+                    </div>
+                    <div class="card shadow-lg">
+                        <div class="card-body p-5">
+                            <h1 class="fs-4 card-title fw-bold mb-4">Cadastrar</h1>
+                            <form action="cadastro.php"  method="POST" class="row needs-validation"  >
+
+
+                                <div class=" col-md-6  mb-3">email
+                                    <input id="email" type="email" class="form-control" name="email">
+                                </div>
+
+                                <div class=" col-md-6  mb-3">senha
+                                    <input id="senha" type="password" class="form-control" name="senha"> 
+                                 </div>
+
+                                 <div class=" col-md-6  mb-3">nome
+                                     <input id="nome" type="text" class="form-control" name="nome">
+                                 </div>
+                                 <div class=" col-md-6  mb-3">sobrenome
+                                     <input id="sobrenome" type="text" class="form-control" name="sobrenome">
+                                 </div>
+                                 <div class=" col-md-6  mb-3">CPF
+                                     <input id="CPF" type="text" class="form-control" name="CPF">
+                                 </div>
+                                 <div class=" col-md-6  mb-3">nascimento
+                                     <input id="nascimento" type="date" class="form-control" name="nascimento">
+                                 </div>
+                                
+
+                                 <div class=" mb-3">
+                                    <label class="text-muted col-md-2 control-label" for="CEP">CEP</label>
+                                    <div class="col-md-2">
+                                        <input id="cep" name="cep" class="form-control" required="" value=""
+                                            type="search" maxlength="8" pattern="[0-9]+$">
+                                    </div>
+                                    <div class="col-md-2 mt-1">
+                                        <button type="button" class="btn btn-primary"
+                                            onclick="pesquisacep(cep.value)">Pesquisar</button>
+                                    </div>
+                                </div>
+
+
+
+
+
+                                <div class="py-2 col-md-5">
+                                    <label class="text-muted" for="rua">Rua</label>
+                                    <div class="input-group">
+                                        <input id="rua" name="rua" class="form-control" placeholder="" required=""
+                                            readonly="readonly" type="text">
+                                    </div>
+
+                                </div>
+                                <div class="py-2 col-4 col-md-2">
+                                    <label class="text-muted" for="numero">N°</label>
+                                    <div class="col-4 input-group">
+                                        <input id="numero" name="numero" class="form-control" placeholder="" required=""
+                                            type="text">
+                                    </div>
+
+                                </div>
+
+                                <div class="py-2 col-8 col-md-5">
+                                    <label class="text-muted" for="bairro">Bairro</label>
+                                    <div class="col-6 input-group">
+                                        <input id="bairro" name="bairro" class="form-control" placeholder="" required=""
+                                            readonly="readonly" type="text">
+                                    </div>
+
+                                </div>
+
+
+
+                                <div class="py-2 col-md-6">
+                                    <label class="text-muted" for="cidade">Cidade</label>
+                                    <div class="input-group">
+                                        <input id="cidade" name="cidade"  class="form-control" placeholder="" required=""
+                                            readonly="readonly" type="text">
+                                    </div>
+
+                                </div>
+
+                                <div class="py-2 col-md-6">
+                                    <label class="text-muted" for="estado">Estado</label>
+                                    <div class="input-group">
+                                        <input id="estado" name="estado" class="form-control" placeholder="" required=""
+                                            readonly="readonly" type="text">
+                                    </div>
+
+                                </div>
+                                <div class="d-block d-md-none mb-3">
+                                    <hr>
+                                </div>
+
+                                <h4>Endereço</h4>
+                                <div class="d-flex align-items-center row">
+                                    <div class="my-3 form-check">
+                                        <input type="checkbox" name="remember" id="remember" class="form-check-input"
+                                            placeholder="" required="">
+                                        <label for="remember" class="form-check-label">Li e concordo com os</label> <a
+                                            data-bs-toggle="modal" href="#modal_termos">Termos e condições</a>
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+
+                                    <input type="submit" name="submit" class="btn btn-primary ms-auto justify-content-center" value="Criar conta">
+                                </div>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="modal_termos" tabindex="-1" aria-labelledby="modal"
+                                    aria-hidden="true">
+                                    <div class="modal-xl modal-dialog modal-dialog-scrollable">
+                                        <div class="modal-content">                                            
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="modal_termos">
+                                                    <a class="m-1 btn btn-outline-dark  disabled" href="" >Termos e condições</a>
+                                                    <a class="m-1 btn btn-outline-primary" href="" data-bs-target="#modal_privacidade" data-bs-toggle="modal">Politica de privacidade </h1></a>
+                                                
+                                            </div>
+                                            
+                                            <div class="modal-body">
+                                                TERMOS DE SERVIÇO
+
+                                                ----
+
+                                                VISÃO GERAL
+                                                Este site é operado pela WLJ Sports. Em todo o site, os termos,                                         "nós" e "nosso" se referem à WLJ Sports. WLJ Sports oferece este site,                                            incluindo todas as informações, ferramentas e serviços disponíveis neste                                            site, para você, o usuário, mediante a sua aceitação de todos os termos,                                            condições, políticas e avisos estabelecidos aqui.                                        Ao visitar e/ou comprar alguma coisa no nosso site, você está utilizando                                            nossos “Serviços” e, consequentemente, concorda com os seguintes termos                                            e condições (“Termos de serviço”, “Termos”), incluindo os termos e                                            condições e políticas adicionais mencionados neste documento e/ou                                            disponíveis por hyperlink. Esses Termos de serviço se aplicam a todos os                                            usuários do site, incluindo, entre outros, os usuários que são                                            visualizadores, fabricantes, clientes, lojistas e/ou colaboradores de                                            conteúdo.                                            Leia estes Termos de serviço cuidadosamente antes de acessar ou utilizar                                            o nosso site. Ao acessar ou usar qualquer parte do site, você concorda                                            com os Termos de serviço. Se você não concorda com todos os termos e                                            condições deste contrato, então você não pode acessar o site ou usar                                            quaisquer serviços.                                        Quaisquer novos recursos ou ferramentas que forem adicionados à loja                                            atual também devem estar sujeitos aos Termos de serviço. Você pode                                            revisar a versão mais atual dos Termos de serviço quando quiser nesta                                            página. Reservamo-nos o direito de atualizar, alterar ou trocar qualquer                                            parte desses Termos de serviço ao publicar atualizações e/ou alterações                                            no nosso site. É sua responsabilidade verificar periodicamente as                                            alterações feitas nesta página. Seu uso contínuo ou acesso após a                                            publicação de quaisquer alterações constitui aceitação de tais                                            alterações.
+
+                                                <br><br>SEÇÃO 1 - TERMOS DA LOJA VIRTUAL                                                                    Ao concordar com estes Termos de serviço, você declara que tem idade                                            mínima de maioridade em seu estado ou município de residência, ou que é                                            maior de idade em seu estado ou município de residência, e que nos deu                                            sua permissão para permitir que qualquer um de seus dependentes menores                                            use este site.                                        Você não deve usar nossos produtos para qualquer fim ilegal ou não                                            autorizado. Você também não pode, ao usufruir deste Serviço, violar                                            quaisquer leis em sua jurisdição (incluindo, entre outras, as leis de                                            direitos autorais).                                        Você não deve transmitir nenhum vírus ou qualquer código de natureza                                            destrutiva.                                        Violar qualquer um dos Termos resultará na rescisão imediata dos seus                                            Serviços.
+                                                <br><br>
+                                                SEÇÃO 2 - CONDIÇÕES GERAIS                                        Reservamo-nos o direito de recusar o serviço a qualquer pessoa, por                                            qualquer motivo, a qualquer momento.                                        Você entende que o seu conteúdo (não incluindo informações de cartão de                                            crédito) pode ser transferido sem criptografia e pode: (a) ser                                            transmitido por várias redes; e (b) sofrer alterações para se adaptar e                                            se adequar às exigências técnicas de conexão de redes ou dispositivos.                                            As informações de cartão de crédito sempre são criptografadas durante a                                            transferência entre redes.                                        Você concorda em não reproduzir, duplicar, copiar, vender, revender ou                                            explorar qualquer parte do Serviço, uso do Serviço, acesso ao Serviço,                                            ou qualquer contato no site através do qual o Serviço seja fornecido,                                            sem nossa permissão expressa por escrito.                                        Os títulos usados neste contrato são incluídos apenas por conveniência e                                                não limitam ou afetam os Termos.
+                                                <br><br>
+                                                SEÇÃO 3 - PRECISÃO, COMPLETUDE E PERÍODO DE VALIDADE DAS INFORMAÇÕES                                        Não nos responsabilizamos se as informações disponibilizadas neste site                                            não forem precisas, completas ou atuais. O material deste site é                                            fornecido apenas para fins informativos e não deve ser usado como a                                            única base para tomar decisões sem consultar fontes de informações                                            primárias, mais precisas, mais completas ou mais atuais. Qualquer                                            utilização do material deste site é por sua conta e risco.                                        Este site pode conter certas informações históricas. As informações                                            históricas podem não ser atuais e são fornecidas apenas para sua                                            referência. Reservamo-nos o direito de modificar o conteúdo deste site a                                            qualquer momento, mas nós não temos obrigação de atualizar nenhuma                                            informação em nosso site. Você concorda que é de sua responsabilidade                                                acompanhar as alterações no nosso site.
+                                                <br><br>
+                                                SEÇÃO 4 - ALTERAÇÕES DO SERVIÇO E DOS PREÇOS                                        Os preços de nossos produtos estão sujeitos a alterações sem aviso                                            prévio.                                        Reservamo-nos o direito de, a qualquer momento, modificar ou                                            descontinuar o Serviço (ou qualquer parte ou conteúdo do mesmo) sem                                            aviso prévio em qualquer momento.                                        Não nos responsabilizamos por você ou por qualquer terceiro por qualquer                                            modificação, alteração de preço, suspensão ou descontinuação do Serviço.
+                                                <br><br>
+                                                SEÇÃO 5 - PRODUTOS OU SERVIÇOS (se aplicável)                                        Certos produtos ou serviços podem estar disponíveis exclusivamente                                            online através do site. Tais produtos ou serviços podem ter quantidades                                            limitadas e são sujeitos a apenas devolução ou troca, de acordo com                                            nossa Política de devolução.                                        Fizemos todo o esforço possível para exibir da forma mais precisa as                                            cores e imagens dos nossos produtos que aparecem na loja. Não podemos                                            garantir que a exibição de qualquer cor no monitor do seu computador                                                será precisa.                                            Reservamo-nos o direito de, mas não somos obrigados a, limitar as vendas                                            de nossos produtos ou Serviços para qualquer pessoa, região geográfica                                            ou jurisdição. Podemos exercer esse direito conforme cada caso                                            individual. Reservamo-nos o direito de limitar as quantidades de                                            quaisquer produtos ou serviços que oferecemos. Todas as descrições de                                            produtos ou preços de produtos são sujeitos a alteração a qualquer                                            momento sem aviso prévio, a nosso critério exclusivo. Reservamo-nos o                                            direito de descontinuar qualquer produto a qualquer momento. Qualquer                                            oferta de produtos ou serviços neste site é nula onde for proibido por                                            lei.                                        Não garantimos que a qualidade de quaisquer produtos, serviços,                                            informações ou outros materiais comprados ou obtidos por você vão                                            atender às suas expectativas, ou que quaisquer erros no Serviço serão                                            corrigidos.
+                                                <br><br>
+                                                SEÇÃO 6 - PRECISÃO DE COBRANÇA E INFORMAÇÕES DA CONTA                                        Nós nos reservamos o direito de recusar qualquer pedido que você fizer                                            conosco. Podemos, a nosso próprio critério, limitar ou cancelar o número                                            de produtos comprados por pessoa, por domicílio ou por pedido. Tais                                            restrições podem incluir pedidos feitos na mesma conta de cliente, no                                            mesmo cartão de crédito, e/ou pedidos que usem a mesma fatura e/ou                                            endereço de entrega. Caso façamos uma alteração ou cancelemos um pedido,                                            podemos tentar notificá-lo entrando em contato com o endereço de e-mail                                            e/ou o número de telefone/endereço de faturamento fornecido no momento                                            em que o pedido foi feito. Reservamo-nos o direito de limitar ou proibir                                            pedidos que, a nosso critério exclusivo, pareçam ter sido feitos por                                            lojistas, revendedores ou distribuidores.                                            Você concorda em fornecer suas informações de conta e compra completas                                            para todas as compras feitas em nossa loja. Você concorda em atualizar                                            prontamente sua conta e outras informações, incluindo seu e-mail,                                            números de cartão de crédito e datas de validade, para que possamos                                            completar suas transações e contatar você quando preciso.                                        Para mais informações, por favor, veja nossa Política de devolução.
+                                                <br><br>
+                                                SEÇÃO 7 - FERRAMENTAS OPCIONAIS                                        Podemos fornecer a você acesso a ferramentas de terceiros sobre as quais                                            não monitoramos nem temos controle ou entrada.                                        Você reconhece e concorda que nós fornecemos acesso a tais ferramentas                                            no estado em que se encontram e conforme a disponibilidade, sem                                            quaisquer garantias, declarações ou condições de qualquer tipo e sem                                            qualquer endosso. Não nos responsabilizamos de forma alguma pelo seu uso                                            de ferramentas opcionais de terceiros.                                        O uso de ferramentas opcionais oferecidas por meio do site é                                            inteiramente por sua conta e risco, e você deve se familiarizar e                                            aprovar os termos das ferramentas que são fornecidas por fornecedor(es)                                            terceiro(s).                                        Também podemos, futuramente, oferecer novos serviços e/ou recursos pormeio do site (incluindo o lançamento de novas ferramentas e recursos).                                            Tais recursos e/ou serviços novos também devem estar sujeitos a esses                                                Termos de serviço.
+                                                <br><br>
+                                                SEÇÃO 8 - LINKS DE TERCEIROS                                        Determinados conteúdos, produtos e serviços disponíveis através do nosso                                            Serviço podem incluir materiais de terceiros.                                        Os links de terceiros nesse site podem direcionar você a sites de                                            terceiros que não são Afiliados a nós. Não nos responsabilizamos por                                            examinar ou avaliar o conteúdo ou sua precisão. Não garantimos e nem                                            temos obrigação ou responsabilidade por quaisquer materiais ou sites de                                            terceiros, ou por quaisquer outros materiais, produtos ou serviços de                                            terceiros.                                        Não somos responsáveis por quaisquer danos ou prejuízos relacionados com                                            a compra ou uso de mercadorias, serviços, recursos, conteúdo, ou                                            quaisquer outras transações feitas em conexão com quaisquer sites de                                            terceiros. Por favor, leia com cuidado as políticas e práticas de                                            terceiros e certifique-se de que você as entende antes de efetuar                                                qualquer transação. As queixas, reclamações, preocupações ou questões                                            relativas a produtos de terceiros devem ser direcionadas à respectiva                                            empresa terceira.                                            <br><br>                                            SEÇÃO 9 - COMENTÁRIOS, FEEDBACK E OUTRAS INTERAÇÕES DO USUÁRIO                                        Se, a nosso pedido, você executar determinadas ações específicas (por                                            exemplo, inscrições em concursos) ou, sem solicitação de nossa parte,                                            enviar ideias criativas, sugestões, propostas, planos ou outros                                            materiais, seja online, por e-mail, correio ou de outra forma (em                                            conjunto designados "comentários"), você concorda que podemos, a                                            qualquer momento, sem restrições, editar, copiar, publicar, distribuir,                                            traduzir e usar, em qualquer meio, quaisquer comentários que você                                            encaminhar para nós. Não nos responsabilizamos por: (1) manter quaisquer                                            comentários em sigilo; (2) indenizar por quaisquer comentários; ou (3)                                            responder quaisquer comentários.                                            Podemos, mas não temos a obrigação, de monitorar, editar ou remover                                            conteúdo que nós determinamos a nosso próprio critério ser contra a lei,                                            ofensivo, ameaçador, calunioso, difamatório, pornográfico, obsceno ou                                            censurável, ou que viole a propriedade intelectual de terceiros ou estes                                            Termos de serviço.                                            Você concorda que seus comentários não violarão qualquer direito de                                            terceiros, incluindo direitos autorais, marcas registradas, privacidade,                                            personalidade ou outro direito pessoal ou de propriedade. Você concorda                                            que os seus comentários não conterão material difamatório, ilegal,                                            abusivo ou obsceno. Eles também não conterão nenhum vírus de computador                                            ou outro malware que possa afetar a operação do Serviço ou qualquer site                                            relacionado. Você não poderá usar endereço de e-mail falso, fingir ser                                            alguém diferente de si mesmo ou, de outra forma, enganar a nós ou                                            terceiros quanto à origem de quaisquer comentários. Você é o único                                            responsável por quaisquer comentários que faz e pela veracidade deles.                                            Nós não assumimos qualquer responsabilidade ou obrigação por quaisquer                                                comentários publicados por você ou por terceiros.
+                                                <br><br>
+                                                SEÇÃO 10 - INFORMAÇÕES PESSOAIS                                        Sua apresentação de informações pessoais por meio da loja é regida pela                                                nossa Política de privacidade. Consulte a nossa Política de privacidade.
+                                                <br><br>
+                                                SEÇÃO 11 - ERROS, IMPRECISÕES E OMISSÕES                                        Por vezes, pode haver informações em nosso site ou no Serviço que                                        contenham erros tipográficos, imprecisões ou omissões que possam estar                                            relacionadas a descrições de produtos, preços, promoções, ofertas,                                            cobranças de frete de produtos, tempos de trânsito e disponibilidade.                                            Reservamo-nos o direito de corrigir quaisquer erros, imprecisões ou                                            omissões, e de alterar ou atualizar informações ou cancelar pedidos caso                                            qualquer informação no Serviço ou em qualquer site relacionado seja                                            imprecisa, a qualquer momento e sem aviso prévio (até mesmo depois de                                            você ter enviado o seu pedido).                                        Não assumimos nenhuma obrigação de atualizar, alterar ou explicar                                            informações no Serviço ou em qualquer site relacionado, incluindo, entre                                            outras, as informações sobre preços, exceto conforme exigido por lei.                                            Nenhuma atualização específica ou data de atualização no Serviço ou em                                            qualquer site relacionado deve ser utilizada para indicar que todas as                                            informações do Serviço ou em qualquer site relacionado tenham sido                                                modificadas ou atualizadas.
+                                                <br><br>
+                                                SEÇÃO 12 - USOS PROIBIDOS                                        Além de outras proibições estabelecidas nos Termos de serviço, você está                                            proibido de usar o site ou seu conteúdo para: (a) qualquer finalidade                                            ilícita; (b) solicitar a outros que realizem ou participem de atos                                            ilegais; (c) violar quaisquer regulamentos, regras, leis ou leis locais,                                            internacionais, federais, municipais ou estaduais; (d) infringir ou                                            violar nossos direitos de propriedade intelectual ou os direitos de                                            propriedade intelectual de terceiros; (e) assediar, abusar, insultar,                                            prejudicar, difamar, caluniar, desacreditar, intimidar ou discriminar                                            com base no gênero, orientação sexual, religião, etnia, raça, idade,                                            nacionalidade ou deficiência; (f) apresentar informações falsas ou                                            enganosas;                                            (g) enviar ou transmitir vírus ou qualquer outro tipo de código                                            malicioso, que será ou poderá ser usado de qualquer forma que afete a                                            funcionalidade ou operação do Serviço ou de qualquer site relacionado,                                            outros sites ou a internet; (h) coletar ou rastrear as informações                                            pessoais de terceiros; (i) prática de spam, phishing, pharm, pretext,                                            spider, crawl ou scrape; (j) qualquer propósito obsceno ou imoral; ou                                            para (k) interferir ou contornar os recursos de segurança do Serviço ou                                            de qualquer site relacionado, outros sites ou a internet. Reservamo-nos                                            o direito de rescindir o seu uso do Serviço ou de qualquer site                                                relacionado por violar qualquer um dos usos proibidos.
+                                                <br><br>
+                                                SEÇÃO 13 - ISENÇÃO DE GARANTIAS; LIMITAÇÃO DE RESPONSABILIDADE                                        Nós não prometemos, representamos ou garantimos que seu uso de nosso                                            serviço será ininterrupto, oportuno, seguro ou livre de erros.                                            Não garantimos que os resultados que possam ser obtidos pelo uso do                                            serviço serão precisos ou confiáveis.                                        Você concorda que, de tempos em tempos, podemos remover o serviço por                                            períodos indefinidos de tempo ou cancelá-lo a qualquer momento, sem                                            enviar aviso prévio para você.                                            Você concorda que o seu uso ou incapacidade de usar o serviço é por sua                                            conta e risco. O serviço e todos os produtos e serviços entregues                                            através do serviço são (exceto conforme declarado por nós) fornecidos                                            sem garantia e conforme a disponibilidade para seu uso, sem qualquer                                            declaração, garantias ou condições de qualquer tipo, expressas ou                                            implícitas, incluindo todas as garantias implícitas ou condições de                                            comercialização, quantidade, adequação a uma finalidade específica,                                            durabilidade, título e não violação.                                            Em nenhum caso, a WLJ Sports, nossos diretores, executivos,                                            funcionários, Afiliados, agentes, contratados, estagiários,                                            fornecedores, provedores de serviços ou licenciantes serão responsáveis                                                por qualquer dano, perda, reivindicação ou qualquer dano direto,                                            indireto, incidental, punitivo, especial ou consequencial de qualquer                                            tipo, incluindo, entre outros, lucros perdidos, perda de receita, perda                                            de economias, perda de dados, custos de substituição ou quaisquer danos                                            semelhantes, seja com base em contrato, ato ilícito (incluindo                                            negligência), responsabilidade estrita ou não, decorrentes do uso de                                            qualquer um dos serviços ou quaisquer produtos adquiridos usando o                                            serviço, ou para qualquer outra reivindicação relacionada de qualquer                                            forma ao seu uso do serviço ou qualquer produto, incluindo, entre                                            outros, quaisquer erros ou omissões em qualquer conteúdo, ou qualquer                                            perda ou dano de qualquer tipo incorrido como resultado do uso do                                            serviço ou de qualquer conteúdo (ou produto) publicado, transmitido ou                                            de outra forma disponibilizado através do serviço, mesmo se avisado de                                            sua possibilidade.                                            Como alguns estados ou jurisdições não permitem a exclusão ou a                                            limitação de responsabilidade por danos indiretos ou incidentais, em                                            tais estados ou jurisdições, a nossa responsabilidade será limitada à                                            extensão máxima permitida por lei.
+                                                <br><br>
+                                                SEÇÃO 14 - INDENIZAÇÃO                                        Você concorda em indenizar, defender e isentar WLJ Sports e nossa                                            matriz, subsidiárias, afiliadas, parceiros, executivos, diretores,                                            agentes, contratados, licenciantes, prestadores de serviços,                                            subcontratados, fornecedores, estagiários e funcionários, de qualquer                                            reivindicação ou demanda, incluindo honorários advocatícios razoáveis,                                            feitos por terceiros, devido a ou decorrente de sua violação destes                                            Termos de serviço ou dos documentos que incorporam por referência, ou                                                sua violação de qualquer lei ou dos direitos de terceiros.
+                                                <br><br>
+                                                SEÇÃO 15 - INDEPENDÊNCIA                                        No caso de qualquer disposição destes Termos de serviço ser considerada                                            ilegal, nula ou inexequível, tal disposição será, no entanto, executável                                            na extensão máxima permitida pela lei aplicável, e a parte inexequível                                            será considerada como cortada destes Termos de serviço, e tal                                            determinação não afetará a validade e aplicabilidade de quaisquer outras                                                disposições remanescentes.
+                                                <br><br>
+                                                SEÇÃO 16 - RESCISÃO                                        As obrigações e as responsabilidades das partes incorridas antes da data                                            de rescisão sobreviverão à rescisão deste contrato para todos os fins.                                        Estes Termos de serviço permanecem em vigor, a menos que sejam                                            rescindidos por você ou por nós. Você pode rescindir estes Termos de                                            serviço a qualquer momento, notificando-nos que já não deseja utilizar                                            os nossos serviços, ou quando você deixar de usar o nosso site.                                            Se em nosso critério exclusivo você não cumprir com qualquer termo ou                                            disposição destes Termos de serviço, nós também podemos rescindir este                                            contrato a qualquer momento sem aviso prévio e você ficará responsável                                            por todas as quantias devidas até a data da rescisão; também podemos lhe                                            negar acesso a nossos Serviços (ou qualquer parte deles).
+                                                <br><br>
+                                                SEÇÃO 17 - ACORDO INTEGRAL                                            A falha de nossa parte em exercer ou executar qualquer direito ou                                            disposição destes Termos de Serviço não constituirá uma renúncia de tal                                            direito ou disposição.                                        Estes Termos de serviço e quaisquer políticas ou normas operacionais                                            publicadas por nós neste site ou no que diz respeito ao serviço                                            constituem a totalidade do acordo entre nós. Estes termos regem o seu                                            uso do Serviço, substituindo quaisquer acordos anteriores ou                                            contemporâneos, comunicações e propostas, sejam verbais ou escritos,                                            entre você e nós (incluindo, entre outros, quaisquer versões anteriores                                            dos Termos de serviço).                                            Quaisquer ambiguidades na interpretação destes Termos de serviço não                                            devem ser interpretadas contra a parte que os redigiu.
+
+                                                <br><br>
+                                                SEÇÃO 18 - LEGISLAÇÃO APLICÁVEL                                            Estes Termos de serviço e quaisquer contratos separados nos quais                                            fornecemos a você os Serviços serão regidos e interpretados de acordo                                            com as leis de Rua Cel. Procópio Gomes 911, Joinville, SC, 89202300,                                                Brasil.
+
+                                                <br><br>
+                                                SEÇÃO 19 - MUDANÇAS NOS TERMOS DE SERVIÇO                                        Você pode revisar a versão mais atual dos Termos de serviço a qualquer                                            momento nesta página.                                    Reservamo-nos o direito, a nosso critério, de atualizar, modificar ou                                            substituir qualquer parte destes Termos de serviço ao publicar                                            atualizações e alterações no nosso site. É sua responsabilidade                                            verificar periodicamente se há alterações em nosso site. Seu uso                                            contínuo ou acesso ao nosso site ou ao Serviço após a publicação de                                            quaisquer alterações a estes Termos de serviço constitui aceitação                                            dessas alterações.
+
+                                                <br><br>
+                                                SEÇÃO 20 - INFORMAÇÕES DE CONTATO
+
+                                                Perguntas sobre os Termos de serviço devem ser enviadas para nós em
+                                                wellerson_meredyk@estudante.sc.senai.br
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Fechar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal fade" id="modal_privacidade" tabindex="-1" aria-labelledby="modal"
+                                    aria-hidden="true">
+                                    <div class="modal-xl modal-dialog modal-dialog-scrollable">
+                                        <div class="modal-content">                                            
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="modal">
+                                                    <a class="m-1 btn btn-outline-primary" href="" data-bs-target="#modal_termos" data-bs-toggle="modal" >Termos e condições</a>
+                                                    <a class="m-1 btn disabled" href="" >Politica de privacidade </h1></a>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>                                            
+                                            <div class="modal-body">
+                                                <h2>Política Privacidade</h2><p>Endereço: <strong>Rua Cel. Procópio Gomes 911</strong></p><p>A sua privacidade é importante para nós. É política da WLJ Sports respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar no site <a href="https://wljsports.com.br" />WLJ Sports</a>, e outros sites que possuímos e operamos.</p><p>Solicitamos informações pessoais apenas quando realmente precisamos delas para lhe fornecer um serviço. Fazemo-lo por meios justos e legais, com o seu conhecimento e consentimento. Também informamos por que estamos coletando e como será usado.</p><p>Apenas retemos as informações coletadas pelo tempo necessário para fornecer o serviço solicitado. Quando armazenamos dados, protegemos dentro de meios comercialmente aceitáveis para evitar perdas e roubos, bem como acesso, divulgação, cópia, uso ou modificação não autorizados.</p><p>Não compartilhamos informações de identificação pessoal publicamente ou com terceiros, exceto quando exigido por lei.</p><p>O nosso site pode ter links para sites externos que não são operados por nós. Esteja ciente de que não temos controle sobre o conteúdo e práticas desses sites e não podemos aceitar responsabilidade por suas respectivas políticas de privacidade.</p><p>Você é livre para recusar a nossa solicitação de informações pessoais, entendendo que talvez não possamos fornecer alguns dos serviços desejados.</p><p>O uso continuado de nosso site será considerado como aceitação de nossas práticas em torno de privacidade e informações pessoais. Se você tiver alguma dúvida sobre como lidamos com dados do usuário e informações pessoais, entre em contacto connosco.</p><h2>Política de Cookies WLJ Sports</h2><h3>O que são cookies?</h3><p>Como é prática comum em quase todos os sites profissionais, este site usa cookies, que são pequenos arquivos baixados no seu computador, para melhorar sua experiência. Esta página descreve quais informações eles coletam, como as usamos e por que às vezes precisamos armazenar esses cookies. Também compartilharemos como você pode impedir que esses cookies sejam armazenados, no entanto, isso pode fazer o downgrade ou "quebrar" certos elementos da funcionalidade do site.</p><h3>Como usamos os cookies?</h3><p>Utilizamos cookies por vários motivos, detalhados abaixo. Infelizmente, na maioria dos casos, não existem opções padrão do setor para desativar os cookies sem desativar completamente a funcionalidade e os recursos que eles adicionam a este site. É recomendável que você deixe todos os cookies se não tiver certeza se precisa ou não deles, caso sejam usados para fornecer um serviço que você usa.</p><h3>Desativar cookies</h3><p>Você pode impedir a configuração de cookies ajustando as configurações do seu navegador (consulte a Ajuda do navegador para saber como fazer isso). Esteja ciente de que a desativação de cookies afetará a funcionalidade deste e de muitos outros sites que você visita. A desativação de cookies geralmente resultará na desativação de determinadas funcionalidades e recursos deste site. Portanto, é recomendável que você não desative os cookies.</p><h3>Cookies que definimos</h3><ul><li><strong>Cookies relacionados à conta:</strong> Se você criar uma conta connosco, usaremos cookies para o gerenciamento do processo de inscrição e administração geral. Esses cookies geralmente serão excluídos quando você sair do sistema, porém, em alguns casos, eles poderão permanecer posteriormente para lembrar as preferências do seu site ao sair.<br><br></li><li><strong>Cookies relacionados ao login:</strong> Utilizamos cookies quando você está logado, para que possamos lembrar dessa ação. Isso evita que você precise fazer login sempre que visitar uma nova página. Esses cookies são normalmente removidos ou limpos quando você efetua logout para garantir que você possa acessar apenas a recursos e áreas restritas ao efetuar login.<br><br></li><li><strong>Cookies relacionados a boletins por e-mail:</strong> Este site oferece serviços de assinatura de boletim informativo ou e-mail e os cookies podem ser usados para lembrar se você já está registrado e se deve mostrar determinadas notificações válidas apenas para usuários inscritos / não inscritos.<br><br></li><li><strong>Pedidos processando cookies relacionados:</strong> Este site oferece facilidades de comércio eletrônico ou pagamento e alguns cookies são essenciais para garantir que seu pedido seja lembrado entre as páginas, para que possamos processá-lo adequadamente.<br><br></li><li><strong>Cookies relacionados a pesquisas:</strong> Periodicamente, oferecemos pesquisas e questionários para fornecer informações interessantes, ferramentas úteis ou para entender nossa base de usuários com mais precisão. Essas pesquisas podem usar cookies para lembrar quem já participou numa pesquisa ou para fornecer resultados precisos após a alteração das páginas.<br><br></li><li><strong>Cookies relacionados a formulários:</strong> Quando você envia dados por meio de um formulário como os encontrados nas páginas de contacto ou nos formulários de comentários, os cookies podem ser configurados para lembrar os detalhes do usuário para correspondência futura.<br><br></li><li><strong>Cookies de preferências do site:</strong> Para proporcionar uma ótima experiência neste site, fornecemos a funcionalidade para definir suas preferências de como esse site é executado quando você o usa. Para lembrar suas preferências, precisamos definir cookies para que essas informações possam ser chamadas sempre que você interagir com uma página for afetada por suas preferências.<br></li></ul><h3>Cookies de Terceiros</h3><p>Em alguns casos especiais, também usamos cookies fornecidos por terceiros confiáveis. A seção a seguir detalha quais cookies de terceiros você pode encontrar através deste site.</p><ul><li>Este site usa o Google Analytics, que é uma das soluções de análise mais difundidas e confiáveis da Web, para nos ajudar a entender como você usa o site e como podemos melhorar sua experiência. Esses cookies podem rastrear itens como quanto tempo você gasta no site e as páginas visitadas, para que possamos continuar produzindo conteúdo atraente.</li></ul><p>Para mais informações sobre cookies do Google Analytics, consulte a página oficial do Google Analytics.</p><ul><li>As análises de terceiros são usadas para rastrear e medir o uso deste site, para que possamos continuar produzindo conteúdo atrativo. Esses cookies podem rastrear itens como o tempo que você passa no site ou as páginas visitadas, o que nos ajuda a entender como podemos melhorar o site para você.</li><li>Periodicamente, testamos novos recursos e fazemos alterações subtis na maneira como o site se apresenta. Quando ainda estamos testando novos recursos, esses cookies podem ser usados para garantir que você receba uma experiência consistente enquanto estiver no site, enquanto entendemos quais otimizações os nossos usuários mais apreciam.</li><li>À medida que vendemos produtos, é importante entendermos as estatísticas sobre quantos visitantes de nosso site realmente compram e, portanto, esse é o tipo de dados que esses cookies rastrearão. Isso é importante para você, pois significa que podemos fazer previsões de negócios com precisão que nos permitem analizar nossos custos de publicidade e produtos para garantir o melhor preço possível.</li></ul><h3>Mais informações</h3><p>Esperemos que esteja esclarecido e, como mencionado anteriormente, se houver algo que você não tem certeza se precisa ou não, geralmente é mais seguro deixar os cookies ativados, caso interaja com um dos recursos que você usa em nosso site.</p><p>Para efetivar o cancelamento desta política de privacidade, enviar um e-mail para <a href="wellerson_meredyk@estudante.sc.senai.br"<strong>wellerson_meredyk@estudante.sc.senai.br</strong></a></p><p>Esta política é efetiva a partir de <strong>Outubro</strong>/<strong>2022</strong>.</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Fechar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                        <div class="card-footer py-3 border-0">
+                            <div class="text-center">
+                                 Ja tem uma conta?<a href="login.html"> Entrar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <main>
+        <div class="container">
+
+            <div class="row">
+            </div>
+            <hr class="mt-3 ">
+            <div class="row ">
+
+            </div>
+        </div>
+
+
+    </main>
+
+    <footer class=" border-top text-muted bg-light">
+        <div class="coontainer">
+            <div class="row py-3">
+                <div class="col-12 col-md-4 text-center text-md-left">
+                    &copy; 2022 &mdash; WLJ Sports
+                </div>
+                <div class="col-12 col-md-4 text-center">
+                    <a href="#" class="text-decoration-none text dark">Politica de privacidade</a>
+                </div>
+                <div class="col-12 col-md-4 text-center text-md-right">
+                    <a href="#" class="text-decoration-none text dark">administrar</a>
+                </div>
+            </div>
+        </div>
+
+
+
+    </footer>
+
+
+    <!-- Optional JavaScript -->
+    <!-- Popper.js first, then Bootstrap JS -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+        </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+        crossorigin="anonymous"></script>
+    <script src="login.js"></script>
+
+</body>
+
+</html>
