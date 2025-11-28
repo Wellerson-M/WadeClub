@@ -332,18 +332,63 @@ include "conexao.php";
 
         <?php
         ////Barra de Pesquisa////
-                        
+        if (!empty($_GET["search"])) {
+            $data = $_GET["search"];
+            $comando = $pdo->prepare(
+                "SELECT * FROM produtos WHERE nome_produto LIKE '%$data%' or preco LIKE '%$data%'"
+            );
 
-        // listar produtos, um por um.
-        if (!empty($listaItens)) {
+            $comando->execute();
+
+            if ($comando->rowCount() >= 1) {
+                $listaItens = $comando->fetchAll();
+            }
+        } else {
+            include "listar_produtos.php";
+        }
+
+               if (!empty($listaItens)) {
             foreach ($listaItens as $linha) {
                 $id_produto = $linha["id_produto"]; ?>
         
+        <div class="p-3 col-xl-3 col-lg-4 col-md-4 col-sm-6 d-flex align-items-stretche">
+        
+          <div class="zoom card shadow text-center bg-light">
+          
+            <a href="inserir_favoritos.php?id_produto=<?php echo $linha[
+                "id_produto"
+            ]; ?>" class="position-absolute right-0 p-2 text-danger">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="" class="bi bi-heart" viewBox="0 0 16 16">
+                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+              </svg>
+            </a>
+          <?php
+                //}
+                ?>
+            <a style="text-decoration:none;" href="Produto.php?id_produto=<?php echo $linha[
+                "id_produto"
+            ]; ?>">
+            <?php echo '<div class=""><img height="100%" width="100%"  class="border border-white card-img-top" src="' .
+                $linha["imagem"] .
+                '"></div>'; ?>
+            
+            <div class="text-start card-header">
+            <h5 class="text-muted"><?php echo $linha["nome_produto"]; ?></h5>
+            
+            <h6 class="text-success"> FRETE GRATIS</h6>
+            </a> 
+            <h4 class="card-title"><?php echo "R$" .
+                $linha["preco"] .
+                ",00"; ?></h4>
+            </div>
+          </div> 
+                           
+        </div>
         
         <?php
             }
         }
-        ?>           
+        ?>             
 
         <div class="col-12 col-md-5 invisible">
           <form class="justify-content-center justify-content-md-start mb-3 mb-md-0">

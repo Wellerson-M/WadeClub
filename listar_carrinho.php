@@ -15,7 +15,6 @@ if ($id_usuario) {
 
     if ($comando->rowCount() >= 1) {
         $listaItens = $comando->fetchAll();
-        // Aqui você pode iterar com foreach e exibir os produtos
     } else {
         echo "Não há itens no seu carrinho.";
     }
