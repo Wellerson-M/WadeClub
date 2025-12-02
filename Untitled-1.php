@@ -11,12 +11,38 @@ include "conexao.php";
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <link rel="stylesheet" href="style.css" />
+
+  <link rel="stylesheet" href="storie.css" />
+
+
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   
 
-  <title>Hello, world!</title>
+  <title>Use Wade!</title>
+
+
+    <style>
+
+
+
+
+
+.zoom  {
+  max-width: 100%;
+  -moz-transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+ 
+}
+.zoom:hover  {
+  -moz-transform: scale(1.02);
+  -webkit-transform: scale(1.02);
+  transform: scale(1.02);
+ 
+}</style>
 
 </head>
 
@@ -25,7 +51,7 @@ include "conexao.php";
     <nav class=" navbar  navbar-expand-lg navbar-dark bg-primary border-bottom shadow-sm ">
         <div class="container-fluid">
             <div class="d-none d-md-block">
-                <a href="Untitled-1.php"> <img class="pt-2" src="" width="150px" height="95px"></a>
+                <a href="Untitled-1.php"> <img class="pt-2" src="img/logo.png" width="150" height="120"></a>
             </div>
     
             <div class="box-search d-flex justify-content-center pt-2 col">
@@ -244,7 +270,7 @@ include "conexao.php";
   <!----  ------->
   
   <!-- banners -->
-<header class="container pt-2">
+<header class=" pt-2">
   <div id="carouselMain" class="carousel carousel-dark slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselMain" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -254,13 +280,13 @@ include "conexao.php";
 
     <div class="carousel-inner">
       <div class="carousel-item active" data-bs-interval="3000">
-        <img src="img/UseWade.jpg" class="d-block w-100 img-fluid" alt="Banner 1">
+        <img src="img/slide2.jpg" class="d-block w-100 img-fluid h-100" alt="Banner 1">
       </div>
       <div class="carousel-item" data-bs-interval="3000">
-        <img src="img/UseWade.jpg" class="d-block w-100 img-fluid" alt="Banner 2">
+        <img src="img/slide3.jpg" class="d-block w-100 img-fluid h-100" alt="Banner 2">
       </div>
       <div class="carousel-item" data-bs-interval="3000">
-        <img src="img/UseWade.jpg" class="d-block w-100 img-fluid" alt="Banner 3">
+        <img src="img/slide4.jpg" class="d-block w-100 img-fluid h-100" alt="Banner 3">
       </div>
     </div>
 
@@ -404,7 +430,9 @@ include "conexao.php";
       </div>
     </div>
     
-    
+
+
+
   </main>
 
   <footer class=" border-top text-muted bg-light">
@@ -465,6 +493,8 @@ include "conexao.php";
             window.location = 'categoria.php?search='+search.value;
         }
     </script>
+    <script src="storie.js"></script>
+
     
 </body>
 </html>

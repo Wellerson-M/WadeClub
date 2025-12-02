@@ -2,10 +2,12 @@
 session_start();
 include("conexao.php");
 // Verifique se o usuário está logado, se não, redirecione-o para uma página de login
- if(!isset($_SESSION['id']) and (!isset($_SESSION['nome']))){
-   header("location:login.html");
- } 
-?>
+if(!isset($_SESSION['id']) and (!isset($_SESSION['nome']))){
+    header("location:login.html");  
+}
+?> 
+ 
+
 <!doctype html>
 <html lang="pt-br">
 
@@ -25,10 +27,10 @@ include("conexao.php");
 
 <body>
 <!-- rodapé superior -->
-    <nav class=" navbar  navbar-expand-lg navbar-dark bg-primary border-bottom shadow-sm ">
+        <nav class=" navbar  navbar-expand-lg navbar-dark bg-primary border-bottom shadow-sm ">
         <div class="container-fluid">
             <div class="d-none d-md-block">
-                <a href="Untitled-1.php"> <img class="pt-2" src="" width="150px" height="95px"></a>
+                <a href="Untitled-1.php"> <img class="pt-2" src="img/logo.png" width="150" height="120"></a>
             </div>
     
             <div class="box-search d-flex justify-content-center pt-2 col">
@@ -69,6 +71,7 @@ include("conexao.php");
             
         </div>
     </nav>
+
     
     
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
@@ -171,209 +174,215 @@ include("conexao.php");
         </div>
     </div>
 <!----  ------->
-
-
-<!-- menu de pesquisa: home, categoria, fav. carrinho -->
-  <ul class="sticky-top nav nav-pills nav-fill navbar-light bg-light border">
-      <li class="nav-item d-none d-md-block">
-          <a class="nav-link " aria-current="page" href="Untitled-1.php" tabindex="-1" aria-disabled="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house"
-                  viewBox="0 0 16 16">
-                  <path fill-rule="evenodd"
-                      d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
-                  <path fill-rule="evenodd"
-                      d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
-              </svg><strong>Home</strong></a>
-      </li>
-      <li class="nav-item d-none d-md-block">
-          
-          <a class="nav-link" href="categoria.php"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ui-radios-grid" viewBox="0 0 16 16">
-              <path d="M3.5 15a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm9-9a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm0 9a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zM16 3.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0zm-9 9a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0zm5.5 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zm-9-11a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 2a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
-            </svg>
-          <strong>Categoria</strong></a>
-      </li>
-      <li class="nav-item d-none d-md-block">
-          <a class="nav-link" href="favoritos.php">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart"
-                  viewBox="0 0 16 16">
-                  <path
-                      d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-              </svg><strong>Lista de desejos</strong></a>
-      </li>
-      <li class="nav-item d-none d-md-block">
-          <a class="nav-link " href="Carrinho.php" tabindex="-1" aria-disabled="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart3"
-                  viewBox="0 0 16 16">
-                  <path
-                      d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-              </svg><strong>Carrinho</strong> </a>
-      </li>
-
-      <li class="nav-item d-inline-block d-md-none">
-          <a class="nav-link disabled" aria-current="page" href="#" tabindex="-1" aria-disabled="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house"
-                  viewBox="0 0 16 16">
-                  <path fill-rule="evenodd"
-                      d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
-                  <path fill-rule="evenodd"
-                      d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
-              </svg></a>
-      </li>
-      <li class="nav-item d-inline-block d-md-none">
-          <a class="nav-link text-dark" href="#">
-
-              <a class="nav-link text-dark" href="#"><img id="chuteira-icon" src="img/vans-svgrepo-com.svg" class="bi " width="20" height="20" ></a>
-      </li>
-      <li class="nav-item d-inline-block d-md-none">
-          <a class="nav-link" href="#">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart"
-                  viewBox="0 0 16 16">
-                  <path
-                      d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-              </svg></a>
-      </li>
-      <li class="nav-item d-inline-block d-md-none">
-          <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart3"
-                  viewBox="0 0 16 16">
-                  <path
-                      d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-              </svg> </a>
-      </li>
-  </ul>
-  <!----  ------->
-    
-        
-
-
-  <main>
-        <nav aria-label="breadcrumb">
-            <ol class="mx-5 mt-2 breadcrumb">
+  
+  
+          <nav aria-label="breadcrumb">
+            <ol class="m-3 breadcrumb">
                 <li class="breadcrumb-item"><a href="Untitled-1.php">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Carrinho</li>
+                <li class="breadcrumb-item active" aria-current="page">Meus dados</li>
             </ol>
         </nav>
-            
-  <section class="h-100 h-custom" >
-    <div class="container py-5 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-12">
-          <div class="card card-registration card-registration-2 shadow border border-3" style="border-radius: 15px;">
-            <div class="card-body p-0">
-              <div class="row g-0">
-                <div class="col-lg-8">
-                  <div class="p-5">
-                    <div class="d-flex justify-content-between align-items-center mb-5">
-                      <h2 class="fw-bold mb-0 text-black">Carrinho de compras</h2>
-                    </div>
-                    <?php 
-                    include("listar_carrinho.php");
 
-                    if (!empty($listaItens)) {
-                        foreach($listaItens as $linha) { 
-                          
-                  ?>
-                    <hr class="my-4">
-
-                    <div class="row mb-4 d-flex justify-content-between align-items-center">
-                      <div class="col-md-2 col-lg-2 col-xl-2">
-                      <img height="100%" width="100%"  class="" src="<?php echo $linha['imagem'];?>">
-                    
-                      </div>
-                      <div class="col-md-3 col-lg-3 col-xl-3">
-                        <h5 class="text-black mb-0"><?php echo $linha['nome_produto'];?></h5>
-                        <input value="<?php echo $linha['quantidade'];?>" type="text"
-                          class="form-control form-control-sm" style="border:none;" readonly/>
-                      </div>
-                      <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                        <label class="text-muted">tamanho:
-                        <input value="<?php echo $linha['tamanho'];?>" type="number"
-                          class="form-control form-control-sm" style="border:none;" readonly/>
-                          </label>
-                       
-                      </div>
-                      <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                        <h7 class="mb-0 text-muted">R$<?php echo $linha['preco'];?></h7>
-                        <h6 class="mb-0">R$<?php echo $linha['valor_final'];?></h6>
-                       
-                        
-                      </div>
-                      <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                        <a href="excluir_produto.php?id_produto=<?php echo $linha['id_produto'];?>" >
-                          <button type="button" class="btn btn-outline" data-bs-toggle="tooltip" data-bs-placement="top"  title="Excluir produto">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="danger bi bi-trash" viewBox="0 0 16 16">
-                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                            </svg>
-                          </button>
-                        </a>
-                      </div>
-                    </div>
-                    <?php }} ?>
-
-
-
-                                                       
-                          
-                    <hr class="my-4">
-
-                    <div class="pt-3">
-                      <h6 class="mb-0"><a href="untitled-1.php" class="text-body"> <- Continuar comprando</a></h6>
-                    </div>
-                  </div>
+        <div class="container text-center d-flex justify-content-center">
+            <div class="card mx-2 shadow col-5 my-3">
+                <div class="card-header">
+                    <h4>Informações usuário:</h4>
                 </div>
-                <div class="col-lg-4 border" style="border-color:#808080; background-color:#DCDCDC;">
-                  <div class="p-5">
-                    <h3 class="fw-bold mb-5 mt-2 pt-1">Resumo</h3>
-                    <?php if(!empty($linha['id_usuario'] = $_SESSION['id_usuario'])){ ?>
-                    <hr class="my-4">
+                <div class="card-body">
+                    <?php
+                        if(!isset($_SESSION['id']) and (!isset($_SESSION['nome']))){
+                            echo "Você não está logado";
+                        }else{
+                            $id_usuario = $_SESSION['id_usuario'];
+                        }
+                            $query_usuario = "SELECT * FROM usuario WHERE id_usuario = :id_usuario  LIMIT 1";  
+                            $result_usuario = $pdo->prepare($query_usuario);
+                            $result_usuario->bindParam(':id_usuario', $_SESSION['id_usuario']);
 
-                    <div class="d-flex justify-content-between mb-4">
-                      <h5 class="text-muted">Produtos:</h5>
-                      <h5 class="text-muted">R$
-                        <?php 
-                        $id_usuario = $linha['id_usuario'];
-                        $sql = $pdo->prepare("SELECT SUM(valor_final) as total FROM carrinho WHERE id_usuario = $id_usuario");
-                              $sql->execute();
+                            $result_usuario->execute();
 
-                              $value = $sql->fetchObject();
-                              echo $value->total;       
-                        ?>
-                      </h5>
+                            if(($result_usuario) AND ($result_usuario->rowCount() != 0 )){
+                                $row_usuario = $result_usuario->fetch(PDO::FETCH_ASSOC);
+                                
+                                $value = $row_usuario['CPF'];
+
+                                
+                                $_SESSION['email'] = $row_usuario['email'];
+                                $_SESSION['nome'] = $row_usuario['nome'];
+                                $_SESSION['sobrenome'] = $row_usuario['sobrenome'];
+                                $_SESSION['CPF'] = $value;
+                                $_SESSION['nascimento'] = $row_usuario['nascimento'];
+                        }
+                    ?>
+                    <div class="d-flex justify-content-between">
+                        <h5>Email:</h5>
+                        <h6>
+                            <?php echo $_SESSION["email"]; ?>
+                        </h6>
                     </div>
-                    <div class="d-flex justify-content-between mb-4 pt-3">
-                      <h5 class="text-muted mb-3">Frete:</h5>
-                      <h5 class="text-muted">Grátis</h5>
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        <h5>Nome:</h5>
+                        <h6>
+                            <?php echo $_SESSION["nome"]; ?>
+                        </h6>
                     </div>
-                    <hr class="my-4">
-                   <h5>
-                      <li
-                      class=" mb-3 list-group-item d-flex justify-content-between align-items-center">
-                      <div>
-                       <p class="text-uppercase mb-0"> Valor total</p>
-                        
-                       <p class="text-uppercase mb-0" style="font-size:medium;"> (incluindo frete)</p>
-                        
-                      </div>
-                      <span>R$<?php echo $value->total; ?></span>
-                      </li>
-                    </h5>
-
-                    <button type="button" class="mt-3 btn btn-secondary btn-block btn-lg"
-                      data-mdb-ripple-color="dark">Finalizar pedido</button>
-                    <?php }else{ echo "Não há itens no seu carrinho";} ?>
-                  </div>
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        <h5>Sobrenome:</h5>
+                        <h6>
+                            <?php echo $_SESSION["sobrenome"]; ?>
+                        </h6>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        <h5>CPF:</h5>
+                        <h6>
+                            <?php echo $_SESSION["CPF"]; ?>
+                        </h6>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        <h5>Data de nasc:</h5>
+                        <h6>
+                            <?php echo $_SESSION["nascimento"]; ?>
+                        </h6>
+                    </div>
                 </div>
-              </div>
+                <div class="card-footer">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Alterar dados
+                    </button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#senhamodal">
+                        Alterar senha
+                    </button>
+                </div>
             </div>
-          </div>
+
+            <form action="editar_usuario.php" method="POST">
+                <div class="modal fade" data-bs-backdrop="static" id="exampleModal" tabindex="-1"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Informações endereço</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+
+                                <input type="text" class="d-none" value="<?php echo $_SESSION['id_usuario']; ?>"
+                                    name="id_usuario">
+                                <div class="p-2 d-flex justify-content-between">
+                                    <label class="fs-5 mx-3 ">Email: </label>
+                                    <input type="text" name="email" class="form-control col"
+                                        value="<?php echo $_SESSION['email']; ?>">
+                                </div>
+                                <div class="p-2 d-flex justify-content-between">
+                                    <label class="fs-5 mx-3 ">Nome: </label>
+                                    <input type="text" name="nome" class="form-control col"
+                                        value="<?php echo $_SESSION['nome']; ?>">
+                                </div>
+                                <div class="p-2 d-flex justify-content-between">
+                                    <label class="fs-5 mx-3 ">Sobrenome: </label>
+                                    <input type="text" name="sobrenome" class="form-control col"
+                                        value="<?php echo $_SESSION['sobrenome']; ?>">
+                                </div>
+                                <div class="p-2 d-flex justify-content-between">
+                                    <label class="fs-5 mx-3 ">CPF: </label>
+                                    <input type="text" name="CPF" class="form-control col"
+                                        value="<?php echo $_SESSION['CPF']; ?>" readonly>
+                                </div>
+                                <div class="p-2 d-flex justify-content-between">
+                                    <label class="fs-5 mx-3 ">Data de nascimento: </label>
+                                    <input type="text" name="nascimento" class="form-control col"
+                                        value="<?php echo $_SESSION['nascimento']; ?>" readonly>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Cancelar</button>
+                                <input type="submit" class="btn btn-primary" value="Salvar alterações">
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </div>
-      </div>
-    </div>
-  </section>
- </main>
+        </form>
+
+        <form action="editar_senha.php" method="POST">
+            <div class="modal fade" data-bs-backdrop="static" id="senhamodal" tabindex="-1"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Alterar senha</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="p-2 d-flex justify-content-between">
+                                <label class="fs-5 mx-3 ">Nova senha: </label>
+                                <input type="password" name="senha" class="form-control col" placeholder="********">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar
+                            </button>
+                            <input type="submit" class="btn btn-primary">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
 
 
+
+
+        </div>
+        <footer class=" border-top text-muted bg-light">
+            <div class="coontainer">
+                <div class="row py-3">
+                    <div class="col-12 col-md-4 text-center text-md-left">
+                        &copy; 2022 - WLJ Sports
+                    </div>
+                    <div class="col-12 col-md-4 text-center">
+                        <a href="#" class="text-decoration-none text dark">Politica de privacidade</a>
+                    </div>
+                    <div class="col-12 col-md-4 text-center text-md-right">
+                        <?php 
+                    if(!isset($_SESSION['id']) and (!isset($_SESSION['nome']))){
+                    echo '<a href="#" class="text-decoration-none text dark">Termos de uso</a>';
+                    
+                    }else{
+                    if ($_SESSION['adm_usuario'] != 1){
+                    echo '<a href="#" class="text-decoration-none text dark">Termos de uso</a>';
+                    
+                    }else{
+                    echo '<a href="tela_adm.php" class="text-decoration-none text dark">administrador</a>';
+
+                    }
+                    }
+                ?>
+                    </div>
+                </div>
+            </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <footer class=" border-top text-muted bg-light">
     <div class="coontainer">
       <div class="row py-3">
@@ -404,7 +413,6 @@ include("conexao.php");
   <!-- Popper.js first, then Bootstrap JS -->
  
 
-  
  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
         </script>
@@ -412,23 +420,27 @@ include("conexao.php");
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
         integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
         </script>
-
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
-        <script>
-            var search = document.getElementById('pesquisar');
-    
-            search.addEventListener("keydown", function(event){
-                if (event.key === "Enter")
-                {
-                    searchData();
-                }
-            });
-    
-            function searchData()
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+        crossorigin="anonymous"></script>
+    <script>
+        var search = document.getElementById('pesquisar');
+
+        search.addEventListener("keydown", function(event){
+            if (event.key === "Enter")
             {
-                window.location = 'categoria.php?search='+search.value;
+                searchData();
             }
-        </script>
+        });
+
+        function searchData()
+        {
+            window.location = 'categoria.php?search='+search.value;
+        }
+    </script>
     
 </body>
 </html>

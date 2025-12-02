@@ -1,11 +1,4 @@
-  <?php
-session_start();
-include("conexao.php");
-if($_SESSION['adm_usuario']  !=1){
-    header("location: untitled-1.php");
-    exit;
-}
-?>
+  
 <!doctype html>
 <html lang="pt-br">
 
@@ -19,7 +12,7 @@ if($_SESSION['adm_usuario']  !=1){
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   
 
-  <title>Hello, world!</title>
+  <title>Use Wade!</title>
 
 </head>
 
@@ -28,7 +21,7 @@ if($_SESSION['adm_usuario']  !=1){
     <nav class=" navbar  navbar-expand-lg navbar-dark bg-primary border-bottom shadow-sm ">
         <div class="container-fluid">
             <div class="d-none d-md-block">
-                <a href="Untitled-1.php"> <img class="pt-2" src="" width="150px" height="95px"></a>
+                <a href="Untitled-1.php"> <img class="pt-2" src="img/logo.png" width="150" height="120"></a>
             </div>
     
             <div class="box-search d-flex justify-content-center pt-2 col">
@@ -69,6 +62,7 @@ if($_SESSION['adm_usuario']  !=1){
             
         </div>
     </nav>
+
     
     
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
@@ -193,7 +187,7 @@ if($_SESSION['adm_usuario']  !=1){
     <div class="coontainer">
       <div class="row py-3">
         <div class="col-12 col-md-4 text-center text-md-left">
-          &copy; 2025 -
+          &copy; 2025 - WadeClub
         </div>
         <div class="col-12 col-md-4 text-center">
           <a href="#" class="text-decoration-none text dark">Politica de privacidade</a>
