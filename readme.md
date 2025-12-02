@@ -38,7 +38,7 @@ Para executar o projeto localmente:
 
 ### 1. Home Page e Identidade Visual
 Página inicial com banners promocionais e destaque para a identidade visual renovada da marca.
-![Home Page](image_df9e44.jpg)
+![Home Page](img/Captura de tela 2025-12-02 011540.png)
 
 ### 2. Catálogo e Carrinho de Compras
 Sistema que permite ao usuário adicionar itens ao carrinho, calculando o total da compra.
