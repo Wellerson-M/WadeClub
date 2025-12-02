@@ -11,7 +11,6 @@ include "conexao.php";
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="style.css" />
 
   <link rel="stylesheet" href="storie.css" />
 
@@ -317,39 +316,6 @@ include "conexao.php";
         </form>
       </div>
 
-      <div class="col-12 col-md-7">
-        <div class="d-flex flex-row-reverse justify-content-center justify-content-md-start">
-          <form class="ml-3 d-inline-block">
-            <select class="form-select form-select-sm">
-              <option>Ordernar pelo nome</option>
-              <option>Ordernar pelo menor preço</option>
-              <option>Ordernar pelo maior preço</option>
-            </select>
-          </form>
-          <nav class="d-inline-block">
-            <ul class="pagination pagination-sm my-0">              
-              <li class="page-item disabled">
-                <button class="page-link">1</button>
-              </li>
-              <li class="page-item">
-                <button class="page-link">2</button>
-              </li>
-              <li class="page-item">
-                <button class="page-link">3</button>
-              </li>
-              <li class="page-item">
-                <button class="page-link">4</button>
-              </li>
-              <li class="page-item">
-                <button class="page-link">5</button>
-              </li>
-              <li class="page-item">
-                <button class="page-link">...</button>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </div>
       
 
       </div>

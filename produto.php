@@ -314,8 +314,6 @@ session_start();
                                 <button type="button" class="col btn btn-primary page-link" value="G" id="buttonTamanho2" onclick="carInput2()">G</button>
                                 <button type="button" class="col btn btn-primary page-link" value="GG" id="buttonTamanho3" onclick="carInput3()">GG</button>
                                 <button type="button" class="col btn btn-primary page-link" value="XGG" id="buttonTamanho4" onclick="carInput4()">XGG</button>
-                                <button type="button" class="col btn btn-primary page-link" value="G1" id="buttonTamanho5" onclick="carInput5()">G1</button>
-                                <button type="button" class="col btn btn-primary page-link" value="G2" id="buttonTamanho6" onclick="carInput6()">G2</button>
                             </div> 
                     </div>
 
