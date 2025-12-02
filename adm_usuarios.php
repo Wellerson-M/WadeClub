@@ -23,7 +23,7 @@
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   
 
-  <title>Hello, world!</title>
+  <title>WadeClub</title>
 
 </head>
 
@@ -281,30 +281,30 @@
   
   
   
-  <footer class=" border-top text-muted bg-light">
-    <div class="coontainer">
-      <div class="row py-3">
-        <div class="col-12 col-md-4 text-center text-md-left">
-          &copy; 2025 -
+    <footer class=" border-top text-muted bg-light">
+        <div class="coontainer">
+        <div class="row py-3">
+            <div class="col-12 col-md-4 text-center text-md-left">
+            &copy; 2025 - WadeClub
+            </div>
+            <div class="col-12 col-md-4 text-center">
+            <a href="#" class="text-decoration-none text dark">Politica de privacidade</a>
+            </div> 
+            <div class="col-12 col-md-4 text-center text-md-right">
+            <?php if (!isset($_SESSION["id"]) and !isset($_SESSION["nome"])) {
+                echo '<a href="#" class="text-decoration-none text dark">Termos de uso</a>';
+            } else {
+                if ($_SESSION["adm_usuario"] != 1) {
+                    echo '<a href="#" class="text-decoration-none text dark">Termos de uso</a>';
+                } else {
+                    echo '<a href="tela_adm.php" class="text-decoration-none text dark">administrador</a>';
+                }
+            } ?>
+            </div>
         </div>
-        <div class="col-12 col-md-4 text-center">
-          <a href="#" class="text-decoration-none text dark">Politica de privacidade</a>
-        </div> 
-        <div class="col-12 col-md-4 text-center text-md-right">
-          <?php if (!isset($_SESSION["id"]) and !isset($_SESSION["nome"])) {
-              echo '<a href="#" class="text-decoration-none text dark">Termos de uso</a>';
-          } else {
-              if ($_SESSION["adm_usuario"] != 1) {
-                  echo '<a href="#" class="text-decoration-none text dark">Termos de uso</a>';
-              } else {
-                  echo '<a href="tela_adm.php" class="text-decoration-none text dark">administrador</a>';
-              }
-          } ?>
         </div>
-      </div>
-    </div>
 
-  </footer>
+    </footer>
   
 
   <!-- Optional JavaScript -->

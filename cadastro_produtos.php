@@ -1,33 +1,33 @@
-<?php
-session_start();
-include("conexao.php");
-// Verifique se o usuário está logado, se não, redirecione-o para uma página de login
-if(!isset($_SESSION['id']) and (!isset($_SESSION['nome']))){
-    header("location:login.html");  
-}
-?> 
- 
+  <?php
+    session_start();
+    include("conexao.php");
+    if($_SESSION['adm_usuario']  !=1){
+        header("location: untitled-1.php");
+        exit;
+    }
+
+    
+?>
 
 <!doctype html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-  
-
-  <title>Hello, world!</title>
 
 </head>
 
 <body>
-<!-- rodapé superior -->
-        <nav class=" navbar  navbar-expand-lg navbar-dark bg-primary border-bottom shadow-sm ">
+
+    <!-- rodapé superior -->
+    <nav class=" navbar  navbar-expand-lg navbar-dark bg-primary border-bottom shadow-sm ">
         <div class="container-fluid">
             <div class="d-none d-md-block">
                 <a href="Untitled-1.php"> <img class="pt-2" src="img/logo.png" width="150" height="120"></a>
@@ -72,8 +72,6 @@ if(!isset($_SESSION['id']) and (!isset($_SESSION['nome']))){
         </div>
     </nav>
 
-    
-    
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
         <div class="offcanvas-header">
           <h5 id="offcanvasRightLabel">WadeClub</h5>
@@ -173,245 +171,152 @@ if(!isset($_SESSION['id']) and (!isset($_SESSION['nome']))){
     
         </div>
     </div>
-<!----  ------->
-  
-  
-          <nav aria-label="breadcrumb">
-            <ol class="m-3 breadcrumb">
+
+
+    <!----  ------->
+
+    <header>
+
+    </header>
+    <main>
+
+        <nav aria-label="breadcrumb">
+            <ol class="mx-5 mt-2 breadcrumb">
                 <li class="breadcrumb-item"><a href="Untitled-1.php">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Meus dados</li>
+                <li class="breadcrumb-item"><a href="tela_adm.php">Administrador</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Cadastro produtos</li>
             </ol>
         </nav>
+        <div class="container px-3">
 
-        <div class="container text-center d-flex justify-content-center">
-            <div class="card mx-2 shadow col-5 my-3">
-                <div class="card-header">
-                    <h4>Informações usuário:</h4>
-                </div>
-                <div class="card-body">
-                    <?php
-                        if(!isset($_SESSION['id']) and (!isset($_SESSION['nome']))){
-                            echo "Você não está logado";
-                        }else{
-                            $id_usuario = $_SESSION['id_usuario'];
-                        }
-                            $query_usuario = "SELECT * FROM usuario WHERE id_usuario = :id_usuario  LIMIT 1";  
-                            $result_usuario = $pdo->prepare($query_usuario);
-                            $result_usuario->bindParam(':id_usuario', $_SESSION['id_usuario']);
-
-                            $result_usuario->execute();
-
-                            if(($result_usuario) AND ($result_usuario->rowCount() != 0 )){
-                                $row_usuario = $result_usuario->fetch(PDO::FETCH_ASSOC);
-                                
-                                $value = $row_usuario['CPF'];
-
-                                
-                                $_SESSION['email'] = $row_usuario['email'];
-                                $_SESSION['nome'] = $row_usuario['nome'];
-                                $_SESSION['sobrenome'] = $row_usuario['sobrenome'];
-                                $_SESSION['CPF'] = $value;
-                                $_SESSION['nascimento'] = $row_usuario['nascimento'];
-                        }
-                    ?>
-                    <div class="d-flex justify-content-between">
-                        <h5>Email:</h5>
-                        <h6>
-                            <?php echo $_SESSION["email"]; ?>
-                        </h6>
-                    </div>
-                    <hr>
-                    <div class="d-flex justify-content-between">
-                        <h5>Nome:</h5>
-                        <h6>
-                            <?php echo $_SESSION["nome"]; ?>
-                        </h6>
-                    </div>
-                    <hr>
-                    <div class="d-flex justify-content-between">
-                        <h5>Sobrenome:</h5>
-                        <h6>
-                            <?php echo $_SESSION["sobrenome"]; ?>
-                        </h6>
-                    </div>
-                    <hr>
-                    <div class="d-flex justify-content-between">
-                        <h5>CPF:</h5>
-                        <h6>
-                            <?php echo $_SESSION["CPF"]; ?>
-                        </h6>
-                    </div>
-                    <hr>
-                    <div class="d-flex justify-content-between">
-                        <h5>Data de nasc:</h5>
-                        <h6>
-                            <?php echo $_SESSION["nascimento"]; ?>
-                        </h6>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Alterar dados
+            <div class=" card shadow-lg">
+                <a href="tela_adm.php" class="p-1 " style="width: 110px;">
+                    <button type="button" class="btn btn-outline-primary ">
+                        Voltar
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                            class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z" />
+                        </svg>
                     </button>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#senhamodal">
-                        Alterar senha
-                    </button>
-                </div>
+                </a>
+                <form action="inserir_produtos.php" method="post" enctype="multipart/form-data">
+                    <div class="row card-body py-2 px-5">
+
+                        <h1 class="fs-4 card-title fw-bold mb-4">Cadastrar Produtos</h1>
+                        <div class="col-6 card shadow " style="width: 400px; height: 300px">
+                            <div class="card-body">
+                                <div class="card-body">
+                                    <img name="img" style="width: 100%; height: auto; display: block;"
+                                        class="rounded mx-auto d-block">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-5">
+                            <div class="mt-3">
+                                <label for="" class="c-flex form-label fs-5">Nome do produto<span
+                                        style="color:red;">*</span></label>
+                                <input type="text" class="form-control" name="nome_produto" id="nome_produto"
+                                    aria-describedby="helpId" placeholder="" required>
+                            </div>
+
+                            <label for="" class="mt-1 form-label fs-5">Categoria<span
+                                    style="color:red;">*</span></label>
+                            <select class="mb-3 form-select" name="categoria" id="categoria"
+                                aria-label="Default select example" required>
+                                <option selected>Selecione a categoria</option>
+                                <option value="camiseta">Camiseta</option>
+                                <option value="Calcas">Calças</option>
+                                <option value="moletom">Blusa moletom</option>
+                                <option value="bone">Boné</option>
+
+                            </select>
+
+                            <label for="" class=" form-label fs-5">Marca<span style="color:red;">*</span></label>
+                            <select class="mb-3 form-select" name="marca" id="categoria"
+                                aria-label="Default select example" required>
+                                <option selected>Selecione a Marca</option>
+                                <option value="nike">Nike</option>
+                                <option value="Thug Nine">Thug Nine</option>
+                                <option value="Chronic">Chronic</option>
+                                <option value="High">High</option>
+                                <option value="WADE CLUB">WADE CLUB</option>
+
+
+                            </select>
+
+                            <div class=" mt-3">
+                                <label for="" class="form-label fs-5">Preço<span style="color:red;">*</span></label>
+                                <input class=" form-control" type="number" step="0.01" min="0" name="preco" id="preco"
+                                    placeholder="R$" required>
+                            </div>
+                            <div class="mt-3">
+                                <label for="" class="form-label fs-5">Adicionar imagem do produto</label>
+                                <input class="form-control" type="file" name="imagem" id="imagem" multiple
+                                    accept="image/*" onchange="previewImagem()">
+                            </div>
+
+                        </div>
+                        <input class="mt-3 btn btn-outline-success" name="submit" type="submit"
+                            value="Cadastrar produto">
+                    </div>
+                </form>
             </div>
 
-            <form action="editar_usuario.php" method="POST">
-                <div class="modal fade" data-bs-backdrop="static" id="exampleModal" tabindex="-1"
-                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Informações endereço</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-
-                                <input type="text" class="d-none" value="<?php echo $_SESSION['id_usuario']; ?>"
-                                    name="id_usuario">
-                                <div class="p-2 d-flex justify-content-between">
-                                    <label class="fs-5 mx-3 ">Email: </label>
-                                    <input type="text" name="email" class="form-control col"
-                                        value="<?php echo $_SESSION['email']; ?>">
-                                </div>
-                                <div class="p-2 d-flex justify-content-between">
-                                    <label class="fs-5 mx-3 ">Nome: </label>
-                                    <input type="text" name="nome" class="form-control col"
-                                        value="<?php echo $_SESSION['nome']; ?>">
-                                </div>
-                                <div class="p-2 d-flex justify-content-between">
-                                    <label class="fs-5 mx-3 ">Sobrenome: </label>
-                                    <input type="text" name="sobrenome" class="form-control col"
-                                        value="<?php echo $_SESSION['sobrenome']; ?>">
-                                </div>
-                                <div class="p-2 d-flex justify-content-between">
-                                    <label class="fs-5 mx-3 ">CPF: </label>
-                                    <input type="text" name="CPF" class="form-control col"
-                                        value="<?php echo $_SESSION['CPF']; ?>" readonly>
-                                </div>
-                                <div class="p-2 d-flex justify-content-between">
-                                    <label class="fs-5 mx-3 ">Data de nascimento: </label>
-                                    <input type="text" name="nascimento" class="form-control col"
-                                        value="<?php echo $_SESSION['nascimento']; ?>" readonly>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary"
-                                    data-bs-dismiss="modal">Cancelar</button>
-                                <input type="submit" class="btn btn-primary" value="Salvar alterações">
-                            </div>
-                        </div>
-                    </div>
-                </div>
         </div>
-        </form>
-
-        <form action="editar_senha.php" method="POST">
-            <div class="modal fade" data-bs-backdrop="static" id="senhamodal" tabindex="-1"
-                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Alterar senha</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="p-2 d-flex justify-content-between">
-                                <label class="fs-5 mx-3 ">Nova senha: </label>
-                                <input type="password" name="senha" class="form-control col" placeholder="********">
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar
-                            </button>
-                            <input type="submit" class="btn btn-primary">
-                        </div>
-                    </div>
-                </div>
+    </main>
+    <footer class=" border-top text-muted bg-light">
+        <div class="coontainer">
+        <div class="row py-3">
+            <div class="col-12 col-md-4 text-center text-md-left">
+            &copy; 2025 - WadeClub
             </div>
-        </form>
-
-
-
-
+            <div class="col-12 col-md-4 text-center">
+            <a href="#" class="text-decoration-none text dark">Politica de privacidade</a>
+            </div> 
+            <div class="col-12 col-md-4 text-center text-md-right">
+            <?php if (!isset($_SESSION["id"]) and !isset($_SESSION["nome"])) {
+                echo '<a href="#" class="text-decoration-none text dark">Termos de uso</a>';
+            } else {
+                if ($_SESSION["adm_usuario"] != 1) {
+                    echo '<a href="#" class="text-decoration-none text dark">Termos de uso</a>';
+                } else {
+                    echo '<a href="tela_adm.php" class="text-decoration-none text dark">administrador</a>';
+                }
+            } ?>
+            </div>
         </div>
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <footer class=" border-top text-muted bg-light">
-    <div class="coontainer">
-      <div class="row py-3">
-        <div class="col-12 col-md-4 text-center text-md-left">
-          &copy; 2025 - WadeClub
         </div>
-        <div class="col-12 col-md-4 text-center">
-          <a href="#" class="text-decoration-none text dark">Politica de privacidade</a>
-        </div> 
-        <div class="col-12 col-md-4 text-center text-md-right">
-          <?php if (!isset($_SESSION["id"]) and !isset($_SESSION["nome"])) {
-              echo '<a href="#" class="text-decoration-none text dark">Termos de uso</a>';
-          } else {
-              if ($_SESSION["adm_usuario"] != 1) {
-                  echo '<a href="#" class="text-decoration-none text dark">Termos de uso</a>';
-              } else {
-                  echo '<a href="tela_adm.php" class="text-decoration-none text dark">administrador</a>';
-              }
-          } ?>
-        </div>
-      </div>
-    </div>
 
-  </footer>
-  
+    </footer>
 
-  <!-- Optional JavaScript -->
-  <!-- Popper.js first, then Bootstrap JS -->
- 
-
- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
         </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
         integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
         </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
-        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
-        crossorigin="anonymous"></script>
     <script>
-        var search = document.getElementById('pesquisar');
+        function previewImagem() {
+            var imagem = document.querySelector('input[name=imagem]').files[0];
+            var preview = document.querySelector('img[name=img]');
 
-        search.addEventListener("keydown", function(event){
-            if (event.key === "Enter")
-            {
-                searchData();
+
+            var reader = new FileReader();
+
+            reader.onloadend = function () {
+                preview.src = reader.result;
             }
-        });
-
-        function searchData()
-        {
-            window.location = 'categoria.php?search='+search.value;
+            if (imagem) {
+                reader.readAsDataURL(imagem);
+            } else {
+                preview.src = "";
+            }
         }
     </script>
-    
+
 </body>
+
 </html>

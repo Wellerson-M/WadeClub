@@ -20,7 +20,7 @@ include "conexao.php";
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   
 
-  <title>Use Wade!</title>
+  <title>Use Wade</title>
 
 
     <style>
@@ -343,40 +343,49 @@ include "conexao.php";
             foreach ($listaItens as $linha) {
                 $id_produto = $linha["id_produto"]; ?>
         
-        <div class="p-3 col-xl-3 col-lg-4 col-md-4 col-sm-6 d-flex align-items-stretche">
-        
-          <div class="zoom card shadow text-center bg-light">
-          
-            <a href="inserir_favoritos.php?id_produto=<?php echo $linha[
-                "id_produto"
-            ]; ?>" class="position-absolute right-0 p-2 text-danger">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="" class="bi bi-heart" viewBox="0 0 16 16">
-                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-              </svg>
-            </a>
-          <?php
-                //}
-                ?>
-            <a style="text-decoration:none;" href="Produto.php?id_produto=<?php echo $linha[
-                "id_produto"
-            ]; ?>">
-            <?php echo '<div class=""><img height="100%" width="100%"  class="border border-white card-img-top" src="' .
-                $linha["imagem"] .
-                '"></div>'; ?>
-            
-            <div class="text-start card-header">
-            <h5 class="text-muted"><?php echo $linha["nome_produto"]; ?></h5>
-            
-            <h6 class="text-success"> FRETE GRATIS</h6>
-            </a> 
-            <h4 class="card-title"><?php echo "R$" .
-                $linha["preco"] .
-                ",00"; ?></h4>
-            </div>
-          </div> 
-                           
+<div class="p-2 col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-4">
+    <div class="card border-0 shadow text-white h-100 overflow-hidden position-relative zoom" style="border-radius: 16px;">
+
+        <img src="<?php echo $linha['imagem']; ?>" 
+             class="card-img h-100" 
+             alt="<?php echo $linha['nome_produto']; ?>"
+             style="object-fit: cover; min-height: 400px; filter: brightness(0.9);">
+
+        <div class="position-absolute bottom-0 start-0 w-100" 
+             style="height: 70%; background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 50%, transparent 100%);">
         </div>
-        
+
+        <a href="inserir_favoritos.php?id_produto=<?php echo $linha['id_produto']; ?>" 
+           class="position-absolute p-2 bg-white bg-opacity-25 rounded-circle backdrop-blur" 
+           style="top: 15px; right: 15px; z-index: 20; transition: 0.3s;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#fff" class="bi bi-heart-fill" viewBox="0 0 16 16" style="filter: drop-shadow(0px 0px 2px rgba(0,0,0,0.5));">
+                <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+            </svg>
+        </a>
+
+        <a href="Produto.php?id_produto=<?php echo $linha['id_produto']; ?>" class="stretched-link"></a>
+
+        <div class="card-img-overlay d-flex flex-column justify-content-end p-4" style="pointer-events: none;">
+            
+            <div class="mb-2">
+                <span class="badge bg-success border border-success text-uppercase" style="letter-spacing: 1px;">Frete Grátis</span>
+            </div>
+
+            <h5 class="card-title fw-bold text-white mb-1" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">
+                <?php echo $linha["nome_produto"]; ?>
+            </h5>
+
+            <h3 class="fw-bold text-white mb-0" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">
+                R$ <?php echo number_format($linha["preco"], 2, ',', '.'); ?>
+            </h3>
+            
+            <div class="mt-3 opacity-75" style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px;">
+                Ver detalhes <i class="bi bi-arrow-right ms-1"></i>
+            </div>
+        </div>
+
+    </div>
+</div>        
         <?php
             }
         }

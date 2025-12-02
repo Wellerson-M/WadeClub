@@ -271,13 +271,13 @@ session_start();
                             
                                         echo "<h3>".$linha['nome_produto']."</h3>";
                                         if (($linha['categoria'] !=2)  AND ($linha['categoria'] !=3)) {
-                                            echo "Campo";
+                                            echo "";
                                         }
                                         if (($linha['categoria'] !=1)  AND ($linha['categoria'] !=3)) {
-                                            echo "Futsal";
+                                            echo "";
                                         }
                                         if (($linha['categoria'] !=1)  AND ($linha['categoria'] !=2)) {
-                                            echo "Society";
+                                            echo "";
                                         }
 
                                     }

@@ -10,15 +10,20 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-  
+   <script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+    </script>
 
-  <title>Hello, world!</title>
+  <title>WadeClub</title>
 
 </head>
 
 <body>
 <!-- rodapé superior -->
-        <nav class=" navbar  navbar-expand-lg navbar-dark bg-primary border-bottom shadow-sm ">
+    <nav class=" navbar  navbar-expand-lg navbar-dark bg-primary border-bottom shadow-sm ">
         <div class="container-fluid">
             <div class="d-none d-md-block">
                 <a href="Untitled-1.php"> <img class="pt-2" src="img/logo.png" width="150" height="120"></a>

@@ -25,7 +25,7 @@ if($_SESSION['adm_usuario']  !=1){
 
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
 <!-- rodapé superior -->
     <nav class=" navbar  navbar-expand-lg navbar-dark bg-primary border-bottom shadow-sm ">
         <div class="container-fluid">
@@ -183,7 +183,7 @@ if($_SESSION['adm_usuario']  !=1){
 
 
   
-    <div class="container text-center">
+    <div class="container text-center ">
         <h3 class="text-center">BEM VINDO ADM!</h3>
 
         <a href="adm_usuarios.php"> 
@@ -195,7 +195,7 @@ if($_SESSION['adm_usuario']  !=1){
         </a>
 
         <div>
-            <a href="cadastro_produtos.html"> 
+            <a href="cadastro_produtos.php"> 
                 <button type="button" class="mt-2 btn btn-primary">Inserir produtos</button>
             </a>   
             <a href="adm_produtos.php"> 
@@ -210,30 +210,30 @@ if($_SESSION['adm_usuario']  !=1){
   
   
   
-  <footer class=" border-top text-muted bg-light">
-    <div class="coontainer">
-      <div class="row py-3">
-        <div class="col-12 col-md-4 text-center text-md-left">
-          &copy; 2025 - WadeClub
+    <footer class=" mt-auto border-top text-muted bg-light ">
+        <div class="coontainer">
+        <div class="row py-3">
+            <div class="col-12 col-md-4 text-center text-md-left">
+            &copy; 2025 - WadeClub
+            </div>
+            <div class="col-12 col-md-4 text-center">
+            <a href="#" class="text-decoration-none text dark">Politica de privacidade</a>
+            </div> 
+            <div class="col-12 col-md-4 text-center text-md-right">
+            <?php if (!isset($_SESSION["id"]) and !isset($_SESSION["nome"])) {
+                echo '<a href="#" class="text-decoration-none text dark">Termos de uso</a>';
+            } else {
+                if ($_SESSION["adm_usuario"] != 1) {
+                    echo '<a href="#" class="text-decoration-none text dark">Termos de uso</a>';
+                } else {
+                    echo '<a href="tela_adm.php" class="text-decoration-none text dark">administrador</a>';
+                }
+            } ?>
+            </div>
         </div>
-        <div class="col-12 col-md-4 text-center">
-          <a href="#" class="text-decoration-none text dark">Politica de privacidade</a>
-        </div> 
-        <div class="col-12 col-md-4 text-center text-md-right">
-          <?php if (!isset($_SESSION["id"]) and !isset($_SESSION["nome"])) {
-              echo '<a href="#" class="text-decoration-none text dark">Termos de uso</a>';
-          } else {
-              if ($_SESSION["adm_usuario"] != 1) {
-                  echo '<a href="#" class="text-decoration-none text dark">Termos de uso</a>';
-              } else {
-                  echo '<a href="tela_adm.php" class="text-decoration-none text dark">administrador</a>';
-              }
-          } ?>
         </div>
-      </div>
-    </div>
 
-  </footer>
+    </footer>
   
 
   <!-- Optional JavaScript -->

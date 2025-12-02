@@ -20,7 +20,7 @@
 
     $comando->execute();
 
-    header("Location:cadastro_produtos.html");
+    header("Location:cadastro_produtos.php");
 
     //Fecha declaração e conexão.
     unset($comando);
