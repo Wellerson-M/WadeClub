@@ -38,16 +38,18 @@ Para executar o projeto localmente:
 
 ### 1. Home Page e Identidade Visual
 Página inicial com banners promocionais e destaque para a identidade visual renovada da marca.
-![Home Page](img/Captura de tela 2025-12-02 011540.png)
+<img width="1897" height="847" alt="Image" src="https://github.com/user-attachments/assets/2463c9a5-f8c6-435f-b19d-c99aa4d7c1c8" />
+<img width="1870" height="843" alt="Image" src="https://github.com/user-attachments/assets/34728071-5e12-4262-a581-35dd9d087d60" />
 
 ### 2. Catálogo e Carrinho de Compras
 Sistema que permite ao usuário adicionar itens ao carrinho, calculando o total da compra.
-![Carrinho](image_df9ea2.png)
+<img width="1909" height="846" alt="Image" src="https://github.com/user-attachments/assets/da9d29ac-7e56-4532-a54e-d5c5cc1eb4a4" />
 
 ### 3. Painel do Administrador (CRUD)
 Área restrita onde o administrador pode visualizar, editar e excluir produtos e usuários.
-![Painel Admin](image_df9ec1.jpg)
+<img width="1900" height="851" alt="Image" src="https://github.com/user-attachments/assets/cd982988-8a15-43dc-83a4-1e73aa766127" />
+<img width="1856" height="806" alt="Image" src="https://github.com/user-attachments/assets/fc9c08a3-569e-40c0-b167-e65f1f0a8b64" />
 
 ### 4. Cadastro de Produtos
 Formulário para inserção de novos itens no banco de dados, incluindo upload de imagens e definição de categorias.
-![Cadastro de Produtos](image_e0f3a2.png)
+<img width="1702" height="822" alt="Image" src="https://github.com/user-attachments/assets/f509809b-82cd-45ef-b405-fa49e35636e5" />
