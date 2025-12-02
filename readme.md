@@ -29,7 +29,7 @@ Para executar o projeto localmente:
 3.  **Banco de Dados:** MySQL / MariaDB.
 4.  **Configuração:**
     * Clone o repositório em `htdocs` (XAMPP) ou `www` (WAMP).
-    * Importe o arquivo `banco_de_dados.sql` (fornecido na raiz) no seu gerenciador MySQL (phpMyAdmin).
+    * Importe o arquivo `wadeclub.sql` (fornecido na raiz) no seu gerenciador MySQL (phpMyAdmin).
     * Configure a conexão no arquivo `conexao.php`.
 
 ---
