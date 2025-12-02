@@ -13,40 +13,41 @@
 ---
 
 ## 🎯 Justificativa
-O projeto foi desenvolvido para a **Wade Club**, uma loja de streetwear que operava suas vendas exclusivamente via Instagram. A ausência de um sistema centralizado gerava problemas de controle de estoque e sobrecarga no atendimento ao cliente. A solução web foi criada para automatizar o fluxo de vendas, profissionalizar a gestão de pedidos e oferecer autonomia ao consumidor final.
+O projeto foi desenvolvido para a **Wade Club**, uma loja de streetwear local. A entidade beneficiada enfrentava dificuldades de escalabilidade, pois realizava 100% das suas vendas de forma manual através de mensagens diretas (DM) no Instagram. Isso gerava falta de controle de estoque, demora no atendimento e perda de vendas. O sistema web foi criado para automatizar esse processo, centralizar o catálogo e oferecer gestão administrativa.
 
 ## 💻 Descrição do App
-O **Wade Club E-commerce** é uma aplicação web Full Stack desenvolvida com foco em usabilidade e segurança.
+O **Wade Club E-commerce** é uma aplicação web Full Stack.
+* **Front-end:** Interface responsiva focada na experiência do usuário (UX) com identidade visual "street".
+* **Back-end:** Sistema de autenticação, gestão de sessão e CRUD completo.
+* **Funcionalidades do Usuário:** Cadastro/Login, busca de produtos, carrinho de compras e visualização de detalhes.
+* **Funcionalidades do Admin:** Painel administrativo para cadastro de produtos (upload de imagens), edição de estoque e gestão de usuários.
 
-**Principais Funcionalidades:**
-* **Autenticação e Segurança:** Sistema de login com distinção de níveis de acesso. Rotas administrativas (painel de gestão) são protegidas e inacessíveis a usuários comuns. O acesso ao carrinho de compras exige login ativo, redirecionando visitantes não autenticados para a tela de entrada.
-* **Integração via API:** O formulário de cadastro consome uma API externa para preenchimento automático de endereço (Rua, Bairro, Cidade, Estado) ao digitar o CEP, otimizando a experiência do usuário (UX).
-* **Gestão de Produtos (CRUD):** O administrador possui controle total para criar, ler, atualizar e excluir produtos e categorias.
-* **Gestão de Usuários:** O administrador pode visualizar a lista de clientes cadastrados e seus respectivos endereços de entrega.
-
-## ⚙️ Ambiente de Desenvolvimento
-Para executar o projeto:
-1.  **Servidor:** XAMPP ou WAMP (Apache + MySQL).
-2.  **Linguagem:** PHP 7.4+.
-3.  **Banco de Dados:** Importar `banco_de_dados.sql` (disponível na raiz).
-4.  **Configuração:** Ajustar credenciais em `conexao.php`.
+## ⚙️ Ambiente de Desenvolvimento (Requisitos)
+Para executar o projeto localmente:
+1.  **Servidor Web:** Apache (Recomendado uso do XAMPP ou WAMP).
+2.  **Linguagem:** PHP 7.4 ou superior.
+3.  **Banco de Dados:** MySQL / MariaDB.
+4.  **Configuração:**
+    * Clone o repositório em `htdocs` (XAMPP) ou `www` (WAMP).
+    * Importe o arquivo `banco_de_dados.sql` (fornecido na raiz) no seu gerenciador MySQL (phpMyAdmin).
+    * Configure a conexão no arquivo `conexao.php`.
 
 ---
 
 ## 📸 Telas do Sistema
 
-### 1. Home e Identidade Visual
-Página inicial responsiva com banners promocionais e listagem de produtos.
+### 1. Home Page e Identidade Visual
+Página inicial com banners promocionais e destaque para a identidade visual renovada da marca.
 ![Home Page](image_df9e44.jpg)
 
-### 2. Cadastro Inteligente
-Formulário com busca automática de CEP para agilizar o registro.
-![Cadastro](image_df9e81.png)
-
-### 3. Painel Administrativo (Gestão de Usuários)
-Área restrita para controle de base de clientes e endereços.
-![Lista Usuários](image_df9e83.jpg)
-
-### 4. Carrinho de Compras
-Sistema de checkout que calcula totais automaticamente (acesso restrito a logados).
+### 2. Catálogo e Carrinho de Compras
+Sistema que permite ao usuário adicionar itens ao carrinho, calculando o total da compra.
 ![Carrinho](image_df9ea2.png)
+
+### 3. Painel do Administrador (CRUD)
+Área restrita onde o administrador pode visualizar, editar e excluir produtos e usuários.
+![Painel Admin](image_df9ec1.jpg)
+
+### 4. Cadastro de Produtos
+Formulário para inserção de novos itens no banco de dados, incluindo upload de imagens e definição de categorias.
+![Cadastro de Produtos](image_e0f3a2.png)
