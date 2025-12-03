@@ -201,66 +201,81 @@
                     </button>
                 </a>
                 <form action="inserir_produtos.php" method="post" enctype="multipart/form-data">
-                    <div class="row card-body py-2 px-5">
+                <div class="row card-body py-2 px-5">
 
-                        <h1 class="fs-4 card-title fw-bold mb-4">Cadastrar Produtos</h1>
-                        <div class="col-6 card shadow " style="width: 400px; height: 300px">
-                            <div class="card-body">
-                                <div class="card-body">
-                                    <img name="img" style="width: 100%; height: auto; display: block;"
-                                        class="rounded mx-auto d-block">
-                                </div>
+                    <h1 class="fs-4 card-title fw-bold mb-4">Cadastrar Produtos</h1>
+
+                    <!-- COLUNA DA ESQUERDA: PREVIEW -->
+                    <div class="col-md-6 d-flex justify-content-center">
+                        <div class="card shadow" style="width: 400px; height: 350px;">
+                            <div class="card-header text-center text-muted">
+                                Pré-visualização das imagens
+                            </div>
+                            <!-- AQUI AS FOTOS VÃO APARECER -->
+                            <div id="preview-container" class="card-body d-flex flex-wrap justify-content-center align-items-center" style="overflow-y: auto; gap: 10px;">
+                                <span class="text-muted small">Nenhuma imagem selecionada</span>
                             </div>
                         </div>
-                        <div class="col-5">
-                            <div class="mt-3">
-                                <label for="" class="c-flex form-label fs-5">Nome do produto<span
-                                        style="color:red;">*</span></label>
-                                <input type="text" class="form-control" name="nome_produto" id="nome_produto"
-                                    aria-describedby="helpId" placeholder="" required>
-                            </div>
+                    </div>
 
-                            <label for="" class="mt-1 form-label fs-5">Categoria<span
-                                    style="color:red;">*</span></label>
-                            <select class="mb-3 form-select" name="categoria" id="categoria"
-                                aria-label="Default select example" required>
-                                <option selected>Selecione a categoria</option>
+                    <!-- COLUNA DA DIREITA: CAMPOS -->
+                    <div class="col-md-6">
+                        
+                        <!-- NOME -->
+                        <div class="mt-2">
+                            <label for="nome_produto" class="form-label fs-5">Nome do produto <span style="color:red;">*</span></label>
+                            <input type="text" class="form-control" name="nome_produto" id="nome_produto" required>
+                        </div>
+
+                        <!-- CATEGORIA -->
+                        <div class="mt-3">
+                            <label for="categoria" class="form-label fs-5">Categoria <span style="color:red;">*</span></label>
+                            <select class="form-select" name="categoria" id="categoria" required>
+                                <option selected disabled value="">Selecione a categoria</option>
                                 <option value="camiseta">Camiseta</option>
                                 <option value="Calcas">Calças</option>
                                 <option value="moletom">Blusa moletom</option>
                                 <option value="bone">Boné</option>
-
                             </select>
+                        </div>
 
-                            <label for="" class=" form-label fs-5">Marca<span style="color:red;">*</span></label>
-                            <select class="mb-3 form-select" name="marca" id="categoria"
-                                aria-label="Default select example" required>
-                                <option selected>Selecione a Marca</option>
+                        <!-- MARCA -->
+                        <div class="mt-3">
+                            <label for="marca" class="form-label fs-5">Marca <span style="color:red;">*</span></label>
+                            <select class="form-select" name="marca" id="marca" required>
+                                <option selected disabled value="">Selecione a Marca</option>
                                 <option value="nike">Nike</option>
                                 <option value="Thug Nine">Thug Nine</option>
                                 <option value="Chronic">Chronic</option>
                                 <option value="High">High</option>
                                 <option value="WADE CLUB">WADE CLUB</option>
-
-
                             </select>
-
-                            <div class=" mt-3">
-                                <label for="" class="form-label fs-5">Preço<span style="color:red;">*</span></label>
-                                <input class=" form-control" type="number" step="0.01" min="0" name="preco" id="preco"
-                                    placeholder="R$" required>
-                            </div>
-                            <div class="mt-3">
-                                <label for="" class="form-label fs-5">Adicionar imagem do produto</label>
-                                <input class="form-control" type="file" name="imagem" id="imagem" multiple
-                                    accept="image/*" onchange="previewImagem()">
-                            </div>
-
                         </div>
-                        <input class="mt-3 btn btn-outline-success" name="submit" type="submit"
-                            value="Cadastrar produto">
+
+                        <!-- PREÇO -->
+                        <div class="mt-3">
+                            <label for="preco" class="form-label fs-5">Preço <span style="color:red;">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text">R$</span>
+                                <input class="form-control" type="number" step="0.01" min="0" name="preco" id="preco" placeholder="0,00" required>
+                            </div>
+                        </div>
+
+                        <!-- IMAGEM (MULTIPLE) -->
+                        <div class="mt-3">
+                            <label for="imagem" class="form-label fs-5">Adicionar imagens <span class="fs-6 text-muted">(Segure Ctrl para selecionar várias)</span></label>
+                            <input class="form-control" type="file" name="imagem[]" id="imagem" multiple accept="image/*" onchange="previewImagem()" required>
+                        </div>
+
                     </div>
-                </form>
+
+                    <!-- BOTÃO SUBMIT -->
+                    <div class="col-12 mt-4 text-end">
+                        <input class="btn btn-success btn-lg px-5" name="submit" type="submit" value="Cadastrar produto">
+                    </div>
+
+                </div>
+            </form>
             </div>
 
         </div>
@@ -298,21 +313,38 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
         integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
         </script>
+    <!-- SCRIPT DE PREVIEW -->
     <script>
         function previewImagem() {
-            var imagem = document.querySelector('input[name=imagem]').files[0];
-            var preview = document.querySelector('img[name=img]');
+            var input = document.getElementById('imagem');
+            var previewContainer = document.getElementById('preview-container');
+            
+            // Limpa o conteúdo atual (texto ou imagens antigas)
+            previewContainer.innerHTML = '';
 
-
-            var reader = new FileReader();
-
-            reader.onloadend = function () {
-                preview.src = reader.result;
-            }
-            if (imagem) {
-                reader.readAsDataURL(imagem);
+            if (input.files && input.files.length > 0) {
+                // Loop por todos os arquivos selecionados
+                for (var i = 0; i < input.files.length; i++) {
+                    var reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        var img = document.createElement('img');
+                        img.src = e.target.result;
+                        // Estilo da miniatura dentro do card
+                        img.style.width = '100px';
+                        img.style.height = '100px';
+                        img.style.objectFit = 'contain';
+                        img.style.border = '1px solid #ddd';
+                        img.style.borderRadius = '4px';
+                        img.style.padding = '2px';
+                        
+                        previewContainer.appendChild(img);
+                    }
+                    
+                    reader.readAsDataURL(input.files[i]);
+                }
             } else {
-                preview.src = "";
+                previewContainer.innerHTML = '<span class="text-muted small">Nenhuma imagem selecionada</span>';
             }
         }
     </script>
