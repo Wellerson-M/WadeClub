@@ -695,15 +695,29 @@ include "conexao.php";
                     }
                 });
             }
-            // Troca de imagem principal ao clicar nas miniaturas
+            // Galeria: hover faz preview temporário, click seleciona definitivamente
             const thumbs = document.querySelectorAll('.thumb');
             const mainImage = document.getElementById('mainImage');
+            let selectedSrc = mainImage ? mainImage.src : '';
+
             thumbs.forEach(btn => {
+                const src = btn.getAttribute('data-image');
+
+                // Preview ao passar o mouse
+                btn.addEventListener('mouseenter', () => {
+                    if (mainImage && src) mainImage.src = src;
+                });
+
+                // Volta para a selecionada ao sair com o mouse
+                btn.addEventListener('mouseleave', () => {
+                    if (mainImage && selectedSrc) mainImage.src = selectedSrc;
+                });
+
+                // Click seleciona permanentemente
                 btn.addEventListener('click', () => {
-                    const src = btn.getAttribute('data-image');
-                    if (src && mainImage) {
-                        mainImage.src = src;
-                        // atualiza estado ativo
+                    if (mainImage && src) {
+                        selectedSrc = src;
+                        mainImage.src = selectedSrc;
                         thumbs.forEach(b => b.classList.remove('active'));
                         btn.classList.add('active');
                     }

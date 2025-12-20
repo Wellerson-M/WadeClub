@@ -473,20 +473,20 @@ include("conexao.php");
     <main>
         <div class="container">
 
-            <!-- SEÇÃO DE FILTROS -->
-            <div class="row mb-5">
-                <div class="col-12">
-                    <div class="bg-white p-4 rounded-3 shadow-sm">
-                        <h5 class="text-uppercase mb-4" style="font-family: 'Oswald', sans-serif; letter-spacing: 1px;">FILTRAR PRODUTOS</h5>
-                        
+            <!-- LAYOUT: FILTROS À ESQUERDA, PRODUTOS À DIREITA -->
+            <div class="row">
+                <!-- Sidebar de filtros -->
+                <aside class="col-lg-3 mb-4 mb-lg-0">
+                    <div class="bg-white p-4 rounded-3 shadow-sm sticky-top" style="top: 110px;">
+                        <h5 class="text-uppercase mb-4" style="font-family: 'Oswald', sans-serif; letter-spacing: 1px;">Filtrar produtos</h5>
+
                         <form method="GET" action="categoria.php" class="row g-3">
                             <!-- Filtro de Categoria -->
-                            <div class="col-md-6">
+                            <div class="col-12">
                                 <label for="filterCategoria" class="form-label fw-bold">Categoria</label>
                                 <select class="form-select form-select-lg" id="filterCategoria" name="cat">
                                     <option value="">Todas as Categorias</option>
                                     <?php
-                                    // Buscar categorias únicas
                                     $categorias = $pdo->query("SELECT DISTINCT categoria FROM produtos ORDER BY categoria ASC");
                                     while ($cat = $categorias->fetch(PDO::FETCH_ASSOC)) {
                                         $selected = (isset($_GET['cat']) && $_GET['cat'] == $cat['categoria']) ? 'selected' : '';
@@ -497,12 +497,11 @@ include("conexao.php");
                             </div>
 
                             <!-- Filtro de Marca -->
-                            <div class="col-md-6">
+                            <div class="col-12">
                                 <label for="filterMarca" class="form-label fw-bold">Marca</label>
                                 <select class="form-select form-select-lg" id="filterMarca" name="marca">
                                     <option value="">Todas as Marcas</option>
                                     <?php
-                                    // Buscar marcas únicas
                                     $marcas = $pdo->query("SELECT DISTINCT marca FROM produtos ORDER BY marca ASC");
                                     while ($marca_row = $marcas->fetch(PDO::FETCH_ASSOC)) {
                                         $selected = (isset($_GET['marca']) && $_GET['marca'] == $marca_row['marca']) ? 'selected' : '';
@@ -512,21 +511,23 @@ include("conexao.php");
                                 </select>
                             </div>
 
-                            <!-- Botão de Filtro -->
+                            <!-- Botões -->
                             <div class="col-12">
                                 <button type="submit" class="btn btn-dark w-100 py-2 text-uppercase fw-bold" style="font-family: 'Oswald', sans-serif; letter-spacing: 0.5px;">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel me-2" viewBox="0 0 16 16">
                                         <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.5.5h-4a.5.5 0 0 1-.5-.5V8.692L1.128 3.334A.5.5 0 0 1 1.5 3V1.5Z"/>
-                                    </svg> Aplicar Filtro
+                                    </svg> Aplicar filtro
                                 </button>
                                 <?php if(isset($_GET['cat']) || isset($_GET['marca']) || isset($_GET['search'])): ?>
-                                    <a href="categoria.php" class="btn btn-outline-secondary w-100 py-2 text-uppercase fw-bold mt-2" style="font-family: 'Oswald', sans-serif; letter-spacing: 0.5px;">Limpar Filtros</a>
+                                    <a href="categoria.php" class="btn btn-outline-secondary w-100 py-2 text-uppercase fw-bold mt-2" style="font-family: 'Oswald', sans-serif; letter-spacing: 0.5px;">Limpar filtros</a>
                                 <?php endif; ?>
                             </div>
                         </form>
                     </div>
-                </div>
-            </div>
+                </aside>
+
+                <!-- Área de produtos -->
+                <section class="col-lg-9">
 
             <!-- SEÇÃO DE PRODUTOS -->
             <div class="row g-4">
@@ -597,6 +598,8 @@ include("conexao.php");
                     echo '<div class="col-12 text-center py-5"><p class="text-muted fs-5">Nenhum produto encontrado.</p></div>';
                 }
                 ?>
+            </div>
+                </section>
             </div>
 
         </div>
