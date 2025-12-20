@@ -12,98 +12,268 @@ if(!isset($_SESSION['id']) and (!isset($_SESSION['nome']))){
 <html lang="pt-br">
 
 <head>
-  <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   
+  <style>
+    :root {
+      --wade-dark: #212529;
+      --wade-bg: #ececec;
+    }
 
-  <title>Hello, world!</title>
+    * {
+      font-family: 'Inter', sans-serif;
+    }
+
+    h1, h2, h3, h4, h5, h6, .navbar-brand {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    body {
+      background-color: var(--wade-bg);
+      color: #333;
+    }
+
+    .navbar-main {
+      background-color: var(--wade-dark) !important;
+      height: 86px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-main .navbar-brand img {
+      height: 60px;
+      width: auto;
+    }
+
+    .navbar-main .search-container {
+      display: flex;
+      width: 100%;
+      max-width: 400px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 25px;
+      padding: 5px 15px;
+      backdrop-filter: blur(10px);
+    }
+
+    .navbar-main .search-container input {
+      background: transparent;
+      border: none;
+      color: white;
+      width: 100%;
+      font-size: 14px;
+    }
+
+    .navbar-main .search-container input::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .nav-secondary {
+      position: fixed;
+      top: 86px;
+      left: 0;
+      right: 0;
+      background-color: white;
+      height: 60px;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      align-items: center;
+      z-index: 99;
+      transition: top 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-secondary .nav {
+      width: 100%;
+    }
+
+    .nav-secondary .nav-link {
+      color: var(--wade-dark) !important;
+      font-weight: 500;
+      font-size: 13px;
+    }
+
+    .nav-secondary .nav-link:hover {
+      color: #666 !important;
+    }
+
+    .offcanvas-street {
+      background-color: var(--wade-dark);
+      width: 280px !important;
+    }
+
+    .offcanvas-street .offcanvas-header {
+      background-color: #1a1a1a;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .offcanvas-street .offcanvas-header h5 {
+      color: white;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .offcanvas-street .btn-close {
+      filter: brightness(0) invert(1);
+    }
+
+    .offcanvas-street .offcanvas-body {
+      padding: 0;
+      border: none;
+    }
+
+    .offcanvas-street .offcanvas-body p {
+      margin: 0;
+      padding: 12px 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .offcanvas-street .offcanvas-body p:last-child {
+      border-bottom: none;
+    }
+
+    .offcanvas-street .offcanvas-body a {
+      color: #aaa;
+      font-size: 13px;
+      transition: color 0.3s ease;
+    }
+
+    .offcanvas-street .offcanvas-body a:hover {
+      color: #fff;
+    }
+
+    main {
+      margin-top: 146px;
+      padding: 40px 0;
+    }
+
+    .card {
+      border: none;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    footer {
+      background-color: #1a1a1a !important;
+      color: #ccc;
+      border-top: 2px solid var(--wade-dark);
+      margin-top: 60px;
+    }
+
+    footer h5 {
+      color: white;
+      font-family: 'Oswald', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    footer a {
+      color: #aaa;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: white;
+    }
+
+    footer p {
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .navbar-main {
+        height: 70px;
+      }
+
+      .nav-secondary {
+        height: 50px;
+        top: 70px;
+      }
+
+      main {
+        margin-top: 120px;
+      }
+    }
+  </style>
+
+  <title>Informações do Usuário - Wade Club</title>
 
 </head>
 
 <body>
-<!-- rodapé superior -->
-        <nav class=" navbar  navbar-expand-lg navbar-dark bg-primary border-bottom shadow-sm ">
-        <div class="container-fluid">
-            <div class="d-none d-md-block">
-                <a href="Untitled-1.php"> <img class="pt-2" src="img/logo.png" width="150" height="120"></a>
-            </div>
-    
-            <div class="box-search d-flex justify-content-center pt-2 col">
-                <input class=" form-control me-2" type="search" placeholder="O que você está procurando?" id="pesquisar" name="pesquisar" class="">
-            </div>
-    
-    
-            <div class="align-self end ">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse">
-    
-    
-                    <ul class="navbar-nav">
-                    
-                      <?php if(!isset($_SESSION['id']) and (!isset($_SESSION['nome']))){ ?>
-                        <li class="nav-item">
-                            <a href="login.html" class="m-2 nav-link  text-white"> Entrar</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="cadastro.html" class="m-2 nav-link  text-white"> Cadastrar</a>
-                        </li>
-                        <?php }else{ ?>
-                          <li class="nav-item">
-                            <a href="informacoes_usuario.php" class="m-2 nav-link  text-white"> Bem vindo <?php echo $_SESSION['nome']; ?></a>
-                        </li>
-                        <?php } ?>
-    
-                        <li class="nav-item"> 
-                          <a class="btn btn-primary m-2  nav-link text-white" data-bs-toggle="offcanvas" href="#offcanvasRight" role="button" aria-controls="offcanvasRight">
-                                <img src="img/bi_person.png" height="28">
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-        </div>
-    </nav>
 
+<!-- NAVBAR PRINCIPAL -->
+<nav class="navbar navbar-expand-lg navbar-dark navbar-main fixed-top" id="navbarMain">
+  <div class="container px-3 px-lg-4">
+    <a class="navbar-brand me-3 me-lg-4" href="index.php">
+      <img src="img/logo.png" alt="Wade Club">
+    </a>
     
-    
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-        <div class="offcanvas-header">
-          <h5 id="offcanvasRightLabel">WadeClub</h5>
-              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
-                  aria-label="Close"></button>
-        </div>
-        <div class=" offcanvas-body border">
-        <?php 
-                if(!isset($_SESSION['id']) and (!isset($_SESSION['nome']))){ 
-                  
-                  }else{
-                    if ($_SESSION['adm_usuario'] != 1){ 
-              
-                  }else { ?>
-                    <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-kiss" viewBox="0 0 16 16">
-                      <path fill-rule="evenodd" d="M12.493 13.368a7 7 0 1 1 2.489-4.858c.344.033.68.147.975.328a8 8 0 1 0-2.654 5.152 8.58 8.58 0 0 1-.81-.622Zm-3.731-3.22a13 13 0 0 0-1.107.318.5.5 0 1 1-.31-.95c.38-.125.802-.254 1.192-.343.37-.086.78-.153 1.103-.108.16.022.394.085.561.286.188.226.187.497.131.705a1.892 1.892 0 0 1-.31.593c-.077.107-.168.22-.275.343.107.124.199.24.276.347.142.197.256.397.31.595.055.208.056.479-.132.706-.168.2-.404.262-.563.284-.323.043-.733-.027-1.102-.113a14.87 14.87 0 0 1-1.191-.345.5.5 0 1 1 .31-.95c.371.12.761.24 1.109.321.176.041.325.069.446.084a5.609 5.609 0 0 0-.502-.584.5.5 0 0 1 .002-.695 5.52 5.52 0 0 0 .5-.577 4.465 4.465 0 0 0-.448.082Zm.766-.087-.003-.001-.003-.001c.004 0 .006.002.006.002Zm.002 1.867-.006.001a.038.038 0 0 1 .006-.002ZM6 8c.552 0 1-.672 1-1.5S6.552 5 6 5s-1 .672-1 1.5S5.448 8 6 8Zm2.757-.563a.5.5 0 0 0 .68-.194.934.934 0 0 1 .813-.493c.339 0 .645.19.813.493a.5.5 0 0 0 .874-.486A1.934 1.934 0 0 0 10.25 5.75c-.73 0-1.356.412-1.687 1.007a.5.5 0 0 0 .194.68ZM14 9.828c1.11-1.14 3.884.856 0 3.422-3.884-2.566-1.11-4.562 0-3.421Z"/>
-                      </svg><a href="tela_adm.php" class="text-reset text-decoration-none"> Administrador</a>
-                  </p> 
-              <?php
-                  }
-                }
-              ?>
-    
-          <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+    <div class="search-container d-none d-md-flex">
+      <input type="search" id="pesquisar" placeholder="O que você está procurando?">
+    </div>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+</nav>
+
+<!-- NAV SECUNDÁRIA -->
+<div class="nav-secondary" id="navSecundaria">
+  <div class="container px-3 px-lg-4">
+    <ul class="nav justify-content-center flex-nowrap">
+      <li><a class="nav-link" href="index.php">HOME</a></li>
+      <li><a class="nav-link" href="categoria.php?cat=camiseta">CAMISETAS</a></li>
+      <li><a class="nav-link" href="categoria.php?cat=calcas">CALÇAS</a></li>
+      <li><a class="nav-link" href="categoria.php?cat=moletom">MOLETOM</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- OFFCANVAS MENU -->
+<div class="offcanvas offcanvas-end offcanvas-street" id="offcanvasMenu">
+  <div class="offcanvas-header">
+    <h5>WADE CLUB</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <p><a href="index.php">HOME</a></p>
+    <p><a href="Carrinho.php">CARRINHO</a></p>
+    <p><a href="favoritos.php">FAVORITOS</a></p>
+    <p><a href="informacoes_usuario.php">MEUS DADOS</a></p>
+    <p><a href="informacoes_endereco.php">ENDEREÇOS</a></p>
+    <?php if($_SESSION['adm_usuario'] == 1) { ?>
+      <p><a href="tela_adm.php">ADMINISTRADOR</a></p>
+    <?php } ?>
+    <p><a href="sair.php">SAIR</a></p>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<main>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
                   fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
                   <path fill-rule="evenodd"
                       d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
                   <path fill-rule="evenodd"
                       d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
-              </svg><a href="Untitled-1.php" class="text-reset text-decoration-none"> Inicio</a></p>
+              </svg><a href="index.php" class="text-reset text-decoration-none"> Inicio</a></p>
     
           <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                   fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
@@ -173,245 +343,197 @@ if(!isset($_SESSION['id']) and (!isset($_SESSION['nome']))){
     
         </div>
     </div>
-<!----  ------->
-  
-  
-          <nav aria-label="breadcrumb">
-            <ol class="m-3 breadcrumb">
-                <li class="breadcrumb-item"><a href="Untitled-1.php">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Meus dados</li>
-            </ol>
-        </nav>
 
-        <div class="container text-center d-flex justify-content-center">
-            <div class="card mx-2 shadow col-5 my-3">
-                <div class="card-header">
-                    <h4>Informações usuário:</h4>
-                </div>
-                <div class="card-body">
-                    <?php
-                        if(!isset($_SESSION['id']) and (!isset($_SESSION['nome']))){
-                            echo "Você não está logado";
-                        }else{
-                            $id_usuario = $_SESSION['id_usuario'];
-                        }
-                            $query_usuario = "SELECT * FROM usuario WHERE id_usuario = :id_usuario  LIMIT 1";  
-                            $result_usuario = $pdo->prepare($query_usuario);
-                            $result_usuario->bindParam(':id_usuario', $_SESSION['id_usuario']);
+        <h2 class="mb-4">Meus Dados</h2>
 
-                            $result_usuario->execute();
+        <div class="card mb-4">
+            <div class="card-body">
+                <?php
+                    $query_usuario = "SELECT * FROM usuario WHERE id_usuario = :id_usuario  LIMIT 1";  
+                    $result_usuario = $pdo->prepare($query_usuario);
+                    $result_usuario->bindParam(':id_usuario', $_SESSION['id_usuario']);
 
-                            if(($result_usuario) AND ($result_usuario->rowCount() != 0 )){
-                                $row_usuario = $result_usuario->fetch(PDO::FETCH_ASSOC);
-                                
-                                $value = $row_usuario['CPF'];
+                    $result_usuario->execute();
 
-                                
-                                $_SESSION['email'] = $row_usuario['email'];
-                                $_SESSION['nome'] = $row_usuario['nome'];
-                                $_SESSION['sobrenome'] = $row_usuario['sobrenome'];
-                                $_SESSION['CPF'] = $value;
-                                $_SESSION['nascimento'] = $row_usuario['nascimento'];
-                        }
-                    ?>
-                    <div class="d-flex justify-content-between">
-                        <h5>Email:</h5>
-                        <h6>
-                            <?php echo $_SESSION["email"]; ?>
-                        </h6>
+                    if(($result_usuario) AND ($result_usuario->rowCount() != 0 )){
+                        $row_usuario = $result_usuario->fetch(PDO::FETCH_ASSOC);
+                        
+                        $value = $row_usuario['CPF'];
+
+                        
+                        $_SESSION['email'] = $row_usuario['email'];
+                        $_SESSION['nome'] = $row_usuario['nome'];
+                        $_SESSION['sobrenome'] = $row_usuario['sobrenome'];
+                        $_SESSION['CPF'] = $value;
+                        $_SESSION['nascimento'] = $row_usuario['nascimento'];
+                    }
+                ?>
+                
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold">Email</label>
+                        <p class="form-control-plaintext"><?php echo $_SESSION["email"]; ?></p>
                     </div>
-                    <hr>
-                    <div class="d-flex justify-content-between">
-                        <h5>Nome:</h5>
-                        <h6>
-                            <?php echo $_SESSION["nome"]; ?>
-                        </h6>
-                    </div>
-                    <hr>
-                    <div class="d-flex justify-content-between">
-                        <h5>Sobrenome:</h5>
-                        <h6>
-                            <?php echo $_SESSION["sobrenome"]; ?>
-                        </h6>
-                    </div>
-                    <hr>
-                    <div class="d-flex justify-content-between">
-                        <h5>CPF:</h5>
-                        <h6>
-                            <?php echo $_SESSION["CPF"]; ?>
-                        </h6>
-                    </div>
-                    <hr>
-                    <div class="d-flex justify-content-between">
-                        <h5>Data de nasc:</h5>
-                        <h6>
-                            <?php echo $_SESSION["nascimento"]; ?>
-                        </h6>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold">Nome</label>
+                        <p class="form-control-plaintext"><?php echo $_SESSION["nome"]; ?></p>
                     </div>
                 </div>
-                <div class="card-footer">
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Alterar dados
-                    </button>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#senhamodal">
-                        Alterar senha
-                    </button>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold">Sobrenome</label>
+                        <p class="form-control-plaintext"><?php echo $_SESSION["sobrenome"]; ?></p>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold">CPF</label>
+                        <p class="form-control-plaintext"><?php echo $_SESSION["CPF"]; ?></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold">Data de Nascimento</label>
+                        <p class="form-control-plaintext"><?php echo $_SESSION["nascimento"]; ?></p>
+                    </div>
                 </div>
             </div>
-
-            <form action="editar_usuario.php" method="POST">
-                <div class="modal fade" data-bs-backdrop="static" id="exampleModal" tabindex="-1"
-                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Informações endereço</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-
-                                <input type="text" class="d-none" value="<?php echo $_SESSION['id_usuario']; ?>"
-                                    name="id_usuario">
-                                <div class="p-2 d-flex justify-content-between">
-                                    <label class="fs-5 mx-3 ">Email: </label>
-                                    <input type="text" name="email" class="form-control col"
-                                        value="<?php echo $_SESSION['email']; ?>">
-                                </div>
-                                <div class="p-2 d-flex justify-content-between">
-                                    <label class="fs-5 mx-3 ">Nome: </label>
-                                    <input type="text" name="nome" class="form-control col"
-                                        value="<?php echo $_SESSION['nome']; ?>">
-                                </div>
-                                <div class="p-2 d-flex justify-content-between">
-                                    <label class="fs-5 mx-3 ">Sobrenome: </label>
-                                    <input type="text" name="sobrenome" class="form-control col"
-                                        value="<?php echo $_SESSION['sobrenome']; ?>">
-                                </div>
-                                <div class="p-2 d-flex justify-content-between">
-                                    <label class="fs-5 mx-3 ">CPF: </label>
-                                    <input type="text" name="CPF" class="form-control col"
-                                        value="<?php echo $_SESSION['CPF']; ?>" readonly>
-                                </div>
-                                <div class="p-2 d-flex justify-content-between">
-                                    <label class="fs-5 mx-3 ">Data de nascimento: </label>
-                                    <input type="text" name="nascimento" class="form-control col"
-                                        value="<?php echo $_SESSION['nascimento']; ?>" readonly>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary"
-                                    data-bs-dismiss="modal">Cancelar</button>
-                                <input type="submit" class="btn btn-primary" value="Salvar alterações">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="card-footer">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Alterar Dados
+                </button>
+                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#senhamodal">
+                    Alterar Senha
+                </button>
+            </div>
         </div>
-        </form>
 
-        <form action="editar_senha.php" method="POST">
-            <div class="modal fade" data-bs-backdrop="static" id="senhamodal" tabindex="-1"
-                aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <!-- MODAL EDITAR DADOS -->
+        <form action="editar_usuario.php" method="POST">
+            <div class="modal fade" data-bs-backdrop="static" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Alterar senha</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Editar Informações</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <div class="p-2 d-flex justify-content-between">
-                                <label class="fs-5 mx-3 ">Nova senha: </label>
-                                <input type="password" name="senha" class="form-control col" placeholder="********">
+                            <input type="text" class="d-none" value="<?php echo $_SESSION['id_usuario']; ?>" name="id_usuario">
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Email</label>
+                                <input type="text" name="email" class="form-control" value="<?php echo $_SESSION['email']; ?>">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Nome</label>
+                                <input type="text" name="nome" class="form-control" value="<?php echo $_SESSION['nome']; ?>">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Sobrenome</label>
+                                <input type="text" name="sobrenome" class="form-control" value="<?php echo $_SESSION['sobrenome']; ?>">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">CPF</label>
+                                <input type="text" name="CPF" class="form-control" value="<?php echo $_SESSION['CPF']; ?>" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Data de Nascimento</label>
+                                <input type="text" name="nascimento" class="form-control" value="<?php echo $_SESSION['nascimento']; ?>" readonly>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar
-                            </button>
-                            <input type="submit" class="btn btn-primary">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <input type="submit" class="btn btn-primary" value="Salvar Alterações">
                         </div>
                     </div>
                 </div>
             </div>
         </form>
 
-
-
-
-        </div>
-      
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <footer class=" border-top text-muted bg-light">
-    <div class="coontainer">
-      <div class="row py-3">
-        <div class="col-12 col-md-4 text-center text-md-left">
-          &copy; 2025 - WadeClub
-        </div>
-        <div class="col-12 col-md-4 text-center">
-          <a href="#" class="text-decoration-none text dark">Politica de privacidade</a>
-        </div> 
-        <div class="col-12 col-md-4 text-center text-md-right">
-          <?php if (!isset($_SESSION["id"]) and !isset($_SESSION["nome"])) {
-              echo '<a href="#" class="text-decoration-none text dark">Termos de uso</a>';
-          } else {
-              if ($_SESSION["adm_usuario"] != 1) {
-                  echo '<a href="#" class="text-decoration-none text dark">Termos de uso</a>';
-              } else {
-                  echo '<a href="tela_adm.php" class="text-decoration-none text dark">administrador</a>';
-              }
-          } ?>
-        </div>
+        <!-- MODAL ALTERAR SENHA -->
+        <form action="editar_senha.php" method="POST">
+            <div class="modal fade" data-bs-backdrop="static" id="senhamodal" tabindex="-1" aria-labelledby="senhaModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="senhaModalLabel">Alterar Senha</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label class="form-label">Nova Senha</label>
+                                <input type="password" name="senha" class="form-control" placeholder="Digite sua nova senha" required>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <input type="submit" class="btn btn-primary" value="Alterar Senha">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
       </div>
     </div>
+  </main>
 
-  </footer>
-  
+<!-- FOOTER -->
+<footer class="pt-5 pb-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <h5 class="text-white mb-3">WADE CLUB</h5>
+        <p class="small">Moda urbana com autenticidade. Peças exclusivas para quem vive o streetwear.</p>
+      </div>
+      <div class="col-md-4 mb-4 text-center">
+        <h5 class="text-white mb-3">INSTITUCIONAL</h5>
+        <ul class="list-unstyled small">
+          <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Quem Somos</a></li>
+          <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Política de Privacidade</a></li>
+          <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Trocas e Devoluções</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4 mb-4 text-md-end">
+        <h5 class="text-white mb-3">FALE CONOSCO</h5>
+        <p class="small mb-0 text-muted">suporte@wadeclub.com.br</p>
+        <p class="small text-muted">&copy; 2025 Wade Club. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </div>
+</footer>
 
-  <!-- Optional JavaScript -->
-  <!-- Popper.js first, then Bootstrap JS -->
- 
+<!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+<script>
+  var search = document.getElementById('pesquisar');
 
- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
-        </script>
+  search.addEventListener("keydown", function(event){
+    if (event.key === "Enter")
+    {
+      searchData();
+    }
+  });
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
-        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
-        </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
-        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
-        crossorigin="anonymous"></script>
-    <script>
-        var search = document.getElementById('pesquisar');
+  function searchData()
+  {
+    window.location = 'categoria.php?search='+search.value;
+  }
 
-        search.addEventListener("keydown", function(event){
-            if (event.key === "Enter")
-            {
-                searchData();
-            }
-        });
+  // Navbar scroll logic
+  let lastScrollTop = 0;
+  const navSecundaria = document.getElementById('navSecundaria');
+  const headerHeight = document.getElementById('navbarMain').offsetHeight;
 
-        function searchData()
-        {
-            window.location = 'categoria.php?search='+search.value;
-        }
-    </script>
-    
+  window.addEventListener('scroll', function() {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (scrollTop > lastScrollTop && scrollTop > 100) {
+      navSecundaria.style.top = '-60px'; 
+    } else {
+      navSecundaria.style.top = headerHeight + 'px';
+    }
+    lastScrollTop = scrollTop;
+  });
+</script>
+
 </body>
 </html>

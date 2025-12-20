@@ -2,7 +2,7 @@
 session_start();
 include "conexao.php";
 if ($_SESSION["adm_usuario"] != 1) {
-    header("location: untitled-1.php");
+    header("location: index.php");
     exit();
 }
 ?>
@@ -26,10 +26,10 @@ if ($_SESSION["adm_usuario"] != 1) {
 
 <body>
 <!-- rodapé superior -->
-    <nav class=" navbar  navbar-expand-lg navbar-dark bg-primary border-bottom shadow-sm ">
+    <nav class=" navbar  navbar-expand-lg navbar-dark bg-dark border-bottom shadow-sm ">
         <div class="container-fluid">
             <div class="d-none d-md-block">
-                <a href="Untitled-1.php"> <img class="pt-2" src="img/logo.png" width="150" height="120"></a>
+                <a href="index.php"> <img class="pt-2" src="img/logo.png" width="150" height="120"></a>
             </div>
     
             <div class="box-search d-flex justify-content-center pt-2 col">
@@ -102,7 +102,7 @@ if ($_SESSION["adm_usuario"] != 1) {
                       d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
                   <path fill-rule="evenodd"
                       d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
-              </svg><a href="Untitled-1.php" class="text-reset text-decoration-none"> Inicio</a></p>
+              </svg><a href="index.php" class="text-reset text-decoration-none"> Inicio</a></p>
     
           <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                   fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
@@ -182,7 +182,7 @@ if ($_SESSION["adm_usuario"] != 1) {
 
     <nav aria-label="breadcrumb">
         <ol class="mx-5 mt-2 breadcrumb">
-            <li class="breadcrumb-item"><a href="Untitled-1.php">Home</a></li>
+            <li class="breadcrumb-item"><a href="index.php">Home</a></li>
             <li class="breadcrumb-item"><a href="tela_adm.php">Administrador</a></li>
             <li class="breadcrumb-item active" aria-current="page">Produtos</li>
         </ol>

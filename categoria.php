@@ -2,357 +2,679 @@
 session_start();
 include("conexao.php");
 ?>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-  
 
-  <title>Use Wade!</title>
+    <title>Wade Club | Categoria</title>
 
-  <style>
-.zoom  {
-  max-width: 100%;
-  -moz-transition: all 0.2s;
-  -webkit-transition: all 0.2s;
-  transition: all 0.2s;
- 
-}
-.zoom:hover  {
-  -moz-transform: scale(1.02);
-  -webkit-transform: scale(1.02);
-  transform: scale(1.02);
- 
-}</style>
+    <style>
+        :root {
+            --wade-dark: #212529;
+            --wade-bg: #ececec;
+        }
 
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--wade-bg); 
+            color: var(--wade-dark);
+            padding-top: 86px;
+        }
+
+        h1, h2, h3, h4, h5, .navbar-brand, .nav-link-street {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- NAVBAR PRINCIPAL --- */
+        .navbar-main {
+            background-color: var(--wade-dark);
+            min-height: 86px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            padding: 10px 0;
+        }
+        
+        .navbar-brand img {
+            max-height: 70px;
+            width: auto;
+            transition: transform 0.3s;
+        }
+        .navbar-brand:hover img {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 991px) {
+            .navbar-brand img { max-height: 50px; }
+            body { padding-top: 76px; }
+            .navbar-main { min-height: 76px; }
+        }
+
+        /* Barra de Pesquisa */
+        .search-container {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+        }
+        .search-input {
+            border-radius: 50px;
+            padding-left: 25px;
+            padding-right: 60px;
+            background-color: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            height: 50px;
+            font-size: 1.05rem;
+            width: 100%;
+        }
+        .search-input:focus {
+            background-color: #fff;
+            color: #333;
+            box-shadow: 0 0 20px rgba(255,255,255,0.2);
+            border-color: #fff;
+        }
+        .search-input::placeholder { color: rgba(255,255,255,0.7); }
+        .search-btn {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.7);
+            padding: 8px;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+        .search-input:focus ~ .search-btn { color: var(--wade-dark); }
+
+        /* --- NAVBAR SECUNDÁRIO --- */
+        .nav-secondary {
+            background: #fff;
+            border-bottom: 1px solid #e0e0e0;
+            position: fixed;
+            top: 86px;
+            width: 100%;
+            z-index: 1020;
+            transition: top 0.3s;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        
+        @media (max-width: 991px) { .nav-secondary { top: 76px; } }
+        
+        .nav-link-street {
+            color: #555;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 15px 25px;
+            position: relative;
+            display: inline-block;
+        }
+        .nav-link-street:hover { color: #000; }
+        .nav-link-street::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: var(--wade-dark);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        .nav-link-street:hover::after { width: 60%; }
+
+        /* --- CARD DE PRODUTO --- */
+        .card-product {
+            border: none;
+            background: #fff;
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            height: 320px;
+        }
+
+        .card-product:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .img-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .img-main {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .overlay-gradient {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 80%, transparent 100%);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .card-info-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 20px;
+            z-index: 3;
+            color: white;
+            text-align: left;
+        }
+
+        .product-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 0.5px;
+            line-height: 1.1;
+        }
+
+        .product-price {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .installments {
+            font-size: 0.7rem;
+            opacity: 0.85;
+            font-weight: 300;
+            color: #ddd;
+        }
+
+        .badge-frete {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background-color: var(--wade-dark);
+            color: #fff;
+            padding: 5px 10px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            z-index: 4;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-fav {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(3px);
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 5;
+            transition: all 0.3s ease;
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.3);
+            font-size: 1.2rem;
+            padding: 0;
+            cursor: pointer;
+        }
+            z-index: 10;
+            transition: 0.2s;
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .btn-fav:hover {
+            background: #ff6b6b;
+            transform: scale(1.15);
+            border-color: #ff6b6b;
+        }
+
+        /* --- LAYOUT PRINCIPAL --- */
+        main {
+            padding-top: 30px;
+            padding-bottom: 60px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #1a1a1a;
+            color: #999;
+            margin-top: 80px;
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+
+        footer h5 {
+            color: white;
+            font-family: 'Oswald', sans-serif;
+        }
+
+        footer a {
+            transition: 0.3s;
+        }
+
+        footer a:hover {
+            color: #fff !important;
+        }
+
+        /* --- OFFCANVAS --- */
+        .offcanvas-street {
+            background-color: var(--wade-dark);
+            color: white;
+        }
+
+        .offcanvas-header {
+            border-bottom: 1px solid #333;
+        }
+
+        .offcanvas-title {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .menu-link {
+            color: #adb5bd;
+            font-size: 1rem;
+            padding: 12px 0;
+            border-bottom: 1px solid #333;
+            display: block;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .menu-link:hover {
+            color: #fff;
+            padding-left: 10px;
+        }
+
+        /* --- RESPONSIVO --- */
+        @media (max-width: 991px) {
+            .card-product {
+                height: 280px;
+            }
+
+            main {
+                padding-top: 15px;
+                padding-bottom: 40px;
+            }
+        }
+
+        @media (max-width: 575px) {
+            .card-product {
+                height: 250px;
+            }
+
+            .product-title {
+                font-size: 0.85rem;
+            }
+
+            .product-price {
+                font-size: 0.95rem;
+            }
+
+            .installments {
+                font-size: 0.65rem;
+            }
+
+            .badge-frete {
+                padding: 3px 8px;
+                font-size: 0.6rem;
+                top: 8px;
+                left: 8px;
+            }
+
+            .btn-fav {
+                width: 36px;
+                height: 36px;
+                font-size: 0.9rem;
+                top: 8px;
+                right: 8px;
+            }
+        }
+
+    </style>
 </head>
 
 <body>
-<!-- rodapé superior -->
-    <nav class=" navbar  navbar-expand-lg navbar-dark bg-primary border-bottom shadow-sm ">
-        <div class="container-fluid">
-            <div class="d-none d-md-block">
-                <a href="Untitled-1.php"> <img class="pt-2" src="img/logo.png" width="150" height="120"></a>
-            </div>
-    
-            <div class="box-search d-flex justify-content-center pt-2 col">
-                <input class=" form-control me-2" type="search" placeholder="O que você está procurando?" id="pesquisar" name="pesquisar" class="">
-            </div>
-    
-    
-            <div class="align-self end ">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse">
-    
-    
-                    <ul class="navbar-nav">
+
+    <!-- NAVBAR PRINCIPAL -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-main fixed-top" id="navbarMain">
+        <div class="container px-3 px-lg-4">
+            
+            <div class="d-flex align-items-center w-100 justify-content-between">
+                
+                <!-- Logo -->
+                <a class="navbar-brand me-3 me-lg-4" href="index.php">
+                    <img src="img/logo.png" alt="Wade Club">
+                </a>
+
+                <!-- Barra de Pesquisa (Desktop e Tablet) -->
+                <div class="d-none d-md-flex flex-grow-1 mx-3 mx-lg-5 justify-content-center">
+                    <div class="search-container">
+                        <input class="search-input" type="search" placeholder="O que você procura hoje?" id="pesquisar">
+                        <button class="search-btn" type="button" onclick="searchData()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Ícones Direita -->
+                <div class="d-flex align-items-center gap-3 gap-lg-4">
                     
-                      <?php if(!isset($_SESSION['id']) and (!isset($_SESSION['nome']))){ ?>
-                        <li class="nav-item">
-                            <a href="login.html" class="m-2 nav-link  text-white"> Entrar</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="cadastro.html" class="m-2 nav-link  text-white"> Cadastrar</a>
-                        </li>
-                        <?php }else{ ?>
-                          <li class="nav-item">
-                            <a href="informacoes_usuario.php" class="m-2 nav-link  text-white"> Bem vindo <?php echo $_SESSION['nome']; ?></a>
-                        </li>
-                        <?php } ?>
-    
-                        <li class="nav-item"> 
-                          <a class="btn btn-primary m-2  nav-link text-white" data-bs-toggle="offcanvas" href="#offcanvasRight" role="button" aria-controls="offcanvasRight">
-                                <img src="img/bi_person.png" height="28">
+                    <!-- Login/Olá -->
+                    <div class="d-none d-lg-block text-white">
+                        <?php if(!isset($_SESSION['id']) && !isset($_SESSION['nome'])){ ?>
+                            <a href="login.html" class="text-white text-decoration-none fw-bold small">ENTRAR</a>
+                        <?php } else { ?>
+                            <a href="informacoes_usuario.php" class="text-white text-decoration-none fw-bold small">
+                                OLÁ, <?php echo strtoupper(explode(' ', $_SESSION['nome'])[0]); ?>
                             </a>
-                        </li>
-                    </ul>
+                        <?php } ?>
+                    </div>
+
+                    <!-- Carrinho -->
+                    <a href="carrinho.php" class="position-relative text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
+                        </svg>
+                    </a>
+
+                    <!-- Botão Menu Lateral -->
+                    <a class="text-white cursor-pointer" data-bs-toggle="offcanvas" href="#offcanvasRight" role="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                        </svg>
+                    </a>
+
                 </div>
             </div>
-            
         </div>
     </nav>
 
-    
-    
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-        <div class="offcanvas-header">
-          <h5 id="offcanvasRightLabel">WadeClub</h5>
-              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
-                  aria-label="Close"></button>
+    <!-- NAVBAR SECUNDÁRIO -->
+    <div class="nav-secondary" id="navSecundaria">
+        <ul class="nav justify-content-center flex-nowrap" style="min-width: 100%;">
+            <li class="nav-item"><a class="nav-link nav-link-street" href="index.php">HOME</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-street" href="categoria.php?cat=camiseta">CAMISETAS</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-street" href="categoria.php?cat=calcas">CALÇAS</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-street" href="categoria.php?cat=moletom">MOLETOM</a></li>
+        </ul>
+    </div>
+
+    <!-- OFFCANVAS (Menu Lateral) -->
+    <div class="offcanvas offcanvas-end offcanvas-street" tabindex="-1" id="offcanvasRight">
+        <div class="offcanvas-header border-bottom border-secondary">
+            <h5 class="offcanvas-title font-monospace text-uppercase">Menu Wade</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
         </div>
-        <div class=" offcanvas-body border">
-        <?php 
-                if(!isset($_SESSION['id']) and (!isset($_SESSION['nome']))){ 
-                  
-                  }else{
-                    if ($_SESSION['adm_usuario'] != 1){ 
-              
-                  }else { ?>
-                    <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-kiss" viewBox="0 0 16 16">
-                      <path fill-rule="evenodd" d="M12.493 13.368a7 7 0 1 1 2.489-4.858c.344.033.68.147.975.328a8 8 0 1 0-2.654 5.152 8.58 8.58 0 0 1-.81-.622Zm-3.731-3.22a13 13 0 0 0-1.107.318.5.5 0 1 1-.31-.95c.38-.125.802-.254 1.192-.343.37-.086.78-.153 1.103-.108.16.022.394.085.561.286.188.226.187.497.131.705a1.892 1.892 0 0 1-.31.593c-.077.107-.168.22-.275.343.107.124.199.24.276.347.142.197.256.397.31.595.055.208.056.479-.132.706-.168.2-.404.262-.563.284-.323.043-.733-.027-1.102-.113a14.87 14.87 0 0 1-1.191-.345.5.5 0 1 1 .31-.95c.371.12.761.24 1.109.321.176.041.325.069.446.084a5.609 5.609 0 0 0-.502-.584.5.5 0 0 1 .002-.695 5.52 5.52 0 0 0 .5-.577 4.465 4.465 0 0 0-.448.082Zm.766-.087-.003-.001-.003-.001c.004 0 .006.002.006.002Zm.002 1.867-.006.001a.038.038 0 0 1 .006-.002ZM6 8c.552 0 1-.672 1-1.5S6.552 5 6 5s-1 .672-1 1.5S5.448 8 6 8Zm2.757-.563a.5.5 0 0 0 .68-.194.934.934 0 0 1 .813-.493c.339 0 .645.19.813.493a.5.5 0 0 0 .874-.486A1.934 1.934 0 0 0 10.25 5.75c-.73 0-1.356.412-1.687 1.007a.5.5 0 0 0 .194.68ZM14 9.828c1.11-1.14 3.884.856 0 3.422-3.884-2.566-1.11-4.562 0-3.421Z"/>
-                      </svg><a href="tela_adm.php" class="text-reset text-decoration-none"> Administrador</a>
-                  </p> 
-              <?php
-                  }
-                }
-              ?>
-    
-          <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                  fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd"
-                      d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
-                  <path fill-rule="evenodd"
-                      d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
-              </svg><a href="Untitled-1.php" class="text-reset text-decoration-none"> Inicio</a></p>
-    
-          <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                  fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
-                  <path
-                      d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
-              </svg><a href="carrinho.php" class="text-reset text-decoration-none"> Minhas compras</a></p>
-    
-          <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                  fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                  <path
-                      d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-              </svg><a href="favoritos.php" class="text-reset text-decoration-none"> Favoritos </a></p>
-    
-          <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                  fill="currentColor" class="bi bi-gift" viewBox="0 0 16 16">
-                  <path
-                      d="M3 2.5a2.5 2.5 0 0 1 5 0 2.5 2.5 0 0 1 5 0v.006c0 .07 0 .27-.038.494H15a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 1 14.5V7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h2.038A2.968 2.968 0 0 1 3 2.506V2.5zm1.068.5H7v-.5a1.5 1.5 0 1 0-3 0c0 .085.002.274.045.43a.522.522 0 0 0 .023.07zM9 3h2.932a.56.56 0 0 0 .023-.07c.043-.156.045-.345.045-.43a1.5 1.5 0 0 0-3 0V3zM1 4v2h6V4H1zm8 0v2h6V4H9zm5 3H9v8h4.5a.5.5 0 0 0 .5-.5V7zm-7 8V7H2v7.5a.5.5 0 0 0 .5.5H7z" />
-              </svg><a href="" class="text-reset text-decoration-none"> Promoções</a></p>
-    
-          <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                  fill="currentColor" class="bi bi-credit-card" viewBox="0 0 16 16">
-                  <path
-                      d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z" />
-                  <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z" />
-              </svg><a href="cartoes.php" class="text-reset text-decoration-none"> Cartões salvos</a></p>
-    
-          <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                  fill="currentColor" class="bi bi-signpost-split-fill" viewBox="0 0 16 16">
-                  <path
-                      d="M7 16h2V6h5a1 1 0 0 0 .8-.4l.975-1.3a.5.5 0 0 0 0-.6L14.8 2.4A1 1 0 0 0 14 2H9v-.586a1 1 0 0 0-2 0V7H2a1 1 0 0 0-.8.4L.225 8.7a.5.5 0 0 0 0 .6l.975 1.3a1 1 0 0 0 .8.4h5v5z" />
-              </svg><a href="informacoes_endereco.php" class="text-reset text-decoration-none"> Endereços</a></p>
-    
-          <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                  fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
-                  <path
-                      d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z" />
-              </svg><a href="informacoes_usuario.php" class="text-reset text-decoration-none"> Meus dados</a></p>
-    
-          <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                  fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd"
-                      d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z" />
-                  <path fill-rule="evenodd"
-                      d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
-              </svg><a href="sair.php" class="text-reset text-decoration-none">Sair</a></p>
-    
-          <hr>
-          <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                  fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z" />
-                  <path
-                      d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z" />
-              </svg><a href="" class="text-reset text-decoration-none"> Trocas e devoluçôes</a></p>
-    
-          <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                  fill="currentColor" class="bi bi-question-circle" viewBox="0 0 16 16">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                  <path
-                      d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
-              </svg><a href="" class="text-reset text-decoration-none"> Ajuda</a></p>
-    
-          <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                  fill="currentColor" class="bi bi-braces" viewBox="0 0 16 16">
-                  <path
-                      d="M2.114 8.063V7.9c1.005-.102 1.497-.615 1.497-1.6V4.503c0-1.094.39-1.538 1.354-1.538h.273V2h-.376C3.25 2 2.49 2.759 2.49 4.352v1.524c0 1.094-.376 1.456-1.49 1.456v1.299c1.114 0 1.49.362 1.49 1.456v1.524c0 1.593.759 2.352 2.372 2.352h.376v-.964h-.273c-.964 0-1.354-.444-1.354-1.538V9.663c0-.984-.492-1.497-1.497-1.6zM13.886 7.9v.163c-1.005.103-1.497.616-1.497 1.6v1.798c0 1.094-.39 1.538-1.354 1.538h-.273v.964h.376c1.613 0 2.372-.759 2.372-2.352v-1.524c0-1.094.376-1.456 1.49-1.456V7.332c-1.114 0-1.49-.362-1.49-1.456V4.352C13.51 2.759 12.75 2 11.138 2h-.376v.964h.273c.964 0 1.354.444 1.354 1.538V6.3c0 .984.492 1.497 1.497 1.6z" />
-              </svg><a href="" class="text-reset text-decoration-none"> Sobre WadeClub </a></p>
-    
+        <div class="offcanvas-body d-flex flex-column justify-content-between">
+            <div>
+                <a href="index.php" class="menu-link">INÍCIO</a>
+                <a href="carrinho.php" class="menu-link">CARRINHO</a>
+                <a href="index.php#destaques" class="menu-link text-white fw-bold">PROMOÇÕES 🔥</a>
+                <a href="minhas_compras.php" class="menu-link">MINHAS COMPRAS</a>
+                <a href="favoritos.php" class="menu-link">LISTA DE DESEJOS</a>
+                <a href="informacoes_usuario.php" class="menu-link">MEUS DADOS</a>
+
+                <?php if(isset($_SESSION['adm_usuario']) && $_SESSION['adm_usuario'] == 1) { ?>
+                    <a href="tela_adm.php" class="menu-link text-warning mt-3">PAINEL ADMIN</a>
+                <?php } ?>
+                
+                <div class="d-block d-md-none mt-4">
+                    <input class="form-control bg-dark text-white border-secondary" type="search" placeholder="Buscar..." id="mobileSearch">
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <?php if(isset($_SESSION['id']) || isset($_SESSION['nome'])){ ?>
+                    <a href="sair.php" class="btn btn-outline-danger w-100 py-2 text-uppercase fw-bold">Sair</a>
+                <?php } else { ?>
+                    <a href="cadastro.html" class="btn btn-light w-100 py-2 text-uppercase fw-bold text-dark">Criar Conta</a>
+                <?php } ?>
+            </div>
         </div>
     </div>
-<!----  ------->
-  
-  
-  
-  
-  
-  
-    <header class="container ">     
 
-  </header>
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main>
+        <div class="container">
 
-  <main>
-        <nav aria-label="breadcrumb">
-            <ol class="mx-5 mt-2 breadcrumb">
-                <li class="breadcrumb-item"><a href="Untitled-1.php">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Categoria</li>
-            </ol>
-        </nav>
+            <!-- SEÇÃO DE FILTROS -->
+            <div class="row mb-5">
+                <div class="col-12">
+                    <div class="bg-white p-4 rounded-3 shadow-sm">
+                        <h5 class="text-uppercase mb-4" style="font-family: 'Oswald', sans-serif; letter-spacing: 1px;">FILTRAR PRODUTOS</h5>
+                        
+                        <form method="GET" action="categoria.php" class="row g-3">
+                            <!-- Filtro de Categoria -->
+                            <div class="col-md-6">
+                                <label for="filterCategoria" class="form-label fw-bold">Categoria</label>
+                                <select class="form-select form-select-lg" id="filterCategoria" name="cat">
+                                    <option value="">Todas as Categorias</option>
+                                    <?php
+                                    // Buscar categorias únicas
+                                    $categorias = $pdo->query("SELECT DISTINCT categoria FROM produtos ORDER BY categoria ASC");
+                                    while ($cat = $categorias->fetch(PDO::FETCH_ASSOC)) {
+                                        $selected = (isset($_GET['cat']) && $_GET['cat'] == $cat['categoria']) ? 'selected' : '';
+                                        echo "<option value='{$cat['categoria']}' $selected>" . ucfirst($cat['categoria']) . "</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
 
-    <div class="container-fluid">
-        <div class="row m-2">
-            <div class="card col mx-3"> 
-                <h5 class=" text-center fw-bold mb-5 mt-2 pt-1">Filtrar produtos</h5>
-                <input type="search" id="marca" name="marca" class="d-none">
-                <input type="search" id="cat" name="cat" class="d-none">
-                <div class="d-flex ">
-                    <button type="button" class=" col btn btn-outline-primary" value="adidas" id="adidas" onclick="carAdidas()">
-                        <img src="img/adidas-logo-png-adidas-logo-png-adidas-3504.png" width="50px"> 
-                    </button>
-                    <button type="button" class="ms-1 col btn btn-outline-primary" value="nike" id="nike" onclick="carNike()">
-                        <img src="img/logo-nike.png" width="50px"> 
-                    </button>
+                            <!-- Filtro de Marca -->
+                            <div class="col-md-6">
+                                <label for="filterMarca" class="form-label fw-bold">Marca</label>
+                                <select class="form-select form-select-lg" id="filterMarca" name="marca">
+                                    <option value="">Todas as Marcas</option>
+                                    <?php
+                                    // Buscar marcas únicas
+                                    $marcas = $pdo->query("SELECT DISTINCT marca FROM produtos ORDER BY marca ASC");
+                                    while ($marca_row = $marcas->fetch(PDO::FETCH_ASSOC)) {
+                                        $selected = (isset($_GET['marca']) && $_GET['marca'] == $marca_row['marca']) ? 'selected' : '';
+                                        echo "<option value='{$marca_row['marca']}' $selected>" . ucfirst($marca_row['marca']) . "</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+
+                            <!-- Botão de Filtro -->
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-dark w-100 py-2 text-uppercase fw-bold" style="font-family: 'Oswald', sans-serif; letter-spacing: 0.5px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel me-2" viewBox="0 0 16 16">
+                                        <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.5.5h-4a.5.5 0 0 1-.5-.5V8.692L1.128 3.334A.5.5 0 0 1 1.5 3V1.5Z"/>
+                                    </svg> Aplicar Filtro
+                                </button>
+                                <?php if(isset($_GET['cat']) || isset($_GET['marca']) || isset($_GET['search'])): ?>
+                                    <a href="categoria.php" class="btn btn-outline-secondary w-100 py-2 text-uppercase fw-bold mt-2" style="font-family: 'Oswald', sans-serif; letter-spacing: 0.5px;">Limpar Filtros</a>
+                                <?php endif; ?>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div class="d-flex mt-3">
-                    <button type="button" class=" col btn btn-outline-primary" value="campo" id="campo" onclick="carCampo()">
-                        Moletom
-                    </button>
-                    <button type="button" class="ms-1 col btn btn-outline-primary" value="futsal" id="futsal" onclick="carFutsal()">
-                        Calças
-                    </button>
-                    <button type="button" class="ms-1 col btn btn-outline-primary" value="society" id="society" onclick="carSociety()">
-                        Camisetas
-                    </button>
-                </div>
-                <button onclick="searchFiltro()" class="btn my-2" style=" background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);">
-                    Filtrar
-                </button>
             </div>
-            <div class=" col-9">
-                        <div class="row">
-            <?php 
-              ////Barra de Pesquisa////
-              if(!empty($_GET['search']))
-              {
-                  $data = $_GET['search'];
-                  $comando = $pdo->prepare("SELECT * FROM produtos WHERE nome_produto LIKE '%$data%' or categoria LIKE '%$data%' or nome_produto or categoria LIKE '%$data%'");
 
-                  $comando->execute();
-
-                  if ($comando->rowCount() >= 1) {
-                      $listaItens = $comando->fetchAll();
-                      
-                  }
-              }else{
-                include("listar_produtos.php");
-              }
+            <!-- SEÇÃO DE PRODUTOS -->
+            <div class="row g-4">
+                <?php
+                // Barra de Pesquisa e Filtros
+                $query = "SELECT * FROM produtos WHERE 1=1";
+                $params = [];
+                
+                // Filtro de Categoria
+                if(!empty($_GET['cat'])) {
+                    $query .= " AND categoria = ?";
+                    $params[] = $_GET['cat'];
+                }
+                
+                // Filtro de Marca
+                if(!empty($_GET['marca'])) {
+                    $query .= " AND marca = ?";
+                    $params[] = $_GET['marca'];
+                }
+                
+                // Pesquisa por Nome
+                if(!empty($_GET['search'])) {
+                    $query .= " AND (nome_produto LIKE ? OR categoria LIKE ?)";
+                    $search_term = "%{$_GET['search']}%";
+                    $params[] = $search_term;
+                    $params[] = $search_term;
+                }
+                
+                // Se nenhum filtro, buscar todos
+                if(empty($_GET['cat']) && empty($_GET['marca']) && empty($_GET['search'])) {
+                    include("listar_produtos.php");
+                } else {
+                    $comando = $pdo->prepare($query);
+                    $comando->execute($params);
+                    $listaItens = $comando->fetchAll();
+                }
+                
                 if (!empty($listaItens)) {
                     foreach($listaItens as $linha) { 
             ?>
         
-        <div class="p-3 col-xl-3 col-lg-4 col-md-4 col-sm-6 d-flex align-items-stretche">
-        
-          <div class=" zoom card shadow text-center bg-light">
-            <a href="inserir_favoritos.php?id_produto=<?php echo $linha['id_produto'];?>" class="position-absolute right-0 p-2 text-danger">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="" class="bi bi-heart" viewBox="0 0 16 16">
-                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-              </svg>
-            </a>
-            <a style="text-decoration:none;" href="Produto.php?id_produto=<?php echo $linha['id_produto'];?>">
-            <?php echo '<div class=""><img height="100%" width="100%"  class="border border-white card-img-top" src="'.$linha['imagem'].'"></div>';?>
-            
-            <div class="text-start card-header">
-            <h4 class="text-muted"><?php echo $linha['nome_produto'];?></h4>
-            <h7 class="text-muted"><?php echo $linha['categoria'];?></h7>
-            <h6 class="text-success"> FRETE GRATIS</h6>
-            </a> 
-            <h4 class="card-title"><?php echo "R$". $linha['preco'].",00";?></h4>
-            </div>
-          </div> 
-                           
-        </div>
-        <?php
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
+                    <a href="produto.php?id_produto=<?php echo $linha['id_produto'];?>" class="text-decoration-none" style="color: inherit;">
+                        <div class="card-product">
+                            <div class="img-wrapper">
+                                <img src="<?php echo $linha['imagem'];?>" alt="<?php echo $linha['nome_produto'];?>" class="img-main">
+                            </div>
+
+                            <div class="overlay-gradient"></div>
+
+                            <div class="card-info-overlay">
+                                <div class="product-title"><?php echo strtoupper($linha['nome_produto']);?></div>
+                                <div class="product-price">R$ <?php echo number_format($linha['preco'], 2, ',', '.');?></div>
+                                <div class="installments">até 12x de R$ <?php echo number_format($linha['preco'] / 12, 2, ',', '.');?></div>
+                            </div>
+
+                            <span class="badge-frete">FRETE GRÁTIS</span>
+
+                            <button type="button" class="btn-fav" onclick="event.preventDefault(); event.stopPropagation(); location.href='inserir_favoritos.php?id_produto=<?php echo $linha['id_produto'];?>';" title="Adicionar aos favoritos">
+                                ❤️
+                            </button>
+                        </div>
+                    </a>
+                </div>
+                <?php
                     }
+                } else {
+                    echo '<div class="col-12 text-center py-5"><p class="text-muted fs-5">Nenhum produto encontrado.</p></div>';
                 }
-            ?> 
+                ?>
             </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="pt-5 pb-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-white mb-3">WADE CLUB</h5>
+                    <p class="small">Moda urbana com autenticidade. Peças exclusivas para quem vive o streetwear.</p>
+                </div>
+                <!-- Centralizado -->
+                <div class="col-md-4 mb-4 text-center">
+                    <h5 class="text-white mb-3">INSTITUCIONAL</h5>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Quem Somos</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Política de Privacidade</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Trocas e Devoluções</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4 text-md-end">
+                    <h5 class="text-white mb-3">FALE CONOSCO</h5>
+                    <p class="small mb-0 text-muted">suporte@wadeclub.com.br</p>
+                    <p class="small text-muted">&copy; 2025 Wade Club. Todos os direitos reservados.</p>
+                </div>
             </div>
         </div>
-    </div>
-    
-    
-  </main>
+    </footer>
 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <footer class=" border-top text-muted bg-light">
-    <div class="coontainer">
-      <div class="row py-3">
-        <div class="col-12 col-md-4 text-center text-md-left">
-          &copy; 2025 - WadeClub
-        </div>
-        <div class="col-12 col-md-4 text-center">
-          <a href="#" class="text-decoration-none text dark">Politica de privacidade</a>
-        </div> 
-        <div class="col-12 col-md-4 text-center text-md-right">
-          <?php if (!isset($_SESSION["id"]) and !isset($_SESSION["nome"])) {
-              echo '<a href="#" class="text-decoration-none text dark">Termos de uso</a>';
-          } else {
-              if ($_SESSION["adm_usuario"] != 1) {
-                  echo '<a href="#" class="text-decoration-none text dark">Termos de uso</a>';
-              } else {
-                  echo '<a href="tela_adm.php" class="text-decoration-none text dark">administrador</a>';
-              }
-          } ?>
-        </div>
-      </div>
-    </div>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
 
-  </footer>
-  
-
-  <!-- Optional JavaScript -->
-  <!-- Popper.js first, then Bootstrap JS -->
- 
-
- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
-        </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
-        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
-        </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
-        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
-        crossorigin="anonymous"></script>
     <script>
-        var search = document.getElementById('pesquisar');
-
-        search.addEventListener("keydown", function(event){
-            if (event.key === "Enter")
-            {
-                searchData();
-            }
-        });
-
-        function searchData()
-        {
-            window.location = 'categoria.php?search='+search.value;
+        // Busca no Desktop
+        const pesquisar = document.getElementById('pesquisar');
+        if (pesquisar) {
+            pesquisar.addEventListener("keydown", function(event) {
+                if (event.key === "Enter") {
+                    searchData();
+                }
+            });
         }
+
+        function searchData() {
+            const valor = document.getElementById('pesquisar')?.value || '';
+            if (valor.trim()) {
+                window.location = 'categoria.php?search=' + encodeURIComponent(valor);
+            }
+        }
+
+        // Busca no Mobile
+        const mobileSearch = document.getElementById('mobileSearch');
+        if (mobileSearch) {
+            mobileSearch.addEventListener("change", function() {
+                if (this.value.trim()) {
+                    window.location = 'categoria.php?search=' + encodeURIComponent(this.value);
+                }
+            });
+        }
+
+        // Navbar Sticky Inteligente
+        let lastScrollTop = 0;
+        const navbarMain = document.getElementById('navbarMain');
+        const navSecundaria = document.getElementById('navSecundaria');
+
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                navSecundaria.style.top = '-60px';
+            } else {
+                const headerHeight = navbarMain.offsetHeight;
+                navSecundaria.style.top = headerHeight + 'px';
+            }
+            lastScrollTop = scrollTop;
+        });
     </script>
     
 </body>

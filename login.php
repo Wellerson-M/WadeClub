@@ -25,7 +25,7 @@ include_once("conexao.php");
             $_SESSION['loggedin'] = true; 
 
             if($_SESSION['adm_usuario']  !=1){
-                header("location: untitled-1.php");
+                header("location: index.php");
             }else{
                 header("location: tela_adm.php");
             }

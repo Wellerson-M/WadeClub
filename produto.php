@@ -1,415 +1,705 @@
 <?php
 session_start();
+include "conexao.php";
 ?>
+
 <!doctype html>
 <html lang="pt-br">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <title>Hello, world!</title>
 
-    <?php 
-
-        $id_produto = $_GET["id_produto"];
-
-        
-    ?>
+    <title>Wade Club | Streetwear</title>
 
     <style>
-.zoom img {
-  max-width: 100%;
-  -moz-transition: all 0.5s;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-}
-.zoom:hover img {
-  -moz-transform: scale(1.2);
-  -webkit-transform: scale(1.2);
-  transform: scale(1.2);
+        :root {
+            --wade-dark: #212529;
+            --wade-bg: #ececec;
+        }
 
-  
-}</style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--wade-bg); 
+            color: var(--wade-dark);
+            padding-top: 86px;
+        }
+
+        h1, h2, h3, h4, h5, .navbar-brand, .nav-link-street {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- NAVBAR PRINCIPAL --- */
+        .navbar-main {
+            background-color: var(--wade-dark);
+            min-height: 86px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            padding: 10px 0;
+        }
+        
+        .navbar-brand img {
+            max-height: 70px;
+            width: auto;
+            transition: transform 0.3s;
+        }
+        .navbar-brand:hover img {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 991px) {
+            .navbar-brand img { max-height: 50px; }
+            body { padding-top: 76px; }
+            .navbar-main { min-height: 76px; }
+        }
+
+        /* Barra de Pesquisa */
+        .search-container {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+        }
+        .search-input {
+            border-radius: 50px;
+            padding-left: 25px;
+            padding-right: 60px;
+            background-color: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            height: 50px;
+            font-size: 1.05rem;
+            width: 100%;
+        }
+        .search-input:focus {
+            background-color: #fff;
+            color: #333;
+            box-shadow: 0 0 20px rgba(255,255,255,0.2);
+            border-color: #fff;
+        }
+        .search-input::placeholder { color: rgba(255,255,255,0.7); }
+        .search-btn {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.7);
+            padding: 8px;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+        .search-input:focus ~ .search-btn { color: var(--wade-dark); }
+
+        /* --- NAVBAR SECUNDÁRIO --- */
+        .nav-secondary {
+            background: #fff;
+            border-bottom: 1px solid #e0e0e0;
+            position: fixed;
+            top: 86px;
+            width: 100%;
+            z-index: 1020;
+            transition: top 0.3s;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        
+        @media (max-width: 991px) { .nav-secondary { top: 76px; } }
+        
+        .nav-link-street {
+            color: #555;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 15px 25px;
+            position: relative;
+            display: inline-block;
+        }
+        .nav-link-street:hover { color: #000; }
+        .nav-link-street::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: var(--wade-dark);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        .nav-link-street:hover::after { width: 60%; }
+
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: #999;
+            margin-top: 80px;
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+        
+        /* Offcanvas */
+        .offcanvas-street {
+            background-color: var(--wade-dark);
+            color: white;
+        }
+        .offcanvas-header { border-bottom: 1px solid #333; }
+        .menu-link {
+            color: #adb5bd;
+            font-size: 1.1rem;
+            padding: 12px 0;
+            border-bottom: 1px solid #333;
+            display: block;
+            text-decoration: none;
+            transition: 0.3s;
+            font-family: 'Oswald', sans-serif;
+        }
+        .menu-link:hover { color: #fff; padding-left: 10px; }
+
+        /* --- CAROUSEL DE PRODUTOS --- */
+        .product-carousel {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        .carousel-container {
+            max-height: 500px;
+        }
+
+        .carousel-item img {
+            height: 600px;
+            object-fit: cover;
+        }
+
+        .carousel-inner {
+            border-radius: 12px;
+        }
+
+        .carousel-control-prev, .carousel-control-next {
+            background: rgba(0,0,0,0.3);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .carousel-control-prev:hover, .carousel-control-next:hover {
+            background: rgba(0,0,0,0.6);
+        }
+
+        /* --- DETALHES DO PRODUTO --- */
+        .product-details {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .product-title-detail {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .product-price-detail {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #dc3545;
+            margin-bottom: 10px;
+        }
+
+        .installments-detail {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .size-selector {
+            margin-bottom: 25px;
+        }
+
+        .size-label {
+            font-weight: 700;
+            font-family: 'Oswald', sans-serif;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .size-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .size-btn {
+            padding: 10px 20px;
+            border: 2px solid #ddd;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            font-family: 'Oswald', sans-serif;
+        }
+
+        .size-btn:hover {
+            border-color: #212529;
+        }
+
+        .size-btn.active {
+            background: #212529;
+            color: white;
+            border-color: #212529;
+        }
+
+        .quantity-selector {
+            margin-bottom: 25px;
+        }
+
+        .quantity-label {
+            font-weight: 700;
+            font-family: 'Oswald', sans-serif;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .quantity-input {
+            max-width: 150px;
+        }
+
+        .action-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn-checkout {
+            padding: 15px;
+            background: #212529;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-checkout:hover {
+            background: #0d0d0d;
+            transform: translateY(-2px);
+        }
+
+        .btn-add-cart {
+            padding: 15px;
+            background: white;
+            color: #212529;
+            border: 2px solid #212529;
+            border-radius: 8px;
+            font-weight: 700;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-add-cart:hover {
+            background: #212529;
+            color: white;
+        }
+
+        .btn-favorite {
+            padding: 15px;
+            background: white;
+            color: #dc3545;
+            border: 2px solid #dc3545;
+            border-radius: 8px;
+            font-weight: 700;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-favorite:hover {
+            background: #dc3545;
+            color: white;
+        }
+
+        @media (max-width: 991px) {
+            .action-buttons {
+                grid-template-columns: 1fr;
+            }
+
+            .carousel-item img {
+                height: 350px;
+            }
+
+            .product-title-detail {
+                font-size: 1.5rem;
+            }
+
+            .product-price-detail {
+                font-size: 1.3rem;
+            }
+        }
+
+        .zoom img {
+          max-width: 100%;
+          -moz-transition: all 0.5s;
+          -webkit-transition: all 0.5s;
+          transition: all 0.5s;
+        }
+        .zoom:hover img {
+          -moz-transform: scale(1.2);
+          -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+        }
+
+    </style>
+
+    <?php 
+        $id_produto = $_GET["id_produto"];
+    ?>
 
 </head>
 
 <body>
-    <nav class=" navbar  navbar-expand-lg navbar-dark bg-primary border-bottom shadow-sm ">
-        <div class="container-fluid">
-            <div class="d-none d-md-block">
-                <a href="Untitled-1.php"> <img class="pt-2" src="img/WLJ.png" width="150px" height="95px"></a>
-            </div>
 
-            <form id="busca" class=" m-2 " style="width: 68%;">
-                <input class=" form-control me-2" type="search" placeholder="O que você está procurando?" arial
-                    arial-label="search">
+    <!-- NAVBAR PRINCIPAL -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-main fixed-top" id="navbarMain">
+        <div class="container px-3 px-lg-4">
+            
+            <div class="d-flex align-items-center w-100 justify-content-between">
+                
+                <!-- Logo -->
+                <a class="navbar-brand me-3 me-lg-4" href="index.php">
+                    <img src="img/logo.png" alt="Wade Club">
+                </a>
 
-            </form>
+                <!-- Barra de Pesquisa (Desktop e Tablet) -->
+                <div class="d-none d-md-flex flex-grow-1 mx-3 mx-lg-5 justify-content-center">
+                    <div class="search-container">
+                        <input class="search-input" type="search" placeholder="O que você procura hoje?" id="pesquisar">
+                        <button class="search-btn" type="button" onclick="searchData()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/></svg>
+                        </button>
+                    </div>
+                </div>
 
-
-            <div class="align-self end ">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse">
-
-
-                    <ul class="navbar-nav">
+                <!-- Ícones Direita -->
+                <div class="d-flex align-items-center gap-3 gap-lg-4">
                     
-                    <?php if(!isset($_SESSION['id']) and (!isset($_SESSION['nome']))){ ?>
-                        <li class="nav-item">
-                            <a href="login.html" class="m-2 nav-link  text-white"> Entrar</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="cadastro.html" class="m-2 nav-link  text-white"> Cadastrar</a>
-                        </li>
-                        <?php }else{ ?>
-                        <li class="nav-item">
-                            <a href="informacoes_usuario.php" class="m-2 nav-link  text-white"> Bem vindo <?php echo $_SESSION['nome']; ?></a>
-                        </li>
-                        <?php } ?>
-
-                        <li class="nav-item"> 
-                        <a class="btn btn-primary m-2  nav-link text-white" data-bs-toggle="offcanvas" href="#offcanvasRight" role="button" aria-controls="offcanvasRight">
-                                <img src="img/bi_person.png" height="28">
+                    <!-- Login/Olá -->
+                    <div class="d-none d-lg-block text-white">
+                        <?php if(!isset($_SESSION['id']) && !isset($_SESSION['nome'])){ ?>
+                            <a href="login.html" class="text-white text-decoration-none fw-bold small">ENTRAR</a>
+                        <?php } else { ?>
+                            <a href="informacoes_usuario.php" class="text-white text-decoration-none fw-bold small">
+                                OLÁ, <?php echo strtoupper(explode(' ', $_SESSION['nome'])[0]); ?>
                             </a>
-                        </li>
-                    </ul>
+                        <?php } ?>
+                    </div>
+
+                    <!-- Carrinho -->
+                    <a href="carrinho.php" class="position-relative text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
+                        </svg>
+                    </a>
+
+                    <!-- Botão Menu Lateral -->
+                    <a class="text-white cursor-pointer" data-bs-toggle="offcanvas" href="#offcanvasRight" role="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                        </svg>
+                    </a>
+
                 </div>
             </div>
-            
         </div>
     </nav>
 
-
-  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-    <div class="offcanvas-header">
-      <h5 id="offcanvasRightLabel">WLJ Sports</h5>
-          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
-              aria-label="Close"></button>
+    <!-- NAVBAR SECUNDÁRIO -->
+    <div class="nav-secondary" id="navSecundaria">
+        <ul class="nav justify-content-center flex-nowrap" style="min-width: 100%;">
+            <li class="nav-item"><a class="nav-link nav-link-street" href="index.php">HOME</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-street" href="categoria.php?cat=camiseta">CAMISETAS</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-street" href="categoria.php?cat=calcas">CALÇAS</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-street" href="categoria.php?cat=moletom">MOLETOM</a></li>
+        </ul>
     </div>
-    <div class=" offcanvas-body border">
-      <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-              fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
-              <path fill-rule="evenodd"
-                  d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
-              <path fill-rule="evenodd"
-                  d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
-          </svg><a href="Untitled-1.php" class="text-reset text-decoration-none"> Inicio</a></p>
 
-      <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-              fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
-              <path
-                  d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
-          </svg><a href="carrinho.php" class="text-reset text-decoration-none"> Minhas compras</a></p>
+    <!-- OFFCANVAS (Menu Lateral) -->
+    <div class="offcanvas offcanvas-end offcanvas-street" tabindex="-1" id="offcanvasRight">
+        <div class="offcanvas-header border-bottom border-secondary">
+            <h5 class="offcanvas-title font-monospace text-uppercase">Menu Wade</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column justify-content-between">
+            <div>
+                <a href="index.php" class="menu-link">INÍCIO</a>
+                <a href="carrinho.php" class="menu-link">CARRINHO</a>
+                <a href="index.php#destaques" class="menu-link text-white fw-bold">PROMOÇÕES 🔥</a>
+                <a href="minhas_compras.php" class="menu-link">MINHAS COMPRAS</a>
+                <a href="favoritos.php" class="menu-link">LISTA DE DESEJOS</a>
+                <a href="informacoes_usuario.php" class="menu-link">MEUS DADOS</a>
 
-      <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-              fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-              <path
-                  d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-          </svg><a href="favoritos.php" class="text-reset text-decoration-none"> Favoritos </a></p>
+                <?php if(isset($_SESSION['adm_usuario']) && $_SESSION['adm_usuario'] == 1) { ?>
+                    <a href="tela_adm.php" class="menu-link text-warning mt-3">PAINEL ADMIN</a>
+                <?php } ?>
+                
+                <div class="d-block d-md-none mt-4">
+                    <input class="form-control bg-dark text-white border-secondary" type="search" placeholder="Buscar..." onchange="location.href='categoria.php?search='+this.value">
+                </div>
+            </div>
 
-      <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-              fill="currentColor" class="bi bi-gift" viewBox="0 0 16 16">
-              <path
-                  d="M3 2.5a2.5 2.5 0 0 1 5 0 2.5 2.5 0 0 1 5 0v.006c0 .07 0 .27-.038.494H15a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 1 14.5V7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h2.038A2.968 2.968 0 0 1 3 2.506V2.5zm1.068.5H7v-.5a1.5 1.5 0 1 0-3 0c0 .085.002.274.045.43a.522.522 0 0 0 .023.07zM9 3h2.932a.56.56 0 0 0 .023-.07c.043-.156.045-.345.045-.43a1.5 1.5 0 0 0-3 0V3zM1 4v2h6V4H1zm8 0v2h6V4H9zm5 3H9v8h4.5a.5.5 0 0 0 .5-.5V7zm-7 8V7H2v7.5a.5.5 0 0 0 .5.5H7z" />
-          </svg><a href="" class="text-reset text-decoration-none"> Promoções</a></p>
-
-      <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-              fill="currentColor" class="bi bi-credit-card" viewBox="0 0 16 16">
-              <path
-                  d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z" />
-              <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z" />
-          </svg><a href="cartoes.php" class="text-reset text-decoration-none"> Cartões salvos</a></p>
-
-      <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-              fill="currentColor" class="bi bi-signpost-split-fill" viewBox="0 0 16 16">
-              <path
-                  d="M7 16h2V6h5a1 1 0 0 0 .8-.4l.975-1.3a.5.5 0 0 0 0-.6L14.8 2.4A1 1 0 0 0 14 2H9v-.586a1 1 0 0 0-2 0V7H2a1 1 0 0 0-.8.4L.225 8.7a.5.5 0 0 0 0 .6l.975 1.3a1 1 0 0 0 .8.4h5v5z" />
-          </svg><a href="informacoes_endereco.php" class="text-reset text-decoration-none"> Endereços</a></p>
-
-      <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-              fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
-              <path
-                  d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z" />
-          </svg><a href="informacoes_usuario.php" class="text-reset text-decoration-none"> Meus dados</a></p>
-
-      <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-              fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
-              <path fill-rule="evenodd"
-                  d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z" />
-              <path fill-rule="evenodd"
-                  d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
-          </svg><a href="sair.php" class="text-reset text-decoration-none">Sair</a></p>
-
-      <hr>
-      <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-              fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z" />
-              <path
-                  d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z" />
-          </svg><a href="" class="text-reset text-decoration-none"> Trocas e devoluçôes</a></p>
-
-      <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-              fill="currentColor" class="bi bi-question-circle" viewBox="0 0 16 16">
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path
-                  d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
-          </svg><a href="" class="text-reset text-decoration-none"> Ajuda</a></p>
-
-      <p class="fs-5 text-muted"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-              fill="currentColor" class="bi bi-braces" viewBox="0 0 16 16">
-              <path
-                  d="M2.114 8.063V7.9c1.005-.102 1.497-.615 1.497-1.6V4.503c0-1.094.39-1.538 1.354-1.538h.273V2h-.376C3.25 2 2.49 2.759 2.49 4.352v1.524c0 1.094-.376 1.456-1.49 1.456v1.299c1.114 0 1.49.362 1.49 1.456v1.524c0 1.593.759 2.352 2.372 2.352h.376v-.964h-.273c-.964 0-1.354-.444-1.354-1.538V9.663c0-.984-.492-1.497-1.497-1.6zM13.886 7.9v.163c-1.005.103-1.497.616-1.497 1.6v1.798c0 1.094-.39 1.538-1.354 1.538h-.273v.964h.376c1.613 0 2.372-.759 2.372-2.352v-1.524c0-1.094.376-1.456 1.49-1.456V7.332c-1.114 0-1.49-.362-1.49-1.456V4.352C13.51 2.759 12.75 2 11.138 2h-.376v.964h.273c.964 0 1.354.444 1.354 1.538V6.3c0 .984.492 1.497 1.497 1.6z" />
-          </svg><a href="" class="text-reset text-decoration-none"> Sobre WLJ Sports</a></p>
-
+            <div class="mt-4">
+                <?php if(isset($_SESSION['id']) || isset($_SESSION['nome'])){ ?>
+                    <a href="sair.php" class="btn btn-outline-danger w-100 py-2 text-uppercase fw-bold">Sair</a>
+                <?php } else { ?>
+                    <a href="cadastro.html" class="btn btn-light w-100 py-2 text-uppercase fw-bold text-dark">Criar Conta</a>
+                <?php } ?>
+            </div>
+        </div>
     </div>
-  </div>
-
-
-  <ul class="sticky-top nav nav-pills nav-fill navbar-light bg-light border">
-      <li class="nav-item d-none d-md-block">
-          <a class="nav-link " aria-current="page" href="Untitled-1.php" tabindex="-1" aria-disabled="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house"
-                  viewBox="0 0 16 16">
-                  <path fill-rule="evenodd"
-                      d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
-                  <path fill-rule="evenodd"
-                      d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
-              </svg><strong>Home</strong></a>
-      </li>
-      <li class="nav-item d-none d-md-block">
-          
-          <a class="nav-link" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ui-radios-grid" viewBox="0 0 16 16">
-              <path d="M3.5 15a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm9-9a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm0 9a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zM16 3.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0zm-9 9a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0zm5.5 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zm-9-11a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 2a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
-            </svg>
-          <strong>Categoria</strong></a>
-      </li>
-      <li class="nav-item d-none d-md-block">
-          <a class="nav-link" href="favoritos.php">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart"
-                  viewBox="0 0 16 16">
-                  <path
-                      d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-              </svg><strong>Lista de desejos</strong></a>
-      </li>
-      <li class="nav-item d-none d-md-block">
-          <a class="nav-link " href="carrinho.php" tabindex="-1" aria-disabled="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart3"
-                  viewBox="0 0 16 16">
-                  <path
-                      d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-              </svg><strong>Carrinho</strong> </a>
-      </li>
-
-      <li class="nav-item d-inline-block d-md-none">
-          <a class="nav-link disabled" aria-current="page" href="#" tabindex="-1" aria-disabled="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house"
-                  viewBox="0 0 16 16">
-                  <path fill-rule="evenodd"
-                      d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
-                  <path fill-rule="evenodd"
-                      d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
-              </svg></a>
-      </li>
-      <li class="nav-item d-inline-block d-md-none">
-          <a class="nav-link text-dark" href="#">
-
-              <a class="nav-link text-dark" href="#"><img id="chuteira-icon" src="img/vans-svgrepo-com.svg" class="bi " width="20" height="20" ></a>
-      </li>
-      <li class="nav-item d-inline-block d-md-none">
-          <a class="nav-link" href="#">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart"
-                  viewBox="0 0 16 16">
-                  <path
-                      d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-              </svg></a>
-      </li>
-      <li class="nav-item d-inline-block d-md-none">
-          <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart3"
-                  viewBox="0 0 16 16">
-                  <path
-                      d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-              </svg> </a>
-      </li>
-  </ul>
 
     <main>
         <nav aria-label="breadcrumb">
             <ol class="mx-5 mt-2 breadcrumb">
-                <li class="breadcrumb-item"><a href="Untitled-1.php">Home</a></li>
+                <li class="breadcrumb-item"><a href="index.php">Home</a></li>
                 <li class="breadcrumb-item"><a href="categoria.php">Categoria</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Produto</li>
             </ol>
         </nav>
 
-        <div class="row container-fluid m-1 px-4">
-            <div class="position-relative">
-                <form method="POST" action="inserir_carrinho.php">
+        <div class="container py-4">
+            <?php 
+                include("listar_um_produto.php");
                 
-                    <div>
-                        <input class="invisible" type="text" name="id_produto" id="id_produto" value="<?php echo $id_produto ?>" readonly>
-                    <?php 
-                        include("listar_um_produto.php");
-                        
-                        if (!empty($listaItens)) {
-                            foreach($listaItens as $linha) { 
-                                echo '<div class="zoom"> <p><img height="100%" class="mx-5 my-2 img-thumbnail rounded float-start col-4" width="100%" src="'.$linha['imagem'].'"></p></div>';
-                            }
-                        }
-                        ?>
-                       <?php 
-                            include("listar_um_produto.php");
-
-                                if (!empty($listaItens)) {
-                                    foreach($listaItens as $linha) { 
-                            
-                                        echo "<h3>".$linha['nome_produto']."</h3>";
-                                        if (($linha['categoria'] !=2)  AND ($linha['categoria'] !=3)) {
-                                            echo "";
-                                        }
-                                        if (($linha['categoria'] !=1)  AND ($linha['categoria'] !=3)) {
-                                            echo "";
-                                        }
-                                        if (($linha['categoria'] !=1)  AND ($linha['categoria'] !=2)) {
-                                            echo "";
-                                        }
-
-                                    }
-                                }
-                        ?> 
-
-                        <?php   
-                            include("listar_um_produto.php");
-
-                                if (!empty($listaItens)) {
-                                    foreach($listaItens as $linha) { ?>
-                           
-                           <h4 class=" text-danger"><?php echo "R$".$linha['preco'].",00";?></h4>
-                           <span style="font-size: medium;">  Ou em 2x de</span>  
-                           <p class="text-danger pb-1"><?php echo "R$".($linha['preco']/2)." sem juros";?> </p>
-                                    <?php
-                                    }
-                                }
-                        ?> 
-                        <div class="d-flex " style="max-width: 300px">
-                            <div class="form-outline col-2">
-                                <h6 class="form-label">Quantidade:</h6>
+                if (!empty($listaItens)) {
+                    foreach($listaItens as $linha) {
+                        $preco = number_format($linha['preco'], 2, ',', '.');
+                        $parcelado = number_format($linha['preco'] / 2, 2, ',', '.');
+            ?>
+            <form method="POST" action="inserir_carrinho.php">
+                <input type="hidden" name="id_produto" value="<?php echo $linha['id_produto']; ?>">
+                
+                <div class="row g-4">
+                    <!-- CAROUSEL DE IMAGENS -->
+                    <div class="col-lg-6">
+                        <div class="product-carousel">
+                            <div id="carouselProduto" class="carousel slide carousel-container" data-bs-ride="carousel">
+                                <?php
+                                // Buscar todas as imagens do produto
+                                $cmd_imagens = $pdo->prepare("SELECT imagem FROM imagens_produto WHERE id_produto = :id ORDER BY id_img ASC");
+                                $cmd_imagens->bindValue(":id", $linha['id_produto']);
+                                $cmd_imagens->execute();
+                                $todasImagens = $cmd_imagens->fetchAll(PDO::FETCH_ASSOC);
                                 
-                                <input id="quantidade" name="quantidade" min="1" value="1" type="number" class="form-control" />
-                            </div> 
+                                // Se não houver imagens adicionais, usar a imagem principal
+                                if (empty($todasImagens)) {
+                                    $todasImagens = [['imagem' => $linha['imagem']]];
+                                } else {
+                                    // Adicionar imagem principal no início se não estiver lá
+                                    array_unshift($todasImagens, ['imagem' => $linha['imagem']]);
+                                }
+                                
+                                $totalImagens = count($todasImagens);
+                                ?>
+                                
+                                <?php if ($totalImagens > 1): ?>
+                                <div class="carousel-indicators">
+                                    <?php for($i = 0; $i < $totalImagens; $i++): ?>
+                                        <button type="button" data-bs-target="#carouselProduto" data-bs-slide-to="<?php echo $i; ?>" class="<?php echo ($i === 0) ? 'active' : ''; ?>"></button>
+                                    <?php endfor; ?>
+                                </div>
+                                <?php endif; ?>
+                                
+                                <div class="carousel-inner">
+                                    <?php foreach($todasImagens as $index => $imgData): ?>
+                                    <div class="carousel-item <?php echo ($index === 0) ? 'active' : ''; ?>" data-bs-interval="5000">
+                                        <img src="<?php echo $imgData['imagem']; ?>" class="d-block w-100" alt="<?php echo $linha['nome_produto']; ?> - Imagem <?php echo ($index + 1); ?>">
+                                    </div>
+                                    <?php endforeach; ?>
+                                </div>
+                                
+                                <?php if ($totalImagens > 1): ?>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselProduto" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselProduto" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                </button>
+                                <?php endif; ?>
+                            </div>
                         </div>
-
-
-                        <h6 class="pt-2 position-relative  ">Tamanho: <input type="text" id="tamanho" name="tamanho" class="text-muted" style="border:none; outline:0;" readonly></h6>
-                        <div class=" pagination position-relative ">
-                            <div class="row position-absolute top-100 ">
-
-                                <button type="button" class="col btn btn-primary page-link" value="M" id="buttonTamanho1" onclick="carInput1()">M</button>
-                                <button type="button" class="col btn btn-primary page-link" value="G" id="buttonTamanho2" onclick="carInput2()">G</button>
-                                <button type="button" class="col btn btn-primary page-link" value="GG" id="buttonTamanho3" onclick="carInput3()">GG</button>
-                                <button type="button" class="col btn btn-primary page-link" value="XGG" id="buttonTamanho4" onclick="carInput4()">XGG</button>
-                            </div> 
                     </div>
-
-                    <div class="invisible py-4"></div>
-                    <div>
-                    <button type="button" class="my-3 btn btn-outline-success col-6">Finalizar compra</button>
-                   
-
-                    <button type="submit" class=" btn btn-outline-info col-3"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                        fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
-                        <path
-                            d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
-                    </svg> Adicionar ao carrinho</button>
-
-
-                    <a href="inserir_favoritos.php?id_produto=<?php echo $linha['id_produto'];?>">
-                        <button type="button" action="inserir_carrinho.php" class=" btn btn-outline-info col-3"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                            fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                            <path
-                                d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-                        </svg>Adicionar aos favoritos</button>
-                    </a>
-                 </div>
+                    
+                    <!-- DETALHES DO PRODUTO -->
+                    <div class="col-lg-6">
+                        <div class="product-details">
+                            <h1 class="product-title-detail"><?php echo strtoupper($linha['nome_produto']); ?></h1>
+                            
+                            <div class="product-price-detail">
+                                R$ <?php echo $preco; ?>
+                            </div>
+                            
+                            <div class="installments-detail">
+                                ou 2x de R$ <?php echo $parcelado; ?> sem juros
+                            </div>
+                            
+                            <hr>
+                            
+                            <!-- SELETOR DE TAMANHO -->
+                            <div class="size-selector">
+                                <label class="size-label">Escolha o tamanho:</label>
+                                <div class="size-buttons">
+                                    <button type="button" class="size-btn" onclick="selecionarTamanho(this, 'M')">M</button>
+                                    <button type="button" class="size-btn" onclick="selecionarTamanho(this, 'G')">G</button>
+                                    <button type="button" class="size-btn" onclick="selecionarTamanho(this, 'GG')">GG</button>
+                                    <button type="button" class="size-btn" onclick="selecionarTamanho(this, 'XGG')">XGG</button>
+                                </div>
+                                <input type="hidden" id="tamanho" name="tamanho" value="">
+                            </div>
+                            
+                            <!-- QUANTIDADE -->
+                            <div class="quantity-selector">
+                                <label class="quantity-label">Quantidade:</label>
+                                <input type="number" id="quantidade" name="quantidade" min="1" value="1" class="form-control quantity-input">
+                            </div>
+                            
+                            <!-- BOTÕES DE AÇÃO -->
+                            <div class="action-buttons">
+                                <button type="submit" class="btn-add-cart">
+                                    🛒 Adicionar ao Carrinho
+                                </button>
+                                <a href="inserir_favoritos.php?id_produto=<?php echo $linha['id_produto']; ?>" class="btn-favorite" style="text-decoration: none; display: flex; align-items: center; justify-content: center;">
+                                    ❤️ Adicionar aos Favoritos
+                                </a>
+                            </div>
+                        </div>
                     </div>
-
-                   
-
-
-
-                
-                </form>
-            </div>
-
-
+                </div>
+            </form>
+            <?php
+                    }
+                } else {
+                    echo '<div class="alert alert-warning">Produto não encontrado.</div>';
+                }
+            ?>
         </div>
-
+                        
+        </div>
     </main>
 
-    <footer class=" border-top text-muted bg-light">
-        <div class="coontainer">
-            <div class="row py-3">
-                <div class="col-12 col-md-4 text-center text-md-left">
-                    &copy; 2022 - WLJ Sports
+    <!-- FOOTER -->
+    <footer class="pt-5 pb-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-white mb-3">WADE CLUB</h5>
+                    <p class="small">Moda urbana com autenticidade. Peças exclusivas para quem vive o streetwear.</p>
                 </div>
-                <div class="col-12 col-md-4 text-center">
-                    <a href="#" class="text-decoration-none text dark">Politica de privacidade</a>
+                <!-- Centralizado -->
+                <div class="col-md-4 mb-4 text-center">
+                    <h5 class="text-white mb-3">INSTITUCIONAL</h5>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Quem Somos</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Política de Privacidade</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Trocas e Devoluções</a></li>
+                    </ul>
                 </div>
-                <div class="col-12 col-md-4 text-center text-md-right">
-                    <a href="#" class="text-decoration-none text dark">administrar</a>
+                <div class="col-md-4 mb-4 text-md-end">
+                    <h5 class="text-white mb-3">FALE CONOSCO</h5>
+                    <p class="small mb-0 text-muted">suporte@wadeclub.com.br</p>
+                    <p class="small text-muted">&copy; 2025 Wade Club. Todos os direitos reservados.</p>
                 </div>
             </div>
         </div>
-
     </footer>
 
-
-    <!-- Optional JavaScript -->
-    <!-- Popper.js first, then Bootstrap JS -->
-
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    
     <script>
-        function carInput1(){
-            document.getElementById("tamanho").value = document.getElementById("buttonTamanho1").value;
+        var search = document.getElementById('pesquisar');
+        search.addEventListener("keydown", function(event){
+            if (event.key === "Enter") {
+                searchData();
+            }
+        });
+        function searchData() {
+            window.location = 'categoria.php?search='+search.value;
         }
-        function carInput2(){
-            document.getElementById("tamanho").value = document.getElementById("buttonTamanho2").value;
-        }
-        function carInput3(){
-            document.getElementById("tamanho").value = document.getElementById("buttonTamanho3").value;
-        }
-        function carInput4(){
-            document.getElementById("tamanho").value = document.getElementById("buttonTamanho4").value;
-        }
-        function carInput5(){
-            document.getElementById("tamanho").value = document.getElementById("buttonTamanho5").value;
-        }
-        function carInput6(){
-            document.getElementById("tamanho").value = document.getElementById("buttonTamanho6").value;
-        }
-        function carInput7(){
-            document.getElementById("tamanho").value = document.getElementById("buttonTamanho7").value;
-        }       
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
-        </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
-        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
-        </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
-        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
-        crossorigin="anonymous"></script>
+        // Lógica do Navbar Sticky Inteligente
+        let lastScrollTop = 0;
+        const navbarMain = document.getElementById('navbarMain');
+        const navSecundaria = document.getElementById('navSecundaria');
+        
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                navSecundaria.style.top = '-60px'; 
+            } else {
+                // Sobe a navbar secundária se a principal mudar de tamanho no mobile
+                const headerHeight = document.getElementById('navbarMain').offsetHeight;
+                navSecundaria.style.top = headerHeight + 'px';
+            }
+            lastScrollTop = scrollTop;
+        });
+
+        // Seletor de Tamanho
+        function selecionarTamanho(button, tamanho) {
+            // Remove a classe active de todos os botões
+            document.querySelectorAll('.size-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Adiciona a classe active ao botão clicado
+            button.classList.add('active');
+            
+            // Define o valor do input oculto
+            document.getElementById('tamanho').value = tamanho;
+        }
+
+        // Validação antes de enviar o formulário
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('form');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    const tamanho = document.getElementById('tamanho').value;
+                    if (!tamanho) {
+                        e.preventDefault();
+                        alert('Por favor, selecione um tamanho antes de continuar!');
+                        return false;
+                    }
+                });
+            }
+        });
+    </script>
 
 </body>
 
