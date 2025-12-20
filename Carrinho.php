@@ -243,82 +243,9 @@ include("conexao.php");
 
 <body>
 
-<!-- NAVBAR PRINCIPAL -->
-<nav class="navbar navbar-expand-lg navbar-dark navbar-main fixed-top" id="navbarMain">
-    <div class="container px-3 px-lg-4">
-        <!-- Logo -->
-        <a class="navbar-brand me-3 me-lg-4" href="index.php">
-            <img src="img/logo.png" alt="Wade Club">
-        </a>
-        
-        <!-- Search Input -->
-        <div class="search-container d-none d-md-flex flex-grow-1 mx-3 mx-lg-4">
-            <input type="search" class="form-control" id="pesquisar" placeholder="O que você está procurando?" name="pesquisar">
-            <button type="button" onclick="searchData()" style="padding: 0 10px;">🔍</button>
-        </div>
+<?php include "Components/nav.php"; ?>
 
-        <!-- Menu Icons -->
-        <div class="d-flex align-items-center gap-3">
-            <!-- Login/User Menu -->
-            <div class="d-none d-md-flex">
-                <?php if(!isset($_SESSION['id']) and (!isset($_SESSION['nome']))){ ?>
-                    <a href="login.html" class="text-white text-decoration-none" style="font-size: 12px; margin-right: 15px;">ENTRAR</a>
-                    <a href="cadastro.html" class="text-white text-decoration-none" style="font-size: 12px;">CADASTRAR</a>
-                <?php } else { ?>
-                    <span class="text-white" style="font-size: 12px;">Bem-vindo, <?php echo $_SESSION['nome']; ?></span>
-                <?php } ?>
-            </div>
-
-            <!-- Offcanvas Menu Toggle -->
-            <button class="btn btn-light" type="button" data-bs-toggle="offcanvas" href="#offcanvasMenu" role="button" aria-controls="offcanvasMenu">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 12.5A1.5 1.5 0 0 1 2.5 11h3A1.5 1.5 0 0 1 7 12.5v3A1.5 1.5 0 0 1 5.5 17h-3A1.5 1.5 0 0 1 1 15.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 11h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a1.5 1.5 0 0 1-1.5-1.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
-                </svg>
-            </button>
-        </div>
-    </div>
-</nav>
-
-<!-- NAVBAR SECUNDÁRIA -->
-<div class="nav-secondary" id="navSecundaria">
-    <ul class="nav justify-content-center flex-nowrap">
-        <li class="nav-item"><a class="nav-link nav-link-street" href="index.php">HOME</a></li>
-        <li class="nav-item"><a class="nav-link nav-link-street" href="categoria.php?cat=camiseta">CAMISETAS</a></li>
-        <li class="nav-item"><a class="nav-link nav-link-street" href="categoria.php?cat=calca">CALÇAS</a></li>
-        <li class="nav-item"><a class="nav-link nav-link-street" href="categoria.php?cat=moletom">MOLETOM</a></li>
-    </ul>
-</div>
-
-<!-- OFFCANVAS MENU -->
-<div class="offcanvas offcanvas-end offcanvas-street" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
-    <div class="offcanvas-header">
-        <h5 id="offcanvasMenuLabel">WADE CLUB</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-        <?php if (!isset($_SESSION['id']) or !isset($_SESSION['nome'])) { ?>
-            <p><a href="login.html" class="text-reset text-decoration-none">ENTRAR</a></p>
-            <p><a href="cadastro.html" class="text-reset text-decoration-none">CADASTRAR</a></p>
-        <?php } else { ?>
-            <p><a href="informacoes_usuario.php" class="text-reset text-decoration-none">BEM-VINDO, <?php echo strtoupper($_SESSION['nome']); ?></a></p>
-            <?php if ($_SESSION['adm_usuario'] == 1) { ?>
-                <p><a href="tela_adm.php" class="text-reset text-decoration-none">ADMINISTRADOR</a></p>
-            <?php } ?>
-        <?php } ?>
-        <p><a href="index.php" class="text-reset text-decoration-none">HOME</a></p>
-        <p><a href="categoria.php" class="text-reset text-decoration-none">CAMISETAS</a></p>
-        <p><a href="categoria.php?cat=calca" class="text-reset text-decoration-none">CALÇAS</a></p>
-        <p><a href="categoria.php?cat=moletom" class="text-reset text-decoration-none">MOLETOM</a></p>
-        <p><a href="Carrinho.php" class="text-reset text-decoration-none">CARRINHO</a></p>
-        <p><a href="favoritos.php" class="text-reset text-decoration-none">FAVORITOS</a></p>
-        <p><a href="informacoes_endereco.php" class="text-reset text-decoration-none">ENDEREÇOS</a></p>
-        <p><a href="informacoes_usuario.php" class="text-reset text-decoration-none">MEUS DADOS</a></p>
-        <p><a href="sair.php" class="text-reset text-decoration-none">SAIR</a></p>
-    </div>
-</div>
-
-
-    <main>
+    <main style="margin-top: 30px;">
             <nav aria-label="breadcrumb">
                 <ol class="mx-5 mt-2 breadcrumb">
                     <li class="breadcrumb-item"><a href="index.php">Home</a></li>
@@ -446,31 +373,7 @@ include("conexao.php");
 
     </main>
 
-    <!-- FOOTER -->
-    <footer class="pt-5 pb-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <h5 class="text-white mb-3">WADE CLUB</h5>
-                    <p class="small">Moda urbana com autenticidade. Peças exclusivas para quem vive o streetwear.</p>
-                </div>
-                <!-- Centralizado -->
-                <div class="col-md-4 mb-4 text-center">
-                    <h5 class="text-white mb-3">INSTITUCIONAL</h5>
-                    <ul class="list-unstyled small">
-                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Quem Somos</a></li>
-                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Política de Privacidade</a></li>
-                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Trocas e Devoluções</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4 mb-4 text-md-end">
-                    <h5 class="text-white mb-3">FALE CONOSCO</h5>
-                    <p class="small mb-0 text-muted">suporte@wadeclub.com.br</p>
-                    <p class="small text-muted">&copy; 2025 Wade Club. Todos os direitos reservados.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <?php include "Components/footer.php"; ?>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>

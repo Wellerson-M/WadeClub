@@ -27,10 +27,7 @@
 
 </head>
 
-<body>
-<!-- rodapé superior -->
-    <nav class=" navbar  navbar-expand-lg navbar-dark bg-dark border-bottom shadow-sm ">
-        <div class="container-fluid">
+<body><?php include "Components/nav.php"; ?><div class="container-fluid">
             <div class="d-none d-md-block">
                 <a href="index.php"> <img class="pt-2" src="img/logo.png" width="150" height="120"></a>
             </div>

@@ -213,11 +213,7 @@ if(!isset($_SESSION['id']) and (!isset($_SESSION['nome']))){
 
 </head>
 
-<body>
-
-<!-- NAVBAR PRINCIPAL -->
-<nav class="navbar navbar-expand-lg navbar-dark navbar-main fixed-top" id="navbarMain">
-  <div class="container px-3 px-lg-4">
+<body><?php include "Components/nav.php"; ?><div class="container px-3 px-lg-4">
     <a class="navbar-brand me-3 me-lg-4" href="index.php">
       <img src="img/logo.png" alt="Wade Club">
     </a>
@@ -477,30 +473,7 @@ if(!isset($_SESSION['id']) and (!isset($_SESSION['nome']))){
     </div>
   </main>
 
-<!-- FOOTER -->
-<footer class="pt-5 pb-4">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4 mb-4">
-        <h5 class="text-white mb-3">WADE CLUB</h5>
-        <p class="small">Moda urbana com autenticidade. Peças exclusivas para quem vive o streetwear.</p>
-      </div>
-      <div class="col-md-4 mb-4 text-center">
-        <h5 class="text-white mb-3">INSTITUCIONAL</h5>
-        <ul class="list-unstyled small">
-          <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Quem Somos</a></li>
-          <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Política de Privacidade</a></li>
-          <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Trocas e Devoluções</a></li>
-        </ul>
-      </div>
-      <div class="col-md-4 mb-4 text-md-end">
-        <h5 class="text-white mb-3">FALE CONOSCO</h5>
-        <p class="small mb-0 text-muted">suporte@wadeclub.com.br</p>
-        <p class="small text-muted">&copy; 2025 Wade Club. Todos os direitos reservados.</p>
-      </div>
-    </div>
-  </div>
-</footer>
+<?php include "Components/footer.php"; ?>
 
 <!-- SCRIPTS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
