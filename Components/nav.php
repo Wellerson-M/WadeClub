@@ -1,4 +1,4 @@
-    
+
 
 <!doctype html>
 <html lang="pt-br">
@@ -360,7 +360,7 @@
     </nav>
 
     <!-- NAVBAR SECUNDÁRIO -->
-    <div class="nav-secondary" id="navSecundaria" style="margin-bottom: 30px;">
+    <div class="nav-secondary" id="navSecundaria" style="margin-bottom: 80px;">
         <ul class="nav justify-content-center flex-nowrap" style="min-width: 100%;">
             <li class="nav-item"><a class="nav-link nav-link-street" href="index.php">HOME</a></li>
             <li class="nav-item"><a class="nav-link nav-link-street" href="categoria.php?cat=camiseta">CAMISETAS</a></li>
