@@ -165,42 +165,56 @@ include "conexao.php";
         }
         .menu-link:hover { color: #fff; padding-left: 10px; }
 
-        /* --- CAROUSEL DE PRODUTOS --- */
-        .product-carousel {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            margin-bottom: 30px;
+        /* --- GALERIA DE PRODUTO (imagem grande + miniaturas) --- */
+        .product-gallery {
+            display: flex;
+            gap: 16px;
         }
 
-        .carousel-container {
-            max-height: 500px;
+        .thumbs {
+            width: 88px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
-        .carousel-item img {
-            height: 600px;
+        .thumb {
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            padding: 4px;
+            background: #fff;
+            cursor: pointer;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .thumb:hover { border-color: #bbb; transform: translateY(-1px); }
+        .thumb.active { border-color: #212529; }
+
+        .thumb img {
+            width: 100%;
+            height: 72px;
             object-fit: cover;
+            border-radius: 6px;
         }
 
-        .carousel-inner {
+        .main-image-wrapper {
+            flex: 1;
+            background: #fff;
             border-radius: 12px;
-        }
-
-        .carousel-control-prev, .carousel-control-next {
-            background: rgba(0,0,0,0.3);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            padding: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s;
+            min-height: 420px;
         }
 
-        .carousel-control-prev:hover, .carousel-control-next:hover {
-            background: rgba(0,0,0,0.6);
+        .main-image {
+            max-width: 100%;
+            max-height: 520px;
+            object-fit: contain;
+            transition: transform 0.25s ease;
         }
+        .main-image-wrapper:hover .main-image { transform: scale(1.05); }
 
         /* --- DETALHES DO PRODUTO --- */
         .product-details {
@@ -351,9 +365,9 @@ include "conexao.php";
                 grid-template-columns: 1fr;
             }
 
-            .carousel-item img {
-                height: 350px;
-            }
+            .thumbs { width: 72px; }
+            .thumb img { height: 60px; }
+            .main-image { max-height: 360px; }
 
             .product-title-detail {
                 font-size: 1.5rem;
@@ -506,52 +520,35 @@ include "conexao.php";
                 <input type="hidden" name="id_produto" value="<?php echo $linha['id_produto']; ?>">
                 
                 <div class="row g-4">
-                    <!-- CAROUSEL DE IMAGENS -->
+                    <!-- GALERIA DE IMAGENS -->
                     <div class="col-lg-6">
-                        <div class="product-carousel">
-                            <div id="carouselProduto" class="carousel slide carousel-container" data-bs-ride="carousel">
-                                <?php
-                                // Buscar todas as imagens do produto
-                                $cmd_imagens = $pdo->prepare("SELECT imagem FROM imagens_produto WHERE id_produto = :id ORDER BY id_img ASC");
-                                $cmd_imagens->bindValue(":id", $linha['id_produto']);
-                                $cmd_imagens->execute();
-                                $todasImagens = $cmd_imagens->fetchAll(PDO::FETCH_ASSOC);
-                                
-                                // Se não houver imagens adicionais, usar a imagem principal
-                                if (empty($todasImagens)) {
-                                    $todasImagens = [['imagem' => $linha['imagem']]];
-                                } else {
-                                    // Adicionar imagem principal no início se não estiver lá
-                                    array_unshift($todasImagens, ['imagem' => $linha['imagem']]);
-                                }
-                                
-                                $totalImagens = count($todasImagens);
-                                ?>
-                                
-                                <?php if ($totalImagens > 1): ?>
-                                <div class="carousel-indicators">
-                                    <?php for($i = 0; $i < $totalImagens; $i++): ?>
-                                        <button type="button" data-bs-target="#carouselProduto" data-bs-slide-to="<?php echo $i; ?>" class="<?php echo ($i === 0) ? 'active' : ''; ?>"></button>
-                                    <?php endfor; ?>
-                                </div>
-                                <?php endif; ?>
-                                
-                                <div class="carousel-inner">
-                                    <?php foreach($todasImagens as $index => $imgData): ?>
-                                    <div class="carousel-item <?php echo ($index === 0) ? 'active' : ''; ?>" data-bs-interval="5000">
-                                        <img src="<?php echo $imgData['imagem']; ?>" class="d-block w-100" alt="<?php echo $linha['nome_produto']; ?> - Imagem <?php echo ($index + 1); ?>">
-                                    </div>
-                                    <?php endforeach; ?>
-                                </div>
-                                
-                                <?php if ($totalImagens > 1): ?>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselProduto" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#carouselProduto" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                </button>
-                                <?php endif; ?>
+                        <?php
+                            // Buscar todas as imagens do produto
+                            $cmd_imagens = $pdo->prepare("SELECT imagem FROM imagens_produto WHERE id_produto = :id ORDER BY id_img ASC");
+                            $cmd_imagens->bindValue(":id", $linha['id_produto']);
+                            $cmd_imagens->execute();
+                            $todasImagens = $cmd_imagens->fetchAll(PDO::FETCH_ASSOC);
+
+                            // Garantir que haja pelo menos a imagem principal
+                            if (empty($todasImagens)) {
+                                $todasImagens = [['imagem' => $linha['imagem']]];
+                            } else {
+                                // Colocar a imagem principal primeiro
+                                array_unshift($todasImagens, ['imagem' => $linha['imagem']]);
+                            }
+                        ?>
+
+                        <div class="product-gallery">
+                            <div class="thumbs">
+                                <?php foreach($todasImagens as $index => $imgData): ?>
+                                    <button type="button" class="thumb <?php echo ($index === 0) ? 'active' : ''; ?>" data-image="<?php echo $imgData['imagem']; ?>" aria-label="Miniatura <?php echo $index + 1; ?>">
+                                        <img src="<?php echo $imgData['imagem']; ?>" alt="Miniatura <?php echo $index + 1; ?>">
+                                    </button>
+                                <?php endforeach; ?>
+                            </div>
+
+                            <div class="main-image-wrapper">
+                                <img id="mainImage" class="main-image" src="<?php echo $todasImagens[0]['imagem']; ?>" alt="<?php echo htmlspecialchars($linha['nome_produto']); ?>">
                             </div>
                         </div>
                     </div>
@@ -698,6 +695,20 @@ include "conexao.php";
                     }
                 });
             }
+            // Troca de imagem principal ao clicar nas miniaturas
+            const thumbs = document.querySelectorAll('.thumb');
+            const mainImage = document.getElementById('mainImage');
+            thumbs.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const src = btn.getAttribute('data-image');
+                    if (src && mainImage) {
+                        mainImage.src = src;
+                        // atualiza estado ativo
+                        thumbs.forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                    }
+                });
+            });
         });
     </script>
 
