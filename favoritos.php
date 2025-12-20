@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 include("conexao.php");
 // Verifique se o usuário está logado, se não, redirecione-o para uma página de login
@@ -26,7 +26,9 @@ if(!isset($_SESSION['id']) and (!isset($_SESSION['nome']))){
 
 </head>
 
-<body><?php include "Components/nav.php"; ?><div class="container-fluid">
+<body><?php include "Components/nav.php"; ?>
+
+<div class="container-fluid">
             <div class="d-none d-md-block">
                 <a href="index.php"> <img class="pt-2" src="img/logo.png" width="150" height="120"></a>
             </div>

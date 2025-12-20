@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 include("conexao.php");
 // Verifique se o usuário está logado, se não, redirecione-o para uma página de login
@@ -213,7 +213,9 @@ if(!isset($_SESSION['id']) and (!isset($_SESSION['nome']))){
 
 </head>
 
-<body><?php include "Components/nav.php"; ?><div class="container px-3 px-lg-4">
+<body><?php include "Components/nav.php"; ?>
+
+<div class="container px-3 px-lg-4">
     <a class="navbar-brand me-3 me-lg-4" href="index.php">
       <img src="img/logo.png" alt="Wade Club">
     </a>

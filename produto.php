@@ -402,41 +402,7 @@ include "conexao.php";
 
     <?php include "Components/nav.php"; ?>
 
-
-    <div class="offcanvas offcanvas-end offcanvas-street" tabindex="-1" id="offcanvasRight">
-        <div class="offcanvas-header border-bottom border-secondary">
-            <h5 class="offcanvas-title font-monospace text-uppercase">Menu Wade</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
-        </div>
-        <div class="offcanvas-body d-flex flex-column justify-content-between">
-            <div>
-                <a href="index.php" class="menu-link">INÍCIO</a>
-                <a href="carrinho.php" class="menu-link">CARRINHO</a>
-                <a href="index.php#destaques" class="menu-link text-white fw-bold">PROMOÇÕES 🔥</a>
-                <a href="minhas_compras.php" class="menu-link">MINHAS COMPRAS</a>
-                <a href="favoritos.php" class="menu-link">LISTA DE DESEJOS</a>
-                <a href="informacoes_usuario.php" class="menu-link">MEUS DADOS</a>
-
-                <?php if(isset($_SESSION['adm_usuario']) && $_SESSION['adm_usuario'] == 1) { ?>
-                    <a href="tela_adm.php" class="menu-link text-warning mt-3">PAINEL ADMIN</a>
-                <?php } ?>
-                
-                <div class="d-block d-md-none mt-4">
-                    <input class="form-control bg-dark text-white border-secondary" type="search" placeholder="Buscar..." onchange="location.href='categoria.php?search='+this.value">
-                </div>
-            </div>
-
-            <div class="mt-4">
-                <?php if(isset($_SESSION['id']) || isset($_SESSION['nome'])){ ?>
-                    <a href="sair.php" class="btn btn-outline-danger w-100 py-2 text-uppercase fw-bold">Sair</a>
-                <?php } else { ?>
-                    <a href="cadastro.html" class="btn btn-light w-100 py-2 text-uppercase fw-bold text-dark">Criar Conta</a>
-                <?php } ?>
-            </div>
-        </div>
-    </div>
-
-    <main>
+<main>
         <nav aria-label="breadcrumb mt-5">
             <ol class="mx-5 mt-2 breadcrumb">
                 <li class="breadcrumb-item"><a href="index.php">Home</a></li>

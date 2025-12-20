@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 include("conexao.php");
 // Verifique se o usuário está logado, se não, redirecione-o para uma página de login
@@ -245,7 +245,7 @@ include("conexao.php");
 
 <?php include "Components/nav.php"; ?>
 
-    <main style="margin-top: 30px;">
+<main style="margin-top: 30px;">
             <nav aria-label="breadcrumb">
                 <ol class="mx-5 mt-2 breadcrumb">
                     <li class="breadcrumb-item"><a href="index.php">Home</a></li>
