@@ -1,0 +1,14 @@
+.env
+.venv/
+vendor/
+node_modules/
+*.log
+storage/logs/*.log
+!storage/logs/.gitkeep
+.DS_Store
+Thumbs.db
+*.pyc
+__pycache__/
+
+# Legacy files (old implementation)
+legacy/
